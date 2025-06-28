@@ -226,10 +226,10 @@ packages:
     dependency: "direct dev"
     description:
       name: flutter_lints
-      sha256: "5398f14efa795ffb7a33e9b6a08798b26a180edac4ad7db3f231e40f82ce11e1"
+      sha256: "3105dc8492f6183fb076ccf1f351ac3d60564bff92e20bfc4af9cc1651f4e7e1"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0"
+    version: "6.0.0"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -401,10 +401,10 @@ packages:
     dependency: transitive
     description:
       name: lints
-      sha256: c35bb79562d980e9a453fc715854e1ed39e24e7d0297a880ef54e17f9874a9d7
+      sha256: a5e2b223cb7c9c8efdc663ef484fdd95bb243bff242ef5b13e26883547fce9a0
       url: "https://pub.dev"
     source: hosted
-    version: "5.1.1"
+    version: "6.0.0"
   loading_animation_widget:
     dependency: "direct main"
     description:
@@ -726,34 +726,34 @@ packages:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_charts
-      sha256: "8367eb7b9941e33158f34c3e903e19897542b19423f9a91897aaafe4228298ca"
+      sha256: c43329a0f74337c96cbf6e1993c990a111c56df4f307b63590063c50d7b027f1
       url: "https://pub.dev"
     source: hosted
-    version: "28.2.12"
+    version: "29.2.11"
   syncfusion_flutter_core:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_core
-      sha256: f1d2b52697543e13bdefdc62d15868124a265987577f53224a7dbe176c8448f0
+      sha256: bee87cdfe527b31705190162e3bd27bf468d591ae7c68182244bdfd94e21f737
       url: "https://pub.dev"
     source: hosted
-    version: "28.2.12"
+    version: "29.2.11"
   syncfusion_flutter_maps:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_maps
-      sha256: "7d764fa540fd8988b3e9f79d6ce85c4a3c94734dd7efb9c9b553be44f12331ea"
+      sha256: "851d4572476038c3df9330fff220f0212e7a89f54c3156c2f024bc9ce8d46684"
       url: "https://pub.dev"
     source: hosted
-    version: "28.2.12"
+    version: "29.2.11"
   syncfusion_flutter_sliders:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_sliders
-      sha256: "3738ffe56256ddf0d588a31f1e65d714ffd45970eafe00bb6e93f17b21003ded"
+      sha256: "84ba05823f00e30cb0fdb98ad300a204617db4a6407de7c184f9836276f386b9"
       url: "https://pub.dev"
     source: hosted
-    version: "28.2.12"
+    version: "29.2.11"
   term_glyph:
     dependency: transitive
     description:
