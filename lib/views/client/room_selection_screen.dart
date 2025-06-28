@@ -20,7 +20,8 @@ class RoomSelectionScreen extends StatefulWidget {
   State<RoomSelectionScreen> createState() => _RoomSelectionScreenState();
 }
 
-class _RoomSelectionScreenState extends State<RoomSelectionScreen> with UIMixin {
+class _RoomSelectionScreenState extends State<RoomSelectionScreen>
+    with UIMixin {
   RoomSelectionController controller = Get.put(RoomSelectionController());
 
   @override
@@ -66,7 +67,8 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> with UIMixin 
                   itemBuilder: (context, index) {
                     RoomModel room = controller.room[index];
                     return MyCard(
-                      shadow: MyShadow(elevation: 0.2, position: MyShadowPosition.bottom),
+                      shadow: MyShadow(
+                          elevation: 0.2, position: MyShadowPosition.bottom),
                       paddingAll: 24,
                       onTap: controller.goToRoomDetail,
                       child: Column(
@@ -78,16 +80,25 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> with UIMixin 
                                 paddingAll: 0,
                                 height: 200,
                                 width: double.infinity,
-                                child: Image.asset(room.image, fit: BoxFit.cover),
+                                child:
+                                    Image.asset(room.image, fit: BoxFit.cover),
                               ),
                               Positioned(
                                 right: 12,
                                 top: 12,
                                 child: MyContainer.rounded(
-                                  onTap: () => controller.onFavouriteToggle(room),
+                                  onTap: () =>
+                                      controller.onFavouriteToggle(room),
                                   paddingAll: 12,
-                                  child: Icon(room.isFavourite ? Icons.favorite_outlined : Icons.favorite_outline,
-                                      size: 16, color: room.isFavourite ? contentTheme.danger : null, fill: 0),
+                                  child: Icon(
+                                      room.isFavourite
+                                          ? Icons.favorite_outlined
+                                          : Icons.favorite_outline,
+                                      size: 16,
+                                      color: room.isFavourite
+                                          ? contentTheme.danger
+                                          : null,
+                                      fill: 0),
                                 ),
                               )
                             ],
@@ -99,15 +110,25 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen> with UIMixin 
                               children: [
                                 Expanded(
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      MyText.bodyMedium(room.roomType, fontWeight: 600, maxLines: 1, overflow: TextOverflow.ellipsis),
-                                      MyText.labelMedium("Bed Type : ${room.bedType}"),
-                                      MyText.labelMedium("Room Number : ${room.roomType}"),
-                                      MyText.labelMedium("Floor : ${room.floor}"),
-                                      MyText.labelMedium("Capacity : ${room.capacity}"),
-                                      MyText.labelMedium("Price : \$${room.pricePerNight} price per night"),
+                                      MyText.bodyMedium(room.roomType,
+                                          fontWeight: 600,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis),
+                                      MyText.labelMedium(
+                                          "Bed Type : ${room.bedType}"),
+                                      MyText.labelMedium(
+                                          "Room Number : ${room.roomType}"),
+                                      MyText.labelMedium(
+                                          "Floor : ${room.floor}"),
+                                      MyText.labelMedium(
+                                          "Capacity : ${room.capacity}"),
+                                      MyText.labelMedium(
+                                          "Price : \$${room.pricePerNight} price per night"),
                                     ],
                                   ),
                                 ),

@@ -54,7 +54,8 @@ class _MyBookingScreenState extends State<MyBookingScreen> with UIMixin {
               Padding(
                 padding: MySpacing.x(flexSpacing),
                 child: MyCard(
-                  shadow: MyShadow(elevation: 0.2, position: MyShadowPosition.bottom),
+                  shadow: MyShadow(
+                      elevation: 0.2, position: MyShadowPosition.bottom),
                   paddingAll: 24,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,38 +72,80 @@ class _MyBookingScreenState extends State<MyBookingScreen> with UIMixin {
                               columnSpacing: 25,
                               showBottomBorder: false,
                               showCheckboxColumn: true,
-                              border: TableBorder.all(style: BorderStyle.solid, width: .4, color: Colors.grey),
+                              border: TableBorder.all(
+                                  style: BorderStyle.solid,
+                                  width: .4,
+                                  color: Colors.grey),
                               columns: [
-                                DataColumn(label: MyText.bodySmall('Booking ID', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Guest Name', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Hotel Name', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Room Type', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Check In Date', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Check Out Date', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Booking Date', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Number Of Guests', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Total Price', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Currency', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Payment Method', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Special Requests', fontWeight: 600)),
-                                DataColumn(label: MyText.bodySmall('Booking Status', fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Booking ID',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Guest Name',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Hotel Name',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Room Type',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Check In Date',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Check Out Date',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Booking Date',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Number Of Guests',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Total Price',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Currency',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Payment Method',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Special Requests',
+                                        fontWeight: 600)),
+                                DataColumn(
+                                    label: MyText.bodySmall('Booking Status',
+                                        fontWeight: 600)),
                               ],
                               rows: controller.myBooking
                                   .mapIndexed((index, data) => DataRow(
                                         cells: [
-                                          DataCell(MyText.labelSmall(data.bookingID)),
-                                          DataCell(MyText.labelSmall(data.guestName)),
-                                          DataCell(MyText.labelSmall(data.hotelName)),
-                                          DataCell(MyText.labelSmall(data.roomType)),
-                                          DataCell(MyText.labelSmall(data.checkInDate)),
-                                          DataCell(MyText.labelSmall(data.checkOutDate)),
-                                          DataCell(MyText.labelSmall(data.bookingDate)),
-                                          DataCell(MyText.labelSmall(data.numberOfGuest.toString())),
-                                          DataCell(MyText.labelSmall('\$${data.totalPrice}')),
-                                          DataCell(MyText.labelSmall(data.currency)),
-                                          DataCell(MyText.labelSmall(data.paymentMethod)),
-                                          DataCell(MyText.labelSmall(data.specialRequests)),
-                                          DataCell(MyText.labelSmall(data.bookingStatus)),
+                                          DataCell(MyText.labelSmall(
+                                              data.bookingID)),
+                                          DataCell(MyText.labelSmall(
+                                              data.guestName)),
+                                          DataCell(MyText.labelSmall(
+                                              data.hotelName)),
+                                          DataCell(
+                                              MyText.labelSmall(data.roomType)),
+                                          DataCell(MyText.labelSmall(
+                                              data.checkInDate)),
+                                          DataCell(MyText.labelSmall(
+                                              data.checkOutDate)),
+                                          DataCell(MyText.labelSmall(
+                                              data.bookingDate)),
+                                          DataCell(MyText.labelSmall(
+                                              data.numberOfGuest.toString())),
+                                          DataCell(MyText.labelSmall(
+                                              '\$${data.totalPrice}')),
+                                          DataCell(
+                                              MyText.labelSmall(data.currency)),
+                                          DataCell(MyText.labelSmall(
+                                              data.paymentMethod)),
+                                          DataCell(MyText.labelSmall(
+                                              data.specialRequests)),
+                                          DataCell(MyText.labelSmall(
+                                              data.bookingStatus)),
                                         ],
                                       ))
                                   .toList()),

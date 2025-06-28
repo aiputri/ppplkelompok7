@@ -1,6 +1,7 @@
 [
   {
     "id": 101,
+    "hotel_id": 1,
     "image": "assets/images/dummy/room/hotel_room_1.jpg",
     "room_type": "Standard Room",
     "bed_type": "Queen",
@@ -29,6 +30,7 @@
   },
   {
     "id": 102,
+    "hotel_id": 1,
     "image": "assets/images/dummy/room/hotel_room_2.jpg",
     "room_type": "Deluxe Room",
     "bed_type": "King",
@@ -59,6 +61,7 @@
   },
   {
     "id": 103,
+    "hotel_id": 2,
     "image": "assets/images/dummy/room/hotel_room_3.jpg",
     "room_type": "Suite",
     "bed_type": "King",
@@ -90,6 +93,7 @@
   },
   {
     "id": 104,
+    "hotel_id": 2,
     "image": "assets/images/dummy/room/hotel_room_4.jpg",
     "room_type": "Standard Room",
     "bed_type": "Double",
@@ -117,6 +121,7 @@
   },
   {
     "id": 105,
+    "hotel_id": 3,
     "image": "assets/images/dummy/room/hotel_room_5.jpg",
     "room_type": "Family Room",
     "bed_type": "2 Double Beds",
@@ -147,6 +152,7 @@
   },
   {
     "id": 106,
+    "hotel_id": 3,
     "image": "assets/images/dummy/room/hotel_room_6.jpg",
     "room_type": "Penthouse Suite",
     "bed_type": "King",
@@ -179,6 +185,7 @@
   },
   {
     "id": 107,
+    "hotel_id": 4,
     "image": "assets/images/dummy/room/hotel_room_7.jpg",
     "room_type": "Junior Suite",
     "bed_type": "King",
@@ -209,6 +216,7 @@
   },
   {
     "id": 108,
+    "hotel_id": 4,
     "image": "assets/images/dummy/room/hotel_room_8.jpg",
     "room_type": "Accessible Room",
     "bed_type": "Queen",
@@ -238,6 +246,7 @@
   },
   {
     "id": 109,
+    "hotel_id": 4,
     "image": "assets/images/dummy/room/hotel_room_9.jpg",
     "room_type": "Garden View Room",
     "bed_type": "Twin",
@@ -266,6 +275,7 @@
   },
   {
     "id": 110,
+    "hotel_id": 5,
     "image": "assets/images/dummy/room/hotel_room_10.jpg",
     "room_type": "Oceanfront Room",
     "bed_type": "King",

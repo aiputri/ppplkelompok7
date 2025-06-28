@@ -1,9 +1,12 @@
+// lib/model/room_model.dart
+
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:stay_place/helpers/services/json_decoder.dart';
 import 'package:stay_place/model/identifier_model.dart';
 
 class RoomModel extends IdentifierModel {
+  final int hotelId; // <-- TAMBAHKAN FIELD BARU
   final String roomType, bedType, image, view;
   final double pricePerNight;
   final List amenities, guestService, inclusion;
@@ -13,6 +16,7 @@ class RoomModel extends IdentifierModel {
 
   RoomModel(
     super.id,
+    this.hotelId, // <-- TAMBAHKAN DI CONSTRUCTOR
     this.roomType,
     this.bedType,
     this.pricePerNight,
@@ -31,22 +35,37 @@ class RoomModel extends IdentifierModel {
   static RoomModel fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
 
+    int hotelId = decoder.getInt('hotel_id'); // <-- AMBIL NILAI hotel_id
     String roomType = decoder.getString('room_type');
     String bedType = decoder.getString('bed_type');
     String image = decoder.getString('image');
     String view = decoder.getString('view');
     double pricePerNight = decoder.getDouble('price_per_night');
-    List? amenities = decoder.getObjectListOrNull('amenities');
-    List? guestService = decoder.getObjectListOrNull('guest_service');
-    List? inclusion = decoder.getObjectListOrNull('inclusion');
+    List amenities = decoder.getObjectList('amenities');
+    List guestService = decoder.getObjectList('guest_service');
+    List inclusion = decoder.getObjectList('inclusion');
     bool availability = decoder.getBool('availability');
     bool smoking = decoder.getBool('smoking');
     int capacity = decoder.getInt('capacity');
     int floor = decoder.getInt('floor');
     bool isFavourite = decoder.getBool('isFavourite');
 
-    return RoomModel(decoder.getId, roomType, bedType, pricePerNight, amenities!, availability, image, guestService!, inclusion!, view, smoking, capacity,
-        floor, isFavourite);
+    return RoomModel(
+        decoder.getId,
+        hotelId, // <-- MASUKKAN KE CONSTRUCTOR
+        roomType,
+        bedType,
+        pricePerNight,
+        amenities,
+        availability,
+        image,
+        guestService,
+        inclusion,
+        view,
+        smoking,
+        capacity,
+        floor,
+        isFavourite);
   }
 
   static List<RoomModel> listFromJSON(List<dynamic> list) {

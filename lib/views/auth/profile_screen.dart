@@ -118,7 +118,8 @@ class _ProfileScreenState extends State<ProfileScreen> with UIMixin {
                         Center(
                           child: MyButton.rounded(
                             onPressed: () {
-                              // Logika untuk edit profil bisa ditambahkan di sini
+                              Get.toNamed(
+                                  '/profile/edit'); // Logika untuk edit profil bisa ditambahkan di sini
                             },
                             elevation: 0,
                             padding: MySpacing.xy(20, 16),

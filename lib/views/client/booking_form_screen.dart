@@ -1,23 +1,20 @@
+// lib/views/client/booking_form_screen.dart
+
 import 'package:flutter/material.dart';
-import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:get/get.dart';
 import 'package:stay_place/controller/client/booking_form_controller.dart';
-import 'package:stay_place/helpers/extention/string.dart';
-import 'package:stay_place/helpers/theme/app_themes.dart';
 import 'package:stay_place/helpers/utils/my_shadow.dart';
 import 'package:stay_place/helpers/utils/ui_mixins.dart';
-import 'package:stay_place/helpers/utils/utils.dart';
 import 'package:stay_place/helpers/widgets/my_breadcrumb.dart';
 import 'package:stay_place/helpers/widgets/my_breadcrumb_item.dart';
 import 'package:stay_place/helpers/widgets/my_button.dart';
 import 'package:stay_place/helpers/widgets/my_card.dart';
-import 'package:stay_place/helpers/widgets/my_flex.dart';
-import 'package:stay_place/helpers/widgets/my_flex_item.dart';
 import 'package:stay_place/helpers/widgets/my_spacing.dart';
 import 'package:stay_place/helpers/widgets/my_text.dart';
 import 'package:stay_place/helpers/widgets/my_text_style.dart';
 import 'package:stay_place/helpers/widgets/responsive.dart';
 import 'package:stay_place/views/layout/layout.dart';
+import 'package:flutter_lucide/flutter_lucide.dart';
 
 class BookingFormScreen extends StatefulWidget {
   const BookingFormScreen({super.key});
@@ -27,15 +24,24 @@ class BookingFormScreen extends StatefulWidget {
 }
 
 class _BookingFormScreenState extends State<BookingFormScreen> with UIMixin {
-  BookingFormController controller = Get.put(BookingFormController());
+  late final BookingFormController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = Get.put(BookingFormController(Get.arguments));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Layout(
-      child: GetBuilder(
+      child: GetBuilder<BookingFormController>(
         init: controller,
-        tag: 'booking_form_controller',
         builder: (controller) {
+          if (controller.hotel == null || controller.room == null) {
+            return Center(child: MyText.bodyLarge("Booking data not found!"));
+          }
+
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -44,14 +50,12 @@ class _BookingFormScreenState extends State<BookingFormScreen> with UIMixin {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MyText.titleMedium(
-                      "Booking Form",
-                      fontSize: 18,
-                      fontWeight: 600,
-                    ),
+                    MyText.titleMedium("Booking Form",
+                        fontSize: 18, fontWeight: 600),
                     MyBreadcrumb(
                       children: [
-                        MyBreadcrumbItem(name: 'Booking Form', active: true),
+                        MyBreadcrumbItem(name: 'Room Detail'),
+                        MyBreadcrumbItem(name: 'Booking', active: true),
                       ],
                     ),
                   ],
@@ -59,12 +63,61 @@ class _BookingFormScreenState extends State<BookingFormScreen> with UIMixin {
               ),
               MySpacing.height(flexSpacing),
               Padding(
-                padding: MySpacing.x(flexSpacing / 2),
-                child: MyFlex(children: [
-                  MyFlexItem(sizes: 'lg-6 md-6', child: guestDetails()),
-                  MyFlexItem(sizes: 'lg-6 md-6', child: bookingDetails()),
-                ]),
-              )
+                padding: MySpacing.x(flexSpacing),
+                child: MyCard(
+                  shadow: MyShadow(elevation: 0.2),
+                  paddingAll: 24,
+                  child: Form(
+                    key: controller.formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        MyText.titleMedium("You are booking:", fontWeight: 600),
+                        MySpacing.height(8),
+                        MyText.bodyLarge(
+                            "${controller.room!.roomType} at ${controller.hotel!.hotelName}"),
+                        Divider(height: 48),
+
+                        // ========== PERUBAHAN DI SINI ==========
+                        _buildDateField(
+                          label: "Check-in Date",
+                          controller: controller.checkInController,
+                          validator: (val) =>
+                              val!.isEmpty ? "Please select a date" : null,
+                        ),
+                        MySpacing.height(24),
+                        _buildDateField(
+                          label: "Check-out Date",
+                          controller: controller.checkOutController,
+                          validator: (val) =>
+                              val!.isEmpty ? "Please select a date" : null,
+                        ),
+                        // ======================================
+
+                        MySpacing.height(24),
+                        _buildTextField(
+                          label: "Number of Guests",
+                          controller: controller.guestsController,
+                          validator: (val) => val!.isEmpty
+                              ? "Please enter number of guests"
+                              : null,
+                        ),
+                        MySpacing.height(32),
+                        Center(
+                          child: MyButton.rounded(
+                            onPressed: controller.submitBooking,
+                            elevation: 0,
+                            padding: MySpacing.xy(20, 16),
+                            backgroundColor: contentTheme.primary,
+                            child: MyText.bodyMedium("Confirm Booking",
+                                color: contentTheme.onPrimary),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ],
           );
         },
@@ -72,177 +125,45 @@ class _BookingFormScreenState extends State<BookingFormScreen> with UIMixin {
     );
   }
 
-  Widget commonTextField(String hintText, IconData? prefixIcon) {
+  // Widget helper untuk text field biasa
+  Widget _buildTextField({
+    required String label,
+    required TextEditingController controller,
+    String? Function(String?)? validator,
+  }) {
     return TextFormField(
-      style: MyTextStyle.labelMedium(),
+      controller: controller,
+      validator: validator,
+      style: MyTextStyle.bodyMedium(),
       decoration: InputDecoration(
-        border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-        focusedErrorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-        errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-        disabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-        hintText: hintText,
-        prefixIcon: Icon(prefixIcon, size: 14),
-        prefixIconConstraints: BoxConstraints(maxHeight: 32, minHeight: 32, maxWidth: 32, minWidth: 32),
-        hintStyle: MyTextStyle.labelMedium(muted: true),
-        contentPadding: MySpacing.all(14),
-        isCollapsed: true,
-        isDense: true,
+        labelText: label,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(4)),
+        contentPadding: MySpacing.all(16),
       ),
     );
   }
 
-  Widget guestDetails() {
-    return MyCard(
-      shadow: MyShadow(elevation: 0.2, position: MyShadowPosition.bottom),
-      paddingAll: 24,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          MyText.bodyMedium("Guest Detail", fontWeight: 600),
-          MySpacing.height(24),
-          commonTextField("First Name", LucideIcons.user),
-          MySpacing.height(24),
-          commonTextField("Last Name", LucideIcons.user),
-          MySpacing.height(24),
-          commonTextField("Email", LucideIcons.mail),
-          MySpacing.height(24),
-          commonTextField("Phone Number", LucideIcons.phone),
-          MySpacing.height(24),
-          commonTextField("Address", LucideIcons.map_pin),
-        ],
-      ),
-    );
-  }
-
-  Widget bookingDetails() {
-    return MyCard(
-      shadow: MyShadow(elevation: 0.2, position: MyShadowPosition.bottom),
-      paddingAll: 24,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          MyText.bodyMedium("Bookings Detail", fontWeight: 600),
-          MySpacing.height(24),
-          commonTextField("Hotel Name", LucideIcons.user),
-          MySpacing.height(24),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              MyText.labelMedium("Room Type :"),
-              MySpacing.width(4),
-              Expanded(
-                child: Wrap(
-                    spacing: 16,
-                    runSpacing: 16,
-                    children: RoomType.values
-                        .map((gender) => InkWell(
-                            onTap: () => controller.onChangeGender(gender),
-                            child: Row(mainAxisSize: MainAxisSize.min, children: [
-                              Radio<RoomType>(
-                                  value: gender,
-                                  activeColor: theme.colorScheme.primary,
-                                  groupValue: controller.roomType,
-                                  onChanged: controller.onChangeGender,
-                                  visualDensity: getCompactDensity,
-                                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                              MySpacing.width(8),
-                              MyText.labelMedium(gender.name.capitalizeWords),
-                            ])))
-                        .toList()),
-              ),
-            ],
-          ),
-          MySpacing.height(24),
-          GestureDetector(
-            onTap: () => controller.selectDate(context, true),
-            child: AbsorbPointer(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: controller.checkInDate == null ? 'Check in date' : '${Utils.getDateStringFromDateTime(controller.checkInDate!)}',
-                  hintStyle: MyTextStyle.labelMedium(muted: true),
-                  contentPadding: MySpacing.all(14),
-                  isDense: true,
-                  isCollapsed: true,
-                  prefixIcon: Icon(LucideIcons.clock_3, size: 14),
-                  prefixIconConstraints: BoxConstraints(maxHeight: 32, minHeight: 32, maxWidth: 32, minWidth: 32),
-                  border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                  focusedErrorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                  enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                  errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                  disabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                ),
-              ),
-            ),
-          ),
-          MySpacing.height(24),
-          GestureDetector(
-            onTap: () => controller.selectDate(context, false),
-            child: AbsorbPointer(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: controller.checkOutDate == null ? 'Check out date' : '${Utils.getDateStringFromDateTime(controller.checkOutDate!)}',
-                  hintStyle: MyTextStyle.labelMedium(muted: true),
-                  contentPadding: MySpacing.all(14),
-                  isDense: true,
-                  isCollapsed: true,
-                  prefixIcon: Icon(LucideIcons.clock_3, size: 14),
-                  prefixIconConstraints: BoxConstraints(maxHeight: 32, minHeight: 32, maxWidth: 32, minWidth: 32),
-                  border: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                  focusedErrorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                  enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                  errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                  disabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
-                ),
-              ),
-            ),
-          ),
-          MySpacing.height(24),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              MyText.labelMedium("Payments :"),
-              MySpacing.width(4),
-              Expanded(
-                child: Wrap(
-                  spacing: 16,
-                  runSpacing: 16,
-                  children: PaymentMethod.values.map((paymentMethod) {
-                    return InkWell(
-                        onTap: () => controller.onChangePaymentMethod(paymentMethod),
-                        child: Row(mainAxisSize: MainAxisSize.min, children: [
-                          Radio<PaymentMethod>(
-                              value: paymentMethod,
-                              activeColor: theme.colorScheme.primary,
-                              groupValue: controller.selectedPaymentMethod,
-                              onChanged: controller.onChangePaymentMethod,
-                              visualDensity: getCompactDensity,
-                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                          MySpacing.width(8),
-                          MyText.labelMedium(paymentMethod.name.capitalizeWords),
-                        ]));
-                  }).toList(),
-                ),
-              ),
-            ],
-          ),
-          MySpacing.height(24),
-          commonTextField("Promo Code", LucideIcons.user),
-          MySpacing.height(24),
-          MyButton.block(
-              onPressed: () {},
-              elevation: 0,
-              padding: MySpacing.all(16),
-              backgroundColor: contentTheme.primary,
-              child: MyText.labelMedium(
-                "Book Now",
-                color: contentTheme.onPrimary,
-                fontWeight: 600,
-              )),
-        ],
+  // Widget helper baru untuk text field tanggal
+  Widget _buildDateField({
+    required String label,
+    required TextEditingController controller,
+    String? Function(String?)? validator,
+  }) {
+    return TextFormField(
+      controller: controller,
+      validator: validator,
+      readOnly: true, // Membuat field tidak bisa diketik manual
+      onTap: () {
+        // Memanggil fungsi selectDate dari controller saat di-klik
+        this.controller.selectDate(context, controller);
+      },
+      style: MyTextStyle.bodyMedium(),
+      decoration: InputDecoration(
+        labelText: label,
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(4)),
+        contentPadding: MySpacing.all(16),
+        suffixIcon: Icon(LucideIcons.calendar,
+            color: contentTheme.primary), // Menambahkan ikon kalender
       ),
     );
   }

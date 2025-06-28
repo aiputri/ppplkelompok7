@@ -304,7 +304,7 @@ class _TopBarState extends State<TopBar>
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   onPressed: () {
                     // Arahkan juga ke halaman profil umum
-                    Get.toNamed('/profile');
+                    Get.toNamed('/profile/edit');
                   },
                   borderRadiusAll: AppStyle.buttonRadius.medium,
                   padding: MySpacing.xy(8, 4),
