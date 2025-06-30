@@ -27,7 +27,7 @@ class AppTheme {
   static ThemeData theme = AppTheme.getThemeFromThemeMode();
   static TextDirection textDirection = TextDirection.ltr;
 
-  static Color primaryColor = Color(0xff38693c);
+  static Color primaryColor = Color(0xFF1c74bc);
 
   static ThemeData getThemeFromThemeMode() {
     return ThemeCustomizer.instance.theme == ThemeMode.light
@@ -61,7 +61,7 @@ class AppTheme {
 
     /// Colorscheme
     colorScheme: ColorScheme.fromSeed(
-      seedColor: Color(0xff38693c),
+      seedColor: Color(0xFF1c74bc),
       brightness: Brightness.light,
     ),
 
@@ -141,7 +141,7 @@ class AppTheme {
     scaffoldBackgroundColor: Color(0xff262729),
     canvasColor: Colors.transparent,
 
-    primaryColor: Color(0xff9ed49d),
+    primaryColor: Color(0xFF5FB3E6),
 
     /// AppBar Theme
     appBarTheme: AppBarTheme(backgroundColor: Color(0xff262729)),
@@ -152,7 +152,7 @@ class AppTheme {
 
     /// Colorscheme
     colorScheme: ColorScheme.fromSeed(
-      seedColor: Color(0xff9ed49d),
+      seedColor: Color(0xFF5FB3E6),
       surface: Color(0xff262729),
       onSurface: Color(0xFFD7D7D7),
       brightness: Brightness.dark,
@@ -278,7 +278,7 @@ class AppColors {
   static ColorGroup violet = ColorGroup(Color(0xffD0BADE), Color(0xff4E2E60));
 
   static ColorGroup blue = ColorGroup(Color(0xffADD8FF), Color(0xff004A8F));
-  static ColorGroup green = ColorGroup(Color(0xffAFE9DA), Color(0xff165041));
+  static ColorGroup green = ColorGroup(Color(0xFFBCE2F7), Color(0xFF1c74bc));
   static ColorGroup orange = ColorGroup(Color(0xffFFCEC2), Color(0xffFF3B0A));
   static ColorGroup skyBlue = ColorGroup(Color(0xffC2F0FF), Color(0xff0099CC));
   static ColorGroup lavender = ColorGroup(Color(0xffEAE2F3), Color(0xff7748AD));
@@ -325,8 +325,8 @@ class AppColors {
       1: Color(0xfff0323c),
       2: Color(0xcdf0323c),
       3: star,
-      4: Color(0xcd3cd278),
-      5: Color(0xff3cd278)
+      4: Color(0xFF1c74bc),
+      5: Color(0xFF5FB3E6)
     };
 
     return colors[rating] ?? colors[1]!;

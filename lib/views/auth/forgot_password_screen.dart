@@ -32,10 +32,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MyText.titleLarge("Forgot Password", fontWeight: 600),
+                  MyText.titleLarge("Lupa Kata Sandi", fontWeight: 600),
                   MySpacing.height(24),
                   MyText.bodyMedium(
-                      "Enter the email address associated with your account and we'll send an email instructions on how to recover your password.",
+                      "masukkan alamat email yang terkait dengan akun anda dan kami akan mengirimkan instruksi email tentang cara memulihkan kata sandi anda.",
                       fontWeight: 600,
                       xMuted: true),
                   MySpacing.height(24),
@@ -46,7 +46,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                     keyboardType: TextInputType.emailAddress,
                     style: MyTextStyle.labelMedium(),
                     decoration: InputDecoration(
-                      labelText: "Email Address",
+                      labelText: "Alamat Email",
                       labelStyle: MyTextStyle.bodySmall(xMuted: true),
                       border: OutlineInputBorder(borderSide: BorderSide.none),
                       filled: true,
@@ -65,7 +65,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                       elevation: 0,
                       padding: MySpacing.xy(24, 16),
                       backgroundColor: contentTheme.primary,
-                      child: MyText.labelMedium('Forgot Password',
+                      child: MyText.labelMedium('Lupa Kata Sandi',
                           color: contentTheme.onPrimary),
                     ),
                   ),
@@ -76,7 +76,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                       padding: MySpacing.x(24),
                       splashColor:
                           contentTheme.secondary.withValues(alpha: 0.1),
-                      child: MyText.labelMedium('Back to log in',
+                      child: MyText.labelMedium('Kembali untuk masuk',
                           color: contentTheme.secondary),
                     ),
                   ),

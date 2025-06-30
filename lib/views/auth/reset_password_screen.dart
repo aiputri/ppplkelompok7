@@ -32,7 +32,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> with UIMixin 
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MyText.titleLarge("Reset Password", fontWeight: 600),
+                MyText.titleLarge("Setel Ulang Kata Sandi", fontWeight: 600),
                 MySpacing.height(24),
                 TextFormField(
                     validator: controller.basicValidator.getValidation('password'),
@@ -40,7 +40,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> with UIMixin 
                     keyboardType: TextInputType.visiblePassword,
                     style: MyTextStyle.labelMedium(),
                     decoration: InputDecoration(
-                        labelText: "Password",
+                        labelText: "Kata Sandi",
                         labelStyle: MyTextStyle.bodySmall(xMuted: true),
                         border: OutlineInputBorder(borderSide: BorderSide.none),
                         suffixIcon: InkWell(
@@ -62,7 +62,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> with UIMixin 
                   keyboardType: TextInputType.visiblePassword,
                   style: MyTextStyle.labelMedium(),
                   decoration: InputDecoration(
-                      labelText: "Confirm Password",
+                      labelText: "Konfirmasi Kata Sandi",
                       labelStyle: MyTextStyle.bodySmall(xMuted: true),
                       border: OutlineInputBorder(borderSide: BorderSide.none),
                       suffixIcon: InkWell(
@@ -85,7 +85,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> with UIMixin 
                     elevation: 0,
                     padding: MySpacing.xy(24, 16),
                     backgroundColor: contentTheme.primary,
-                    child: MyText.labelMedium('Reset Password', color: contentTheme.onPrimary),
+                    child: MyText.labelMedium('Setel Ulang Kata Sandi', color: contentTheme.onPrimary),
                   ),
                 ),
               ],

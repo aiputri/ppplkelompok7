@@ -37,6 +37,20 @@ class RegisterAccountController extends MyController {
       controller: TextEditingController(),
     );
     basicValidator.addField(
+      'phone_number',
+      required: true,
+      label: "No. Telepon",
+      validators: [MyLengthValidator(min: 9, max: 15)], // Memastikan panjang nomor telepon wajar
+      controller: TextEditingController(),
+    );
+    basicValidator.addField(
+      'address',
+      required: true,
+      label: "Alamat",
+       validators: [MyLengthValidator(min: 10)], // Memastikan alamat tidak terlalu pendek
+      controller: TextEditingController(),
+    );
+    basicValidator.addField(
       'password',
       required: true,
       validators: [MyLengthValidator(min: 6, max: 10)],

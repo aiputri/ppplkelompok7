@@ -71,13 +71,13 @@ class _ProfileScreenState extends State<ProfileScreen> with UIMixin {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        MyText.titleMedium("Profile Information",
+                        MyText.titleMedium("Informasi Profil",
                             fontWeight: 600),
                         MySpacing.height(24),
                         if (user != null) ...[
                           _buildProfileInfoRow(
                             icon: LucideIcons.user,
-                            title: "Full Name",
+                            title: "Nama Lengkap",
                             value: user.name,
                           ),
                           Divider(height: 32),
@@ -93,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> with UIMixin {
                             value: user.role.capitalizeFirst ?? '',
                           ),
                         ] else
-                          MyText.bodyLarge("User data not found."),
+                          MyText.bodyLarge("Data pengguna tidak ditemukan."),
                         MySpacing.height(24),
                         if (user != null && user.isAdmin())
                           MyContainer.none(
@@ -124,7 +124,7 @@ class _ProfileScreenState extends State<ProfileScreen> with UIMixin {
                             elevation: 0,
                             padding: MySpacing.xy(20, 16),
                             backgroundColor: contentTheme.primary,
-                            child: MyText.bodyMedium("Edit Profile",
+                            child: MyText.bodyMedium("Edit Profil",
                                 color: contentTheme.onPrimary),
                           ),
                         ),

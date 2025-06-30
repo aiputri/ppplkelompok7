@@ -38,8 +38,8 @@ class LeftBarTheme {
     this.background = const Color(0xffffffff),
     this.onBackground = const Color(0xff313a46),
     this.labelColor = const Color(0xff6c757d),
-    this.activeItemColor = const Color(0xff38693c),
-    this.activeItemBackground = const Color(0x4c38693c),
+    this.activeItemColor = const Color(0xFF1c74bc),
+    this.activeItemBackground = const Color(0x4c1c74bc),
   });
 
   //--------------------------------------  Left Bar Theme ----------------------------------------//
@@ -50,8 +50,8 @@ class LeftBarTheme {
       background: const Color(0xff282c32),
       onBackground: const Color(0xffdcdcdc),
       labelColor: const Color(0xff879baf),
-      activeItemBackground: const Color(0x4c9ed49d),
-      activeItemColor: const Color(0xff9ed49d));
+      activeItemBackground: const Color(0x4c5FB3E6),
+      activeItemColor: const Color(0xFF5FB3E6));
 
   static LeftBarTheme getThemeFromType(LeftBarThemeType leftBarThemeType) {
     switch (leftBarThemeType) {
@@ -85,7 +85,7 @@ class RightBarTheme {
 
   RightBarTheme({
     this.disabled = const Color(0xffffffff),
-    this.activeSwitchBorderColor = const Color(0xff38693c),
+    this.activeSwitchBorderColor = const Color(0xFF1c74bc),
     this.inactiveSwitchBorderColor = const Color(0xffdee2e6),
     this.onDisabled = const Color(0xff313a46),
   });
@@ -95,12 +95,12 @@ class RightBarTheme {
   static final RightBarTheme lightRightBarTheme = RightBarTheme(
       disabled: const Color(0xffffffff),
       onDisabled: const Color(0xffdee2e6),
-      activeSwitchBorderColor: const Color(0xff38693c),
+      activeSwitchBorderColor: const Color(0xFF1c74bc),
       inactiveSwitchBorderColor: const Color(0xffdee2e6));
 
   static final RightBarTheme darkRightBarTheme = RightBarTheme(
       disabled: const Color(0xff444d57),
-      activeSwitchBorderColor: const Color(0xff9ed49d),
+      activeSwitchBorderColor: const Color(0xFF5FB3E6),
       inactiveSwitchBorderColor: const Color(0xffdee2e6),
       onDisabled: const Color(0xff515a65));
 }
@@ -140,7 +140,7 @@ class ContentTheme {
   }
 
   ContentTheme({
-    this.primary = const Color(0xff38693c),
+    this.primary = const Color(0xFF1c74bc),
     this.secondary = const Color(0xff6c757d),
     this.success = const Color(0xff00be82),
     this.danger = const Color(0xffdc3545),
@@ -177,7 +177,7 @@ class ContentTheme {
   //--------------------------------------  Left Bar Theme ----------------------------------------//
 
   static final ContentTheme lightContentTheme = ContentTheme(
-    primary: Color(0xff38693c),
+    primary: Color(0xFF1c74bc),
     background: const Color(0xfffafbfe),
     onBackground: const Color(0xff313a46),
     cardBorder: const Color(0xffe8ecf1),
@@ -189,7 +189,7 @@ class ContentTheme {
   );
 
   static final ContentTheme darkContentTheme = ContentTheme(
-    primary: Color(0xff9ed49d),
+    primary: Color(0xFF5FB3E6),
     background: const Color(0xff343a40),
     onBackground: const Color(0xffF1F1F2),
     disabled: const Color(0xff444d57),
