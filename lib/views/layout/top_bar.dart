@@ -2,10 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
-import 'package:sikilap/helpers/localizations/language.dart';
-import 'package:sikilap/helpers/services/auth_services.dart'; // <-- IMPORT BARU
-import 'package:sikilap/helpers/theme/app_notifire.dart';
+// import 'package:provider/provider.dart'; // Dihapus karena tidak digunakan lagi untuk language
+// import 'package:sikilap/helpers/localizations/language.dart'; // Dihapus
+import 'package:sikilap/helpers/services/auth_services.dart';
 import 'package:sikilap/helpers/theme/app_style.dart';
 import 'package:sikilap/helpers/theme/app_themes.dart';
 import 'package:sikilap/helpers/theme/theme_customizer.dart';
@@ -30,7 +29,7 @@ class TopBar extends StatefulWidget {
 
 class _TopBarState extends State<TopBar>
     with SingleTickerProviderStateMixin, UIMixin {
-  Function? languageHideFn;
+  // Function? languageHideFn; // Dihapus
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +41,13 @@ class _TopBarState extends State<TopBar>
       color: topBarTheme.background.withAlpha(246),
       child: Row(
         children: [
+          // -- BAGIAN INI DIKEMBALIKAN KE SEMULA (HANYA IKON MENU) --
           InkWell(
-              onTap: () => ThemeCustomizer.toggleLeftBarCondensed(),
-              child: Icon(LucideIcons.menu, color: topBarTheme.onBackground)),
+            onTap: () => ThemeCustomizer.toggleLeftBarCondensed(),
+            child: Icon(LucideIcons.menu, color: topBarTheme.onBackground),
+          ),
+          // -- AKHIR PERUBAHAN --
+
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -67,29 +70,6 @@ class _TopBarState extends State<TopBar>
                 MySpacing.width(12),
                 CustomPopupMenu(
                   backdrop: true,
-                  hideFn: (hide) => languageHideFn = hide,
-                  onChange: (_) {},
-                  offsetX: -36,
-                  menu: Padding(
-                    padding: MySpacing.xy(8, 8),
-                    child: Center(
-                      child: ClipRRect(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        borderRadius: BorderRadius.circular(2),
-                        child: Image.asset(
-                          "assets/lang/${ThemeCustomizer.instance.currentLanguage.locale.languageCode}.jpg",
-                          width: 24,
-                          height: 18,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  ),
-                  menuBuilder: (_) => buildLanguageSelector(),
-                ),
-                MySpacing.width(6),
-                CustomPopupMenu(
-                  backdrop: true,
                   onChange: (_) {},
                   offsetX: -120,
                   menu: Padding(
@@ -110,8 +90,6 @@ class _TopBarState extends State<TopBar>
                   offsetX: -60,
                   offsetY: 8,
                   menu: Obx(() {
-                    // <-- BUNGKUS DENGAN Obx
-                    // Tampilkan menu hanya jika sudah login
                     if (!AuthService.isLoggedIn) return const SizedBox.shrink();
 
                     return Padding(
@@ -122,14 +100,12 @@ class _TopBarState extends State<TopBar>
                           MyContainer.rounded(
                               paddingAll: 0,
                               child: Image.asset(
-                                Images.avatars[
-                                    0], // Kamu bisa ganti dengan foto profil dinamis nanti
+                                Images.avatars[0],
                                 height: 28,
                                 width: 28,
                                 fit: BoxFit.cover,
                               )),
                           MySpacing.width(8),
-                          // Ambil nama dari state reaktif
                           MyText.labelLarge(
                               AuthService.loggedInUser.value!.name)
                         ],
@@ -138,50 +114,10 @@ class _TopBarState extends State<TopBar>
                   }),
                   menuBuilder: (_) => buildAccountMenu(),
                 ),
-                // ===========================================
               ],
             ),
           )
         ],
-      ),
-    );
-  }
-
-  Widget buildLanguageSelector() {
-    return MyContainer.bordered(
-      padding: MySpacing.xy(8, 8),
-      width: 125,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: Language.languages
-            .map((language) => MyButton.text(
-                  padding: MySpacing.xy(8, 4),
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  splashColor: contentTheme.onBackground.withAlpha(20),
-                  onPressed: () async {
-                    languageHideFn?.call();
-                    await Provider.of<AppNotifier>(context, listen: false)
-                        .changeLanguage(language, notify: true);
-                    ThemeCustomizer.notify();
-                    setState(() {});
-                  },
-                  child: Row(
-                    children: [
-                      ClipRRect(
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          borderRadius: BorderRadius.circular(2),
-                          child: Image.asset(
-                            "assets/lang/${language.locale.languageCode}.jpg",
-                            width: 18,
-                            height: 14,
-                            fit: BoxFit.cover,
-                          )),
-                      MySpacing.width(8),
-                      MyText.labelMedium(language.languageName)
-                    ],
-                  ),
-                ))
-            .toList(),
       ),
     );
   }
@@ -206,7 +142,7 @@ class _TopBarState extends State<TopBar>
         children: [
           Padding(
             padding: MySpacing.xy(16, 12),
-            child: MyText.titleMedium("Notification", fontWeight: 600),
+            child: MyText.titleMedium("Notifikasi", fontWeight: 600),
           ),
           MyDashedDivider(
               height: 1, color: theme.dividerColor, dashSpace: 4, dashWidth: 6),
@@ -215,11 +151,11 @@ class _TopBarState extends State<TopBar>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                buildNotification("Your order is received",
-                    "Order #1232 is ready to deliver"),
+                buildNotification("Pesanan Diterima",
+                    "Pesanan #SKL-001 siap untuk diproses"),
                 MySpacing.height(12),
-                buildNotification("Account Security ",
-                    "Your account password changed 1 hour ago"),
+                buildNotification("Keamanan Akun",
+                    "Kata sandi akun Anda diubah 1 jam lalu"),
               ],
             ),
           ),
@@ -235,7 +171,7 @@ class _TopBarState extends State<TopBar>
                   borderRadiusAll: 8,
                   splashColor: contentTheme.primary.withAlpha(28),
                   child: MyText.labelSmall(
-                    "View All",
+                    "Lihat Semua",
                     color: contentTheme.primary,
                   ),
                 ),
@@ -244,7 +180,7 @@ class _TopBarState extends State<TopBar>
                   borderRadiusAll: 8,
                   splashColor: contentTheme.danger.withAlpha(28),
                   child: MyText.labelSmall(
-                    "Clear",
+                    "Hapus",
                     color: contentTheme.danger,
                   ),
                 ),
@@ -255,10 +191,6 @@ class _TopBarState extends State<TopBar>
       ),
     );
   }
-
-  // lib/views/layout/top_bar.dart
-
-// ...
 
   Widget buildAccountMenu() {
     return MyContainer.bordered(
@@ -272,10 +204,8 @@ class _TopBarState extends State<TopBar>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Tombol "My Profile"
                 MyButton(
                   onPressed: () {
-                    // Arahkan ke halaman profil umum
                     Get.toNamed('/profile');
                   },
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -292,18 +222,16 @@ class _TopBarState extends State<TopBar>
                       ),
                       MySpacing.width(8),
                       MyText.labelMedium(
-                        "My Profile",
+                        "Profil Saya",
                         fontWeight: 600,
                       )
                     ],
                   ),
                 ),
                 MySpacing.height(4),
-                // Tombol "Edit Profile" (diarahkan ke halaman yang sama untuk saat ini)
                 MyButton(
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   onPressed: () {
-                    // Arahkan juga ke halaman profil umum
                     Get.toNamed('/profile/edit');
                   },
                   borderRadiusAll: AppStyle.buttonRadius.medium,
@@ -319,7 +247,7 @@ class _TopBarState extends State<TopBar>
                       ),
                       MySpacing.width(8),
                       MyText.labelMedium(
-                        "Edit Profile",
+                        "Ubah Profil",
                         fontWeight: 600,
                       )
                     ],
@@ -332,13 +260,11 @@ class _TopBarState extends State<TopBar>
             height: 1,
             thickness: 1,
           ),
-          // Tombol "Log out"
           Padding(
             padding: MySpacing.xy(8, 8),
             child: MyButton(
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               onPressed: () {
-                // Panggil method logout yang sudah benar
                 AuthService.logout();
               },
               borderRadiusAll: AppStyle.buttonRadius.medium,
@@ -354,7 +280,7 @@ class _TopBarState extends State<TopBar>
                   ),
                   MySpacing.width(8),
                   MyText.labelMedium(
-                    "Log out",
+                    "Keluar",
                     fontWeight: 600,
                     color: contentTheme.danger,
                   )

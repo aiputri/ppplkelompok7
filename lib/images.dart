@@ -10,5 +10,6 @@ class Images {
   static String logoLight = 'assets/images/logo/logo_light.png';
   static String logoDark = 'assets/images/logo/logo_dark.png';
 
+
   static String randomImage(List<String> images) => images[Random().nextInt(images.length)];
 }

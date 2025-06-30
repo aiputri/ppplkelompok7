@@ -63,7 +63,7 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      MyText.bodyMedium("Mitra", fontWeight: 600),
+                      MyText.bodyMedium("Mitra Terdaftar", fontWeight: 600),
                       MySpacing.height(24),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -75,6 +75,7 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                             showBottomBorder: false,
                             showCheckboxColumn: true,
                             border: TableBorder.all(style: BorderStyle.solid, width: .4, color: Colors.grey),
+                            // Kolom sudah sesuai dengan yang Anda minta
                             columns: [
                               DataColumn(label: MyText.bodySmall('Nama Mitra', fontWeight: 600)),
                               DataColumn(label: MyText.bodySmall('Nomor Telepon', fontWeight: 600)),
@@ -84,9 +85,11 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                               DataColumn(label: MyText.bodySmall('Tanggal Gabung', fontWeight: 600)),
                               DataColumn(label: MyText.bodySmall('Aksi', fontWeight: 600)),
                             ],
-                            rows: controller.guest
+                            // -- BAGIAN INI DIUBAH UNTUK MENAMPILKAN DATA MITRA --
+                            rows: controller.guest // TETAP MENGGUNAKAN 'guest'
                                 .mapIndexed((index, data) => DataRow(
                                       cells: [
+                                        // Sel 1: Nama Mitra
                                         DataCell(
                                           Row(
                                             children: [
@@ -99,90 +102,67 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                                                 ),
                                               ),
                                               MySpacing.width(12),
-                                              MyText.labelSmall(data.name),
+                                              MyText.labelSmall(data.nama_mitra),
                                             ],
                                           ),
                                         ),
+                                        // Sel 2: Nomor Telepon
+                                        DataCell(
+                                          MyText.labelSmall(data.nomor_telepon),
+                                        ),
+                                        // Sel 3: Area Layanan
+                                        DataCell(
+                                          MyText.labelSmall(data.area_layanan),
+                                        ),
+                                        // Sel 4: Rating
                                         DataCell(
                                           Row(
                                             children: [
-                                              Icon(LucideIcons.mail, size: 16),
-                                              MySpacing.width(8),
-                                              MyText.labelSmall(data.email),
+                                              Icon(LucideIcons.star, color: Color(0xffFFC233), size: 16),
+                                              MySpacing.width(4),
+                                              MyText.labelSmall("${data.rating}"),
                                             ],
                                           ),
                                         ),
+                                        // Sel 5: Status
                                         DataCell(
-                                          Row(
-                                            children: [
-                                              Icon(LucideIcons.user, size: 16),
-                                              MySpacing.width(8),
-                                              MyText.labelSmall("${data.age}"),
-                                            ],
+                                          MyContainer.bordered(
+                                            padding: MySpacing.xy(12, 6),
+                                            borderRadiusAll: 4,
+                                            color: data.status == 'Aktif' 
+                                                ? contentTheme.success.withAlpha(40) 
+                                                : contentTheme.danger.withAlpha(40),
+                                            border: Border.all(
+                                              color: data.status == 'Aktif' 
+                                                  ? contentTheme.success 
+                                                  : contentTheme.danger
+                                            ),
+                                            child: MyText.labelSmall(
+                                              data.status,
+                                              color: data.status == 'Aktif' 
+                                                  ? contentTheme.success 
+                                                  : contentTheme.danger,
+                                            ),
                                           ),
                                         ),
+                                        // Sel 6: Tanggal Gabung
                                         DataCell(
-                                          Row(
-                                            children: [
-                                              Icon(LucideIcons.map_pin, size: 16),
-                                              MySpacing.width(8),
-                                              MyText.labelSmall(data.destination),
-                                            ],
-                                          ),
+                                          MyText.labelSmall(data.tanggal_gabung),
                                         ),
-                                        DataCell(
-                                          Row(
-                                            children: [
-                                              Icon(LucideIcons.calendar, size: 16),
-                                              MySpacing.width(8),
-                                              MyText.labelSmall(data.arrivalDate),
-                                            ],
-                                          ),
-                                        ),
-                                        DataCell(
-                                          Row(
-                                            children: [
-                                              Icon(LucideIcons.calendar, size: 16),
-                                              MySpacing.width(8),
-                                              MyText.labelSmall(data.departureDate),
-                                            ],
-                                          ),
-                                        ),
-                                        DataCell(
-                                          Row(
-                                            children: [
-                                              Icon(LucideIcons.users, size: 16),
-                                              MySpacing.width(8),
-                                              MyText.labelSmall("${data.numberOfGuest}"),
-                                            ],
-                                          ),
-                                        ),
-                                        DataCell(
-                                          Row(
-                                            children: [
-                                              Icon(LucideIcons.file_text, size: 16),
-                                              MySpacing.width(8),
-                                              MyText.labelSmall(data.specialRequest),
-                                            ],
-                                          ),
-                                        ),
+                                        // Sel 7: Aksi
                                         DataCell(Row(
                                           children: [
                                             MyContainer.rounded(
-                                                paddingAll: 12,
-                                                onTap: controller.editGuest,
-                                                color: contentTheme.primary.withValues(alpha: .5),
-                                                splashColor: contentTheme.background,
-                                                borderRadiusAll: 100,
-                                                child: Icon(LucideIcons.pencil, size: 12, color: contentTheme.primary)),
+                                                paddingAll: 8,
+                                                onTap: () => controller.editGuest(data.id),
+                                                color: contentTheme.primary.withAlpha(40),
+                                                child: Icon(LucideIcons.pencil, size: 14, color: contentTheme.primary)),
                                             MySpacing.width(8),
                                             MyContainer.rounded(
-                                                paddingAll: 12,
-                                                onTap: controller.addGuest,
-                                                color: contentTheme.secondary.withValues(alpha: .5),
-                                                splashColor: contentTheme.background,
-                                                borderRadiusAll: 100,
-                                                child: Icon(LucideIcons.plus, size: 12, color: contentTheme.secondary)),
+                                                paddingAll: 8,
+                                                onTap: () => controller.addGuest(data.id), // Anda mungkin ingin ganti ini ke deleteGuest
+                                                color: contentTheme.danger.withAlpha(40),
+                                                child: Icon(LucideIcons.trash_2, size: 14, color: contentTheme.danger)),
                                           ],
                                         ))
                                       ],

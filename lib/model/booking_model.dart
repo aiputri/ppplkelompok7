@@ -4,43 +4,56 @@ import 'package:sikilap/helpers/services/json_decoder.dart';
 import 'package:sikilap/model/identifier_model.dart';
 
 class BookingModel extends IdentifierModel {
-  final String guestName, guestEmail, guestPhoneNumber, roomType, roomNumber, hotelName, hotelAddress, checkInDate, checkOutDate, paymentStatus, bookingStatus;
-  final double totalPrice;
+  final String namaPelanggan;
+  final String emailPelanggan;
+  final String teleponPelanggan;
+  final String jenisLayanan;
+  final String alamatLayanan;
+  final String jadwalLayanan;
+  final String statusPembayaran;
+  final String statusPesanan;
+  final double totalBiaya;
 
   BookingModel(
-    super.id,
-    this.guestName,
-    this.guestEmail,
-    this.guestPhoneNumber,
-    this.roomType,
-    this.roomNumber,
-    this.hotelName,
-    this.hotelAddress,
-    this.checkInDate,
-    this.checkOutDate,
-    this.paymentStatus,
-    this.bookingStatus,
-    this.totalPrice,
+    super.id, // ID di sini akan menggunakan nilai dari id_pesanan (String)
+    this.namaPelanggan,
+    this.emailPelanggan,
+    this.teleponPelanggan,
+    this.jenisLayanan,
+    this.alamatLayanan,
+    this.jadwalLayanan,
+    this.statusPembayaran,
+    this.statusPesanan,
+    this.totalBiaya,
   );
 
   static BookingModel fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
 
-    String guestName = decoder.getString('guest_name');
-    String guestEmail = decoder.getString('guest_email');
-    String guestPhoneNumber = decoder.getString('guest_phone');
-    String roomType = decoder.getString('room_type');
-    String roomNumber = decoder.getString('room_number');
-    String hotelName = decoder.getString('hotel_name');
-    String hotelAddress = decoder.getString('hotel_address');
-    String checkInDate = decoder.getString('check_in_date');
-    String checkOutDate = decoder.getString('check_out_date');
-    String paymentStatus = decoder.getString('payment_status');
-    String bookingStatus = decoder.getString('booking_status');
-    double totalPrice = decoder.getDouble('total_price');
+    String idPesanan = decoder.getString('id_pesanan');
+    String namaPelanggan = decoder.getString('nama_pelanggan');
+    String emailPelanggan = decoder.getString('email_pelanggan');
+    String teleponPelanggan = decoder.getString('telepon_pelanggan');
+    String jenisLayanan = decoder.getString('jenis_layanan');
+    String alamatLayanan = decoder.getString('alamat_layanan');
+    String jadwalLayanan = decoder.getString('jadwal_layanan');
+    String statusPembayaran = decoder.getString('status_pembayaran');
+    String statusPesanan = decoder.getString('status_pesanan');
+    double totalBiaya = decoder.getDouble('total_biaya');
 
-    return BookingModel(decoder.getId, guestName, guestEmail, guestPhoneNumber, roomType, roomNumber, hotelName, hotelAddress, checkInDate, checkOutDate,
-        paymentStatus, bookingStatus, totalPrice);
+    // Menggunakan idPesanan sebagai ID utama model
+    return BookingModel(
+      idPesanan as int,
+      namaPelanggan,
+      emailPelanggan,
+      teleponPelanggan,
+      jenisLayanan,
+      alamatLayanan,
+      jadwalLayanan,
+      statusPembayaran,
+      statusPesanan,
+      totalBiaya,
+    );
   }
 
   static List<BookingModel> listFromJSON(List<dynamic> list) {
@@ -50,10 +63,7 @@ class BookingModel extends IdentifierModel {
   static List<BookingModel>? _dummyList;
 
   static Future<List<BookingModel>> get dummyList async {
-    if (_dummyList == null) {
-      dynamic data = json.decode(await getData());
-      _dummyList = listFromJSON(data);
-    }
+    _dummyList ??= listFromJSON(json.decode(await getData()));
     return _dummyList!;
   }
 

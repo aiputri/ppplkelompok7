@@ -1,112 +1,47 @@
 [
   {
-    "id": 1,
-    "name": "John Doe",
-    "email": "johndoe@email.com",
-    "age": 34,
-    "destination": "Paris",
-    "arrivalDate": "2024-11-10",
-    "departureDate": "2024-11-20",
-    "numberOfGuests": 2,
-    "specialRequests": "Vegetarian meal"
+    "id_mitra": 1,
+    "nama_mitra": "Kilap Abadi Wash",
+    "nomor_telepon": "081234567890",
+    "area_layanan": "Surabaya Timur",
+    "rating": 4.8,
+    "status": "Aktif",
+    "tanggal_gabung": "2024-01-15"
   },
   {
-    "id": 2,
-    "name": "Jane Smith",
-    "email": "janesmith@email.com",
-    "age": 28,
-    "destination": "Tokyo",
-    "arrivalDate": "2024-11-12",
-    "departureDate": "2024-11-18",
-    "numberOfGuests": 1,
-    "specialRequests": "None"
+    "id_mitra": 2,
+    "nama_mitra": "Bersih Kinclong",
+    "nomor_telepon": "085711223344",
+    "area_layanan": "Surabaya Barat",
+    "rating": 4.5,
+    "status": "Aktif",
+    "tanggal_gabung": "2024-02-20"
   },
   {
-    "id": 3,
-    "name": "Michael Johnson",
-    "email": "michaeljohnson@email.com",
-    "age": 45,
-    "destination": "New York",
-    "arrivalDate": "2024-11-15",
-    "departureDate": "2024-11-25",
-    "numberOfGuests": 3,
-    "specialRequests": "Late check-in"
+    "id_mitra": 3,
+    "nama_mitra": "Auto Detailing Pro",
+    "nomor_telepon": "089876543210",
+    "area_layanan": "Surabaya Pusat",
+    "rating": 4.9,
+    "status": "Nonaktif",
+    "tanggal_gabung": "2024-03-01"
   },
   {
-    "id": 4,
-    "name": "Emily Davis",
-    "email": "emilydavis@email.com",
-    "age": 30,
-    "destination": "Rome",
-    "arrivalDate": "2024-11-05",
-    "departureDate": "2024-11-12",
-    "numberOfGuests": 2,
-    "specialRequests": "Early check-out"
+    "id_mitra": 4,
+    "nama_mitra": "Cuci Mobil Cepat",
+    "nomor_telepon": "082199887766",
+    "area_layanan": "Surabaya Selatan",
+    "rating": 4.2,
+    "status": "Aktif",
+    "tanggal_gabung": "2024-04-10"
   },
   {
-    "id": 5,
-    "name": "Daniel Lee",
-    "email": "daniellee@email.com",
-    "age": 40,
-    "destination": "London",
-    "arrivalDate": "2024-11-08",
-    "departureDate": "2024-11-15",
-    "numberOfGuests": 1,
-    "specialRequests": "None"
-  },
-  {
-    "id": 6,
-    "name": "Sophia Williams",
-    "email": "sophiawilliams@email.com",
-    "age": 26,
-    "destination": "Barcelona",
-    "arrivalDate": "2024-11-02",
-    "departureDate": "2024-11-10",
-    "numberOfGuests": 2,
-    "specialRequests": "Window seat"
-  },
-  {
-    "id": 7,
-    "name": "James Brown",
-    "email": "jamesbrown@email.com",
-    "age": 50,
-    "destination": "Los Angeles",
-    "arrivalDate": "2024-11-11",
-    "departureDate": "2024-11-17",
-    "numberOfGuests": 1,
-    "specialRequests": "None"
-  },
-  {
-    "id": 8,
-    "name": "Olivia Martinez",
-    "email": "oliviamartinez@email.com",
-    "age": 35,
-    "destination": "Amsterdam",
-    "arrivalDate": "2024-11-05",
-    "departureDate": "2024-11-13",
-    "numberOfGuests": 2,
-    "specialRequests": "High floor"
-  },
-  {
-    "id": 9,
-    "name": "Liam Harris",
-    "email": "liamharris@email.com",
-    "age": 22,
-    "destination": "Sydney",
-    "arrivalDate": "2024-11-15",
-    "departureDate": "2024-11-22",
-    "numberOfGuests": 4,
-    "specialRequests": "Baby cot"
-  },
-  {
-    "id": 10,
-    "name": "Ava Robinson",
-    "email": "avarobinson@email.com",
-    "age": 27,
-    "destination": "Dubai",
-    "arrivalDate": "2024-11-03",
-    "departureDate": "2024-11-12",
-    "numberOfGuests": 1,
-    "specialRequests": "Non-smoking room"
+    "id_mitra": 5,
+    "nama_mitra": "Poles & Cuci 24 Jam",
+    "nomor_telepon": "087755664433",
+    "area_layanan": "Surabaya Utara",
+    "rating": 4.6,
+    "status": "Aktif",
+    "tanggal_gabung": "2024-05-05"
   }
 ]

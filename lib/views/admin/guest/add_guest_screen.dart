@@ -150,7 +150,7 @@ class _AddGuestScreenState extends State<AddGuestScreen> with UIMixin {
               children: [
                 Icon(LucideIcons.image_up, size: 20),
                 MySpacing.height(8),
-                MyText.bodySmall("Upload Image", fontWeight: 600),
+                MyText.bodySmall("Unggah Gambar", fontWeight: 600),
               ],
             ),
     );

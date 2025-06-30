@@ -1,149 +1,26 @@
 [
   {
-    "id": 1234,
-    "name": "John Doe",
-    "check_in": "15/01/2025",
-    "check_out": "20/01/2025",
-    "proof": "Driver's License",
-    "payment": "Card",
-    "amount": "$1200",
-    "room_no": [
-      "Luxury: 501",
-      "Luxury: 502"
-    ],
-    "rooms": "4 Member/2 Room",
-    "action": "Bookings Confirmed"
+    "id_pesanan": "SKL-001",
+    "nama_pelanggan": "Budi Santoso",
+    "email_pelanggan": "budi.s@email.com",
+    "telepon_pelanggan": "081234567890",
+    "jenis_layanan": "Cuci Luar & Dalam",
+    "alamat_layanan": "Jl. Mulyorejo No. 123, Surabaya",
+    "jadwal_layanan": "2024-12-05 14:00",
+    "total_biaya": 125000,
+    "status_pembayaran": "Lunas",
+    "status_pesanan": "Selesai"
   },
   {
-    "id": 5678,
-    "name": "Emma Smith",
-    "check_in": "10/02/2025",
-    "check_out": "10/02/2025",
-    "proof": "Voter ID",
-    "payment": "Cash",
-    "amount": "$500",
-    "room_no": [
-      "VIP: 102"
-    ],
-    "rooms": "1 Member/1 Room",
-    "action": "Room Service Requested"
-  },
-  {
-    "id": 9101,
-    "name": "Liam Johnson",
-    "check_in": "05/06/2023",
-    "check_out": "12/06/2023",
-    "proof": "Passport",
-    "payment": "Bank Transfer",
-    "amount": "$2200",
-    "room_no": [
-      "Executive: 201",
-      "Standard: 305",
-      "Deluxe: 402"
-    ],
-    "rooms": "12 Member/4 Room",
-    "action": "Restaurant Reserved"
-  },
-  {
-    "id": 1122,
-    "name": "Sophia Brown",
-    "check_in": "01/03/2025",
-    "check_out": "07/03/2025",
-    "proof": "National ID",
-    "payment": "Online Payment",
-    "amount": "$1800",
-    "room_no": [
-      "Suite: 103",
-      "Standard: 204"
-    ],
-    "rooms": "8 Member/2 Room",
-    "action": "Room Service Requested"
-  },
-  {
-    "id": 3344,
-    "name": "Mason Lee",
-    "check_in": "20/07/2023",
-    "check_out": "25/07/2023",
-    "proof": "Health Card",
-    "payment": "Cheque",
-    "amount": "$950",
-    "room_no": [
-      "Premium: 303"
-    ],
-    "rooms": "2 Member/1 Room",
-    "action": "Invoice Generated"
-  },
-  {
-    "id": 5567,
-    "name": "Olivia White",
-    "check_in": "22/11/2024",
-    "check_out": "29/11/2024",
-    "proof": "Passport",
-    "payment": "Credit Card",
-    "amount": "$2500",
-    "room_no": [
-      "Luxury: 101",
-      "Deluxe: 205"
-    ],
-    "rooms": "6 Member/2 Room",
-    "action": "Spa Booked"
-  },
-  {
-    "id": 7890,
-    "name": "James Clark",
-    "check_in": "02/01/2025",
-    "check_out": "08/01/2025",
-    "proof": "Pan Card",
-    "payment": "Cash",
-    "amount": "$1400",
-    "room_no": [
-      "Suite: 305",
-      "Executive: 403"
-    ],
-    "rooms": "5 Member/2 Room",
-    "action": "Room Upgrade"
-  },
-  {
-    "id": 1235,
-    "name": "Ava King",
-    "check_in": "10/06/2024",
-    "check_out": "15/06/2024",
-    "proof": "Voter ID",
-    "payment": "Bank Transfer",
-    "amount": "$900",
-    "room_no": [
-      "Standard: 301"
-    ],
-    "rooms": "2 Member/1 Room",
-    "action": "Bookings Invoice"
-  },
-  {
-    "id": 3456,
-    "name": "Ethan Adams",
-    "check_in": "16/08/2024",
-    "check_out": "20/08/2024",
-    "proof": "Driver's License",
-    "payment": "Online Payment",
-    "amount": "$1700",
-    "room_no": [
-      "VIP: 107",
-      "Standard: 210"
-    ],
-    "rooms": "7 Member/2 Room",
-    "action": "Early Check-in"
-  },
-  {
-    "id": 5679,
-    "name": "Isabella Martinez",
-    "check_in": "25/10/2024",
-    "check_out": "30/10/2024",
-    "proof": "Adhar Card",
-    "payment": "Card",
-    "amount": "$1300",
-    "room_no": [
-      "Deluxe: 402"
-    ],
-    "rooms": "3 Member/1 Room",
-    "action": "Invoice Generated"
+    "id_pesanan": "SKL-002",
+    "nama_pelanggan": "Citra Lestari",
+    "email_pelanggan": "citra.l@email.com",
+    "telepon_pelanggan": "085711223344",
+    "jenis_layanan": "Detailing Interior",
+    "alamat_layanan": "Perumahan Puri Kencana Blok A5, Surabaya",
+    "jadwal_layanan": "2024-12-06 10:00",
+    "total_biaya": 250000,
+    "status_pembayaran": "Lunas",
+    "status_pesanan": "Dikonfirmasi"
   }
 ]

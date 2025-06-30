@@ -17,4 +17,6 @@ class BookingListController extends MyController {
   void roomDetail() {
     Get.toNamed('/admin/room/detail');
   }
+
+  void goToBookingDetail(int id) {}
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:get/get.dart';
 import 'package:sikilap/controller/admin/manage_booking/booking_list_controller.dart';
 import 'package:sikilap/helpers/utils/my_shadow.dart';
@@ -23,6 +24,22 @@ class BookingListScreen extends StatefulWidget {
 class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
   BookingListController controller = Get.put(BookingListController());
 
+  // Fungsi untuk mendapatkan warna status
+  Color getStatusColor(String status) {
+    switch (status) {
+      case 'Selesai':
+        return contentTheme.success;
+      case 'Dikonfirmasi':
+        return contentTheme.primary;
+      case 'Menunggu Konfirmasi':
+        return contentTheme.warning;
+      case 'Dibatalkan':
+        return contentTheme.danger;
+      default:
+        return contentTheme.secondary;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Layout(
@@ -38,14 +55,14 @@ class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText.titleMedium(
-                      "Booking List",
+                      "List Pemesanan",
                       fontSize: 18,
                       fontWeight: 600,
                     ),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: 'Admin'),
-                        MyBreadcrumbItem(name: 'Booking List', active: true),
+                        MyBreadcrumbItem(name: 'List Pemesanan', active: true),
                       ],
                     ),
                   ],
@@ -57,56 +74,91 @@ class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
                 child: GridView.builder(
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 400,
+                    maxCrossAxisExtent: 450, // Sedikit lebih lebar
                     crossAxisSpacing: 24,
                     mainAxisSpacing: 24,
-                    mainAxisExtent: 260,
+                    mainAxisExtent: 240, // Sedikit lebih pendek
                   ),
                   itemCount: controller.booking.length,
                   itemBuilder: (context, index) {
                     final booking = controller.booking[index];
+                    Color statusColor = getStatusColor(booking.statusPesanan);
+
                     return MyCard(
-                      shadow: MyShadow(elevation: 0.2, position: MyShadowPosition.bottom),
-                      paddingAll: 24,
-                      onTap: controller.roomDetail,
+                      shadow: MyShadow(elevation: 0.5),
+                      paddingAll: 0, // Padding diatur di dalam
+                      onTap: () => controller.goToBookingDetail(booking.id), // Mengarahkan ke detail
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              MyContainer.rounded(
-                                paddingAll: 0,
-                                height: 40,
-                                width: 40,
-                                child: Image.asset(Images.avatars[index % Images.avatars.length], fit: BoxFit.cover),
-                              ),
-                              MySpacing.width(12),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                          // Header Kartu dengan Status
+                          MyContainer(
+                            padding: MySpacing.xy(16, 12),
+                            color: statusColor.withAlpha(40),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                MyText.bodyMedium(booking.id.toString(), fontWeight: 700, color: statusColor),
+                                MyText.bodyMedium(booking.statusPesanan, fontWeight: 600, color: statusColor),
+                              ],
+                            ),
+                          ),
+                          // Konten Kartu
+                          Padding(
+                            padding: MySpacing.all(16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
                                   children: [
-                                    MyText.bodyMedium(booking.guestName, fontWeight: 600, maxLines: 1, overflow: TextOverflow.ellipsis),
-                                    MyText.bodySmall(booking.guestEmail, maxLines: 1, overflow: TextOverflow.ellipsis),
+                                    MyContainer.rounded(
+                                      paddingAll: 0,
+                                      height: 40,
+                                      width: 40,
+                                      child: Image.asset(Images.avatars[index % Images.avatars.length], fit: BoxFit.cover),
+                                    ),
+                                    MySpacing.width(12),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          MyText.bodyMedium(booking.namaPelanggan, fontWeight: 600),
+                                          MyText.bodySmall(booking.teleponPelanggan, muted: true),
+                                        ],
+                                      ),
+                                    ),
                                   ],
                                 ),
-                              ),
-                              MyContainer(
-                                padding: MySpacing.xy(8, 4),
-                                color: contentTheme.primary,
-                                child: MyText.labelSmall(
-                                  booking.roomType,
-                                  fontWeight: 600,
-                                  color: contentTheme.onPrimary,
+                                MySpacing.height(16),
+                                Divider(height: 1, color: colorScheme.outline.withAlpha(100)),
+                                MySpacing.height(16),
+                                // Detail Layanan & Jadwal
+                                Row(
+                                  children: [
+                                    Icon(LucideIcons.spray_can, size: 16, color: contentTheme.primary),
+                                    MySpacing.width(8),
+                                    Expanded(child: MyText.bodySmall(booking.jenisLayanan, overflow: TextOverflow.ellipsis)),
+                                  ],
                                 ),
-                              ),
-                            ],
+                                MySpacing.height(8),
+                                Row(
+                                  children: [
+                                    Icon(LucideIcons.map_pin, size: 16, color: contentTheme.secondary),
+                                    MySpacing.width(8),
+                                    Expanded(child: MyText.bodySmall(booking.alamatLayanan, overflow: TextOverflow.ellipsis)),
+                                  ],
+                                ),
+                                MySpacing.height(8),
+                                Row(
+                                  children: [
+                                    Icon(LucideIcons.calendar, size: 16, color: contentTheme.secondary),
+                                    MySpacing.width(8),
+                                    MyText.bodySmall(booking.jadwalLayanan),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                          MyText.labelMedium("Phone Number : ${booking.guestPhoneNumber}"),
-                          MyText.labelMedium("Room Number : ${booking.roomNumber}"),
-                          MyText.labelMedium("Hotel Name : ${booking.hotelName}"),
-                          MyText.labelMedium("Price : \$${booking.totalPrice}"),
                         ],
                       ),
                     );

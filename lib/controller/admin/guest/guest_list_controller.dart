@@ -14,11 +14,11 @@ class GuestListController extends MyController {
     super.onInit();
   }
 
-  void editGuest() {
+  void editGuest(int id) {
     Get.toNamed('/admin/guest/edit');
   }
 
-  void addGuest() {
+  void addGuest(int id) {
     Get.toNamed('/admin/guest/add');
   }
 }
