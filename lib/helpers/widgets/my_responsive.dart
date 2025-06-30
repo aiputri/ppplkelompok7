@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/widgets/my_screen_media.dart';
-import 'package:stay_place/helpers/widgets/my_screen_media_type.dart';
+import 'package:sikilap/helpers/widgets/my_screen_media.dart';
+import 'package:sikilap/helpers/widgets/my_screen_media_type.dart';
 
 class MyResponsive extends StatelessWidget {
   final Widget Function(BuildContext, BoxConstraints, MyScreenMediaType) builder;

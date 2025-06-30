@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/widgets/my_middleware.dart';
+import 'package:sikilap/helpers/widgets/my_middleware.dart';
 
 class MyRoute {
   String name;

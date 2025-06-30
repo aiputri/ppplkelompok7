@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/localizations/language.dart';
-import 'package:stay_place/helpers/storage/local_storage.dart';
-import 'package:stay_place/helpers/theme/app_style.dart';
-import 'package:stay_place/helpers/theme/theme_customizer.dart';
-import 'package:stay_place/helpers/widgets/my.dart';
+import 'package:sikilap/helpers/localizations/language.dart';
+import 'package:sikilap/helpers/storage/local_storage.dart';
+import 'package:sikilap/helpers/theme/app_style.dart';
+import 'package:sikilap/helpers/theme/theme_customizer.dart';
+import 'package:sikilap/helpers/widgets/my.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppNotifier extends ChangeNotifier {

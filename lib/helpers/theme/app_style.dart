@@ -2,12 +2,12 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/theme/admin_theme.dart';
-import 'package:stay_place/helpers/theme/theme_customizer.dart';
-import 'package:stay_place/helpers/widgets/my.dart';
-import 'package:stay_place/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:stay_place/helpers/widgets/my_constant.dart';
-import 'package:stay_place/helpers/widgets/my_text_style.dart';
+import 'package:sikilap/helpers/theme/admin_theme.dart';
+import 'package:sikilap/helpers/theme/theme_customizer.dart';
+import 'package:sikilap/helpers/widgets/my.dart';
+import 'package:sikilap/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:sikilap/helpers/widgets/my_constant.dart';
+import 'package:sikilap/helpers/widgets/my_text_style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MaterialRadius {

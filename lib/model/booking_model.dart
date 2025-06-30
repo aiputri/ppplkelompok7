@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:stay_place/helpers/services/json_decoder.dart';
-import 'package:stay_place/model/identifier_model.dart';
+import 'package:sikilap/helpers/services/json_decoder.dart';
+import 'package:sikilap/model/identifier_model.dart';
 
 class BookingModel extends IdentifierModel {
   final String guestName, guestEmail, guestPhoneNumber, roomType, roomNumber, hotelName, hotelAddress, checkInDate, checkOutDate, paymentStatus, bookingStatus;

@@ -2,37 +2,37 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stay_place/helpers/services/auth_services.dart';
+import 'package:sikilap/helpers/services/auth_services.dart';
 
-// Import semua screen kamu di sini
-import 'package:stay_place/views/admin/admin_payment_history_screen.dart';
-import 'package:stay_place/views/admin/dashboard_screen.dart';
-import 'package:stay_place/views/admin/guest/add_guest_screen.dart';
-import 'package:stay_place/views/admin/guest/edit_guest_screen.dart';
-import 'package:stay_place/views/admin/guest/guest_list_screen.dart';
-import 'package:stay_place/views/admin/manage_booking/booking_list_screen.dart';
-import 'package:stay_place/views/admin/manage_hotels/add_hotel_screen.dart';
-import 'package:stay_place/views/admin/manage_hotels/edit_hotel_screen.dart';
-import 'package:stay_place/views/admin/manage_hotels/hotel_detail_screen.dart';
-import 'package:stay_place/views/admin/manage_hotels/hotel_list_screen.dart';
-import 'package:stay_place/views/admin/manage_room/room_add_screen.dart';
-import 'package:stay_place/views/admin/manage_room/room_detail_screen.dart'
+// import semua screen kamu di sini
+import 'package:sikilap/views/admin/admin_payment_history_screen.dart';
+import 'package:sikilap/views/admin/dashboard_screen.dart';
+import 'package:sikilap/views/admin/guest/add_guest_screen.dart';
+import 'package:sikilap/views/admin/guest/edit_guest_screen.dart';
+import 'package:sikilap/views/admin/guest/guest_list_screen.dart';
+import 'package:sikilap/views/admin/manage_booking/booking_list_screen.dart';
+import 'package:sikilap/views/admin/manage_hotels/add_hotel_screen.dart';
+import 'package:sikilap/views/admin/manage_hotels/edit_hotel_screen.dart';
+import 'package:sikilap/views/admin/manage_hotels/hotel_detail_screen.dart';
+import 'package:sikilap/views/admin/manage_hotels/hotel_list_screen.dart';
+import 'package:sikilap/views/admin/manage_room/room_add_screen.dart';
+import 'package:sikilap/views/admin/manage_room/room_detail_screen.dart'
     as admin_room;
-import 'package:stay_place/views/admin/manage_room/room_edit_screen.dart';
-import 'package:stay_place/views/admin/manage_room/room_list_screen.dart';
-import 'package:stay_place/views/auth/forgot_password_screen.dart';
-import 'package:stay_place/views/auth/login_screen.dart';
-import 'package:stay_place/views/auth/register_account_screen.dart';
-import 'package:stay_place/views/auth/reset_password_screen.dart';
-import 'package:stay_place/views/client/booking_form_screen.dart';
-import 'package:stay_place/views/client/home_screen.dart';
-import 'package:stay_place/views/client/location_map_screen.dart';
-import 'package:stay_place/views/client/my_booking_screen.dart';
-import 'package:stay_place/views/client/payment_history_screen.dart';
-import 'package:stay_place/views/client/room_selection_screen.dart';
-import 'package:stay_place/views/auth/profile_screen.dart';
-import 'package:stay_place/views/auth/edit_profile_screen.dart';
-import 'package:stay_place/views/client/room_detail_screen.dart';
+import 'package:sikilap/views/admin/manage_room/room_edit_screen.dart';
+import 'package:sikilap/views/admin/manage_room/room_list_screen.dart';
+import 'package:sikilap/views/auth/forgot_password_screen.dart';
+import 'package:sikilap/views/auth/login_screen.dart';
+import 'package:sikilap/views/auth/register_account_screen.dart';
+import 'package:sikilap/views/auth/reset_password_screen.dart';
+import 'package:sikilap/views/client/booking_form_screen.dart';
+import 'package:sikilap/views/client/home_screen.dart';
+import 'package:sikilap/views/client/location_map_screen.dart';
+import 'package:sikilap/views/client/my_booking_screen.dart';
+import 'package:sikilap/views/client/payment_history_screen.dart';
+import 'package:sikilap/views/client/room_selection_screen.dart';
+import 'package:sikilap/views/auth/profile_screen.dart';
+import 'package:sikilap/views/auth/edit_profile_screen.dart';
+import 'package:sikilap/views/client/room_detail_screen.dart';
 // ... (Pastikan semua import screen lainnya sudah ada)
 
 // ================== DEFINISI MIDDLEWARE ==================

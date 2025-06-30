@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:stay_place/controller/my_controller.dart';
+import 'package:sikilap/controller/my_controller.dart';
 
 class ComingSoonController extends MyController {
   Timer? countdownTimer;

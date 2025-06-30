@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/model/hotel_model.dart';
-import 'package:stay_place/model/room_model.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/model/hotel_model.dart';
+import 'package:sikilap/model/room_model.dart';
 import 'package:intl/intl.dart';
 
 class BookingFormController extends MyController {

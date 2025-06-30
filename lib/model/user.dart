@@ -1,6 +1,6 @@
 // lib/model/user.dart
 
-import 'package:stay_place/model/identifier_model.dart';
+import 'package:sikilap/model/identifier_model.dart';
 
 class User extends IdentifierModel {
   final String email, firstName, lastName;

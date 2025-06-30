@@ -1,6 +1,6 @@
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/model/booking.dart';
-import 'package:stay_place/model/chart_model.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/model/booking.dart';
+import 'package:sikilap/model/chart_model.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
 

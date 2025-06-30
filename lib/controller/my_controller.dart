@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:stay_place/helpers/theme/theme_customizer.dart';
+import 'package:sikilap/helpers/theme/theme_customizer.dart';
 
 abstract class MyController extends GetxController {
   @override

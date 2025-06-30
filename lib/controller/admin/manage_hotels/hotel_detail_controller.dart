@@ -1,7 +1,7 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/helpers/widgets/my_text_utils.dart';
-import 'package:stay_place/model/room_model.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/helpers/widgets/my_text_utils.dart';
+import 'package:sikilap/model/room_model.dart';
 
 class HotelDetailController extends MyController {
   List<RoomModel> room = [];

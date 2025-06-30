@@ -1,5 +1,5 @@
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/model/my_booking_model.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/model/my_booking_model.dart';
 
 class MyBookingController extends MyController {
   List<MyBookingModel> myBooking = [];

@@ -1,11 +1,11 @@
-import 'package:stay_place/controller/ui/error_pages/coming_soon_controller.dart';
-import 'package:stay_place/helpers/utils/ui_mixins.dart';
-import 'package:stay_place/helpers/widgets/my_container.dart';
-import 'package:stay_place/helpers/widgets/my_spacing.dart';
-import 'package:stay_place/helpers/widgets/my_text.dart';
+import 'package:sikilap/controller/ui/error_pages/coming_soon_controller.dart';
+import 'package:sikilap/helpers/utils/ui_mixins.dart';
+import 'package:sikilap/helpers/widgets/my_container.dart';
+import 'package:sikilap/helpers/widgets/my_spacing.dart';
+import 'package:sikilap/helpers/widgets/my_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stay_place/images.dart';
+import 'package:sikilap/images.dart';
 
 class ComingSoonScreen extends StatefulWidget {
   const ComingSoonScreen({super.key});

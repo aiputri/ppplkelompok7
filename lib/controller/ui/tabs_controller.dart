@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/widgets/my_text_utils.dart';
-import 'package:stay_place/controller/my_controller.dart';
+import 'package:sikilap/helpers/widgets/my_text_utils.dart';
+import 'package:sikilap/controller/my_controller.dart';
 
 class TabsController extends MyController {
   var defaultIndex = 0, fullWidthIndex = 0, backgroundIndex = 0, borderedIndex = 0, softIndex = 0, customIndex1 = 0;

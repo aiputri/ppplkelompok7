@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/theme/theme_type.dart';
+import 'package:sikilap/helpers/theme/theme_type.dart';
 
 ThemeData get theme => AppTheme.theme;
 

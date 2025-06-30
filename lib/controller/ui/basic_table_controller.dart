@@ -1,11 +1,11 @@
 import 'dart:math';
 
-import 'package:stay_place/helpers/extention/string.dart';
-import 'package:stay_place/helpers/widgets/my_text_utils.dart';
+import 'package:sikilap/helpers/extention/string.dart';
+import 'package:sikilap/helpers/widgets/my_text_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:stay_place/model/visitor_by_channels_model.dart';
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/views/ui/basic_table_screen.dart';
+import 'package:sikilap/model/visitor_by_channels_model.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/views/ui/basic_table_screen.dart';
 
 class BasicTableController extends MyController {
   List<Data> datas = Data.factory();

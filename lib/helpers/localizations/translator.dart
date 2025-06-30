@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/services.dart';
 import 'package:get/get_utils/get_utils.dart';
-import 'package:stay_place/helpers/localizations/language.dart';
+import 'package:sikilap/helpers/localizations/language.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Translator {

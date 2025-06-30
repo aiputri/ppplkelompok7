@@ -1,5 +1,5 @@
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/model/payment_history_model.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/model/payment_history_model.dart';
 
 class PaymentHistoryController extends MyController {
   List<PaymentHistoryModel> paymentHistory = [];

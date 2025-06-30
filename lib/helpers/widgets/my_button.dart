@@ -1,7 +1,7 @@
 // ignore_for_file: curly_braces_in_flow_control_structures
 
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/widgets/my_constant.dart';
+import 'package:sikilap/helpers/widgets/my_constant.dart';
 
 enum MyButtonType { elevated, outlined, text }
 

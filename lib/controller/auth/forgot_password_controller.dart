@@ -1,11 +1,11 @@
 // lib/controller/auth/forgot_password_controller.dart
 
 import 'package:flutter/material.dart';
-// import 'package:stay_place/helpers/services/auth_services.dart'; // Kita tidak butuh ini lagi di sini
-import 'package:stay_place/helpers/widgets/my_form_validator.dart';
-import 'package:stay_place/helpers/widgets/my_validators.dart';
+// import 'package:sikilap/helpers/services/auth_services.dart'; // Kita tidak butuh ini lagi di sini
+import 'package:sikilap/helpers/widgets/my_form_validator.dart';
+import 'package:sikilap/helpers/widgets/my_validators.dart';
 import 'package:get/get.dart';
-import 'package:stay_place/controller/my_controller.dart';
+import 'package:sikilap/controller/my_controller.dart';
 
 class ForgotPasswordController extends MyController {
   var greeting = "Good Morning";

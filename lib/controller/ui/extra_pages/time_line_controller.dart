@@ -1,6 +1,6 @@
-import 'package:stay_place/helpers/widgets/my_text_utils.dart';
-import 'package:stay_place/model/drag_n_drop.dart';
-import 'package:stay_place/controller/my_controller.dart';
+import 'package:sikilap/helpers/widgets/my_text_utils.dart';
+import 'package:sikilap/model/drag_n_drop.dart';
+import 'package:sikilap/controller/my_controller.dart';
 
 class TimeLineController extends MyController {
   List<DragNDropModel> timeline = [];

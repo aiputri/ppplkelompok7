@@ -4,18 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:get/get.dart';
-import 'package:stay_place/controller/admin/guest/add_guest_controller.dart';
-import 'package:stay_place/helpers/utils/my_shadow.dart';
-import 'package:stay_place/helpers/utils/ui_mixins.dart';
-import 'package:stay_place/helpers/widgets/my_breadcrumb.dart';
-import 'package:stay_place/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:stay_place/helpers/widgets/my_card.dart';
-import 'package:stay_place/helpers/widgets/my_container.dart';
-import 'package:stay_place/helpers/widgets/my_spacing.dart';
-import 'package:stay_place/helpers/widgets/my_text.dart';
-import 'package:stay_place/helpers/widgets/my_text_style.dart';
-import 'package:stay_place/helpers/widgets/responsive.dart';
-import 'package:stay_place/views/layout/layout.dart';
+import 'package:sikilap/controller/admin/guest/add_guest_controller.dart';
+import 'package:sikilap/helpers/utils/my_shadow.dart';
+import 'package:sikilap/helpers/utils/ui_mixins.dart';
+import 'package:sikilap/helpers/widgets/my_breadcrumb.dart';
+import 'package:sikilap/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:sikilap/helpers/widgets/my_card.dart';
+import 'package:sikilap/helpers/widgets/my_container.dart';
+import 'package:sikilap/helpers/widgets/my_spacing.dart';
+import 'package:sikilap/helpers/widgets/my_text.dart';
+import 'package:sikilap/helpers/widgets/my_text_style.dart';
+import 'package:sikilap/helpers/widgets/responsive.dart';
+import 'package:sikilap/views/layout/layout.dart';
+import 'package:sikilap/helpers/widgets/my_button.dart';
 
 class AddGuestScreen extends StatefulWidget {
   const AddGuestScreen({super.key});
@@ -43,14 +44,14 @@ class _AddGuestScreenState extends State<AddGuestScreen> with UIMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText.titleMedium(
-                      "Add Guest",
+                      "Tambah Mitra",
                       fontSize: 18,
                       fontWeight: 600,
                     ),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: 'Admin'),
-                        MyBreadcrumbItem(name: 'Add Guest', active: true),
+                        MyBreadcrumbItem(name: 'Tambah Mitra', active: true),
                       ],
                     ),
                   ],
@@ -67,15 +68,29 @@ class _AddGuestScreenState extends State<AddGuestScreen> with UIMixin {
                     children: [
                       uploadProfileImage(),
                       MySpacing.height(24),
-                      commonTextField("Name", "Name"),
+                      commonTextField("Nama", "Nama"),
                       MySpacing.height(24),
-                      commonTextField("Email", "Email Address"),
+                      commonTextField("Email", "Alamat Email"),
                       MySpacing.height(24),
-                      commonTextField("Contact Number", "Contact Number", numbered: true),
+                      commonTextField("Nomor Kontak", "Nomor Kontak", numbered: true),
                       MySpacing.height(24),
-                      commonTextField("Email", "Email Address"),
+                      commonTextField("Alamat", "Alamat"),
+
                       MySpacing.height(24),
-                      commonTextField("Address", "Address"),
+                      MyButton.rounded(
+                        onPressed: () {
+                          // Aksi saat tombol ditekan, misalnya:
+                          // controller.simpanDataMitra();
+                          print("Tambah Mitra!");
+                        },
+                        elevation: 0,
+                        padding: MySpacing.xy(20, 16),
+                        backgroundColor: contentTheme.primary, 
+                        child: MyText.bodySmall(
+                          'Tambah',
+                          color: contentTheme.onPrimary, 
+                        ),
+                      ),
                     ],
                   ),
                 ),

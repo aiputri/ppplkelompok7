@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:stay_place/controller/my_controller.dart';
+import 'package:sikilap/controller/my_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class CarouselsController extends MyController {

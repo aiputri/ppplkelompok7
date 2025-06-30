@@ -1,9 +1,9 @@
 // lib/controller/client/room_detail_controller.dart
 
 import 'package:get/get.dart';
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/model/hotel_model.dart'; // <-- IMPORT BARU
-import 'package:stay_place/model/room_model.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/model/hotel_model.dart'; // <-- IMPORT BARU
+import 'package:sikilap/model/room_model.dart';
 
 class RoomDetailController extends MyController {
   final RoomModel? room;

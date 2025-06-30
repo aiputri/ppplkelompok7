@@ -2,10 +2,10 @@
 
 import 'dart:convert'; // <-- PASTIKAN IMPORT INI ADA
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:stay_place/helpers/localizations/language.dart';
-import 'package:stay_place/helpers/services/auth_services.dart';
-import 'package:stay_place/helpers/theme/theme_customizer.dart';
-import 'package:stay_place/model/user.dart'; // <-- PASTIKAN IMPORT INI ADA
+import 'package:sikilap/helpers/localizations/language.dart';
+import 'package:sikilap/helpers/services/auth_services.dart';
+import 'package:sikilap/helpers/theme/theme_customizer.dart';
+import 'package:sikilap/model/user.dart'; // <-- PASTIKAN IMPORT INI ADA
 
 class LocalStorage {
   static const String _loggedInUserKey =

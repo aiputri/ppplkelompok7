@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:get/get.dart';
-import 'package:stay_place/controller/admin/guest/guest_list_controller.dart';
-import 'package:stay_place/helpers/utils/my_shadow.dart';
-import 'package:stay_place/helpers/utils/ui_mixins.dart';
-import 'package:stay_place/helpers/widgets/my_breadcrumb.dart';
-import 'package:stay_place/helpers/widgets/my_breadcrumb_item.dart';
-import 'package:stay_place/helpers/widgets/my_card.dart';
-import 'package:stay_place/helpers/widgets/my_container.dart';
-import 'package:stay_place/helpers/widgets/my_list_extension.dart';
-import 'package:stay_place/helpers/widgets/my_spacing.dart';
-import 'package:stay_place/helpers/widgets/my_text.dart';
-import 'package:stay_place/helpers/widgets/responsive.dart';
-import 'package:stay_place/images.dart';
-import 'package:stay_place/views/layout/layout.dart';
+import 'package:sikilap/controller/admin/guest/guest_list_controller.dart';
+import 'package:sikilap/helpers/utils/my_shadow.dart';
+import 'package:sikilap/helpers/utils/ui_mixins.dart';
+import 'package:sikilap/helpers/widgets/my_breadcrumb.dart';
+import 'package:sikilap/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:sikilap/helpers/widgets/my_card.dart';
+import 'package:sikilap/helpers/widgets/my_container.dart';
+import 'package:sikilap/helpers/widgets/my_list_extension.dart';
+import 'package:sikilap/helpers/widgets/my_spacing.dart';
+import 'package:sikilap/helpers/widgets/my_text.dart';
+import 'package:sikilap/helpers/widgets/responsive.dart';
+import 'package:sikilap/images.dart';
+import 'package:sikilap/views/layout/layout.dart';
 
 class GuestListScreen extends StatefulWidget {
   const GuestListScreen({super.key});
@@ -41,14 +41,14 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText.titleMedium(
-                      "Guest List",
+                      "List Mitra",
                       fontSize: 18,
                       fontWeight: 600,
                     ),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: 'Admin'),
-                        MyBreadcrumbItem(name: 'Guest List', active: true),
+                        MyBreadcrumbItem(name: 'List Mitra', active: true),
                       ],
                     ),
                   ],
@@ -63,7 +63,7 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      MyText.bodyMedium("Guests", fontWeight: 600),
+                      MyText.bodyMedium("Mitra", fontWeight: 600),
                       MySpacing.height(24),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -76,15 +76,13 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                             showCheckboxColumn: true,
                             border: TableBorder.all(style: BorderStyle.solid, width: .4, color: Colors.grey),
                             columns: [
-                              DataColumn(label: MyText.bodySmall('Name', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Email', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Age', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Destination', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Arrival Date', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Departure Date', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Number of guest', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Special Request', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Action', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Nama Mitra', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Nomor Telepon', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Area Layanan', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Rating', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Status', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Tanggal Gabung', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Aksi', fontWeight: 600)),
                             ],
                             rows: controller.guest
                                 .mapIndexed((index, data) => DataRow(

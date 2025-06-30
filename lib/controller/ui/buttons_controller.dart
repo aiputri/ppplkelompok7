@@ -1,4 +1,4 @@
-import 'package:stay_place/controller/my_controller.dart';
+import 'package:sikilap/controller/my_controller.dart';
 
 class ButtonsController extends MyController {
   List<bool> selected = List.filled(3, false);

@@ -1,4 +1,4 @@
-import 'package:stay_place/helpers/widgets/my_route.dart';
+import 'package:sikilap/helpers/widgets/my_route.dart';
 
 class MyRoutes {
   static List<MyRoute> _routes = [];

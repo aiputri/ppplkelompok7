@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/widgets/my_page_dragger.dart';
-import 'package:stay_place/helpers/widgets/my_page_indicator.dart';
-import 'package:stay_place/helpers/widgets/my_page_reveal.dart';
-import 'package:stay_place/helpers/widgets/my_pages.dart';
+import 'package:sikilap/helpers/widgets/my_page_dragger.dart';
+import 'package:sikilap/helpers/widgets/my_page_indicator.dart';
+import 'package:sikilap/helpers/widgets/my_page_reveal.dart';
+import 'package:sikilap/helpers/widgets/my_pages.dart';
 
 class MyOnBoarding extends StatefulWidget {
   final List<PageViewModel> pages;

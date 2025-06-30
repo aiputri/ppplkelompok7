@@ -1,4 +1,4 @@
-import 'package:stay_place/helpers/widgets/my_breadcrumb_item.dart';
+import 'package:sikilap/helpers/widgets/my_breadcrumb_item.dart';
 
 class MyConstantData {
   final double containerRadius;

@@ -1,5 +1,5 @@
-import 'package:stay_place/helpers/widgets/my_display_type.dart';
-import 'package:stay_place/helpers/widgets/my_screen_media_type.dart';
+import 'package:sikilap/helpers/widgets/my_display_type.dart';
+import 'package:sikilap/helpers/widgets/my_screen_media_type.dart';
 
 class MyScreenMedia {
   static int flexColumns = 12;

@@ -1,13 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/localizations/language.dart';
-import 'package:stay_place/helpers/localizations/translator.dart';
-import 'package:stay_place/helpers/services/json_decoder.dart';
-import 'package:stay_place/helpers/services/navigation_service.dart';
-import 'package:stay_place/helpers/theme/admin_theme.dart';
-import 'package:stay_place/helpers/theme/app_notifire.dart';
-import 'package:stay_place/helpers/theme/app_style.dart';
+import 'package:sikilap/helpers/localizations/language.dart';
+import 'package:sikilap/helpers/localizations/translator.dart';
+import 'package:sikilap/helpers/services/json_decoder.dart';
+import 'package:sikilap/helpers/services/navigation_service.dart';
+import 'package:sikilap/helpers/theme/admin_theme.dart';
+import 'package:sikilap/helpers/theme/app_notifire.dart';
+import 'package:sikilap/helpers/theme/app_style.dart';
 import 'package:provider/provider.dart';
 
 typedef ThemeChangeCallback = void Function(ThemeCustomizer oldVal, ThemeCustomizer newVal);

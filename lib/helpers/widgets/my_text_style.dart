@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_generic_function_type_aliases
 
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/theme/app_themes.dart';
+import 'package:sikilap/helpers/theme/app_themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 enum MyTextType {

@@ -1,5 +1,5 @@
-import 'package:stay_place/helpers/utils/my_string_utils.dart';
-import 'package:stay_place/helpers/widgets/my_field_validator.dart';
+import 'package:sikilap/helpers/utils/my_string_utils.dart';
+import 'package:sikilap/helpers/widgets/my_field_validator.dart';
 
 class MyEmailValidator extends MyFieldValidatorRule<String> {
   @override

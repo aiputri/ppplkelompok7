@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/helpers/services/auth_services.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/helpers/services/auth_services.dart';
 
 class EditProfileController extends MyController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();

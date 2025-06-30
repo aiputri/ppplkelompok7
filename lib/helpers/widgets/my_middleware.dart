@@ -1,6 +1,6 @@
 // lib/helpers/widgets/my_middleware.dart
 
-import 'package:stay_place/helpers/services/auth_services.dart';
+import 'package:sikilap/helpers/services/auth_services.dart';
 
 abstract class MyMiddleware {
   String name = 'middleware';

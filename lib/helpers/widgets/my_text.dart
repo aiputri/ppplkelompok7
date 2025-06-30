@@ -1,7 +1,7 @@
 // ignore_for_file: annotate_overrides, overridden_fields
 
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/widgets/my_text_style.dart';
+import 'package:sikilap/helpers/widgets/my_text_style.dart';
 
 class MyText extends StatelessWidget {
   final Key? key;

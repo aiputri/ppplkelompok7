@@ -2,22 +2,22 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stay_place/controller/layout/layout_controller.dart';
-import 'package:stay_place/helpers/services/auth_services.dart';
-import 'package:stay_place/helpers/theme/admin_theme.dart';
-import 'package:stay_place/helpers/theme/app_style.dart';
-import 'package:stay_place/helpers/theme/app_themes.dart';
-import 'package:stay_place/helpers/theme/theme_customizer.dart';
-import 'package:stay_place/helpers/widgets/my_button.dart';
-import 'package:stay_place/helpers/widgets/my_container.dart';
-import 'package:stay_place/helpers/widgets/my_dashed_divider.dart';
-import 'package:stay_place/helpers/widgets/my_responsive.dart';
-import 'package:stay_place/helpers/widgets/my_spacing.dart';
-import 'package:stay_place/helpers/widgets/my_text.dart';
-import 'package:stay_place/helpers/widgets/responsive.dart';
-import 'package:stay_place/views/layout/left_bar.dart';
-import 'package:stay_place/views/layout/right_bar.dart';
-import 'package:stay_place/views/layout/top_bar.dart';
+import 'package:sikilap/controller/layout/layout_controller.dart';
+import 'package:sikilap/helpers/services/auth_services.dart';
+import 'package:sikilap/helpers/theme/admin_theme.dart';
+import 'package:sikilap/helpers/theme/app_style.dart';
+import 'package:sikilap/helpers/theme/app_themes.dart';
+import 'package:sikilap/helpers/theme/theme_customizer.dart';
+import 'package:sikilap/helpers/widgets/my_button.dart';
+import 'package:sikilap/helpers/widgets/my_container.dart';
+import 'package:sikilap/helpers/widgets/my_dashed_divider.dart';
+import 'package:sikilap/helpers/widgets/my_responsive.dart';
+import 'package:sikilap/helpers/widgets/my_spacing.dart';
+import 'package:sikilap/helpers/widgets/my_text.dart';
+import 'package:sikilap/helpers/widgets/responsive.dart';
+import 'package:sikilap/views/layout/left_bar.dart';
+import 'package:sikilap/views/layout/right_bar.dart';
+import 'package:sikilap/views/layout/top_bar.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 
 class Layout extends StatelessWidget {
@@ -35,7 +35,7 @@ class Layout extends StatelessWidget {
       return GetBuilder(
           init: controller,
           builder: (controller) {
-            return screenMT.isMobile ? mobileScreen() : largeScreen();
+            return screenMT!.isMobile ? mobileScreen() : largeScreen();
           });
     });
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/theme/app_themes.dart';
-import 'package:stay_place/helpers/utils/ui_mixins.dart';
+import 'package:sikilap/helpers/theme/app_themes.dart';
+import 'package:sikilap/helpers/utils/ui_mixins.dart';
 
 enum CustomPopupMenuPlacement { left, right, top, bottom }
 

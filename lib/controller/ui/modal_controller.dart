@@ -1,7 +1,7 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/widgets/my_text_utils.dart';
-import 'package:stay_place/controller/my_controller.dart';
+import 'package:sikilap/helpers/widgets/my_text_utils.dart';
+import 'package:sikilap/controller/my_controller.dart';
 
 class ModalController extends MyController {
   late TickerProvider tickerProvider;

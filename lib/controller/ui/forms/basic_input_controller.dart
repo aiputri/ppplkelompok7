@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/extention/date_time_extention.dart';
-import 'package:stay_place/controller/my_controller.dart';
+import 'package:sikilap/helpers/extention/date_time_extention.dart';
+import 'package:sikilap/controller/my_controller.dart';
 import 'package:get/get.dart';
 
 enum Gender {

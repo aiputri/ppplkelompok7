@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/storage/local_storage.dart';
-import 'package:stay_place/helpers/theme/theme_customizer.dart';
+import 'package:sikilap/helpers/storage/local_storage.dart';
+import 'package:sikilap/helpers/theme/theme_customizer.dart';
 
 class Language {
   final Locale locale;

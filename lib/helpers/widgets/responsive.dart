@@ -1,4 +1,4 @@
-import 'package:stay_place/helpers/widgets/my_screen_media.dart';
+import 'package:sikilap/helpers/widgets/my_screen_media.dart';
 
 export 'my_display_type.dart';
 export 'my_screen_media.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/theme/app_themes.dart';
-import 'package:stay_place/helpers/widgets/my_constant.dart';
-import 'package:stay_place/helpers/widgets/my_screen_media.dart';
-import 'package:stay_place/helpers/widgets/my_text_style.dart';
+import 'package:sikilap/helpers/theme/app_themes.dart';
+import 'package:sikilap/helpers/widgets/my_constant.dart';
+import 'package:sikilap/helpers/widgets/my_screen_media.dart';
+import 'package:sikilap/helpers/widgets/my_text_style.dart';
 
 class My {
   // entry point of the package

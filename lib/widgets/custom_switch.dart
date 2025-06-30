@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/theme/app_themes.dart';
-import 'package:stay_place/helpers/utils/ui_mixins.dart';
-import 'package:stay_place/helpers/widgets/my_spacing.dart';
+import 'package:sikilap/helpers/theme/app_themes.dart';
+import 'package:sikilap/helpers/utils/ui_mixins.dart';
+import 'package:sikilap/helpers/widgets/my_spacing.dart';
 
 class CustomSwitch extends StatefulWidget {
   final bool value;

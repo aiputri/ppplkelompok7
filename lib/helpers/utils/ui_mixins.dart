@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/theme/admin_theme.dart';
-import 'package:stay_place/helpers/theme/app_themes.dart';
-import 'package:stay_place/helpers/widgets/my_dashed_divider.dart';
-import 'package:stay_place/helpers/widgets/my_navigation_mixin.dart';
+import 'package:sikilap/helpers/theme/admin_theme.dart';
+import 'package:sikilap/helpers/theme/app_themes.dart';
+import 'package:sikilap/helpers/widgets/my_dashed_divider.dart';
+import 'package:sikilap/helpers/widgets/my_navigation_mixin.dart';
 
 mixin UIMixin {
   // ThemeData get theme => AppStyle.theme;

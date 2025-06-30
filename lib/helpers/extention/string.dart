@@ -1,4 +1,4 @@
-import 'package:stay_place/helpers/localizations/translator.dart';
+import 'package:sikilap/helpers/localizations/translator.dart';
 import 'package:flutter/material.dart';
 
 

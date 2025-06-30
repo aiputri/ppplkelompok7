@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/localizations/language.dart';
-import 'package:stay_place/helpers/theme/app_notifire.dart';
+import 'package:sikilap/helpers/localizations/language.dart';
+import 'package:sikilap/helpers/theme/app_notifire.dart';
 import 'package:provider/provider.dart';
 
 class AppLocalizationsDelegate extends LocalizationsDelegate {

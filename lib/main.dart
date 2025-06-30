@@ -5,15 +5,15 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:stay_place/helpers/localizations/app_localization_delegate.dart';
-import 'package:stay_place/helpers/localizations/language.dart';
-import 'package:stay_place/helpers/services/auth_services.dart'; // <-- IMPORT BARU
-import 'package:stay_place/helpers/services/navigation_service.dart';
-import 'package:stay_place/helpers/storage/local_storage.dart';
-import 'package:stay_place/helpers/theme/app_notifire.dart';
-import 'package:stay_place/helpers/theme/app_style.dart';
-import 'package:stay_place/helpers/theme/theme_customizer.dart';
-import 'package:stay_place/routes.dart';
+import 'package:sikilap/helpers/localizations/app_localization_delegate.dart';
+import 'package:sikilap/helpers/localizations/language.dart';
+import 'package:sikilap/helpers/services/auth_services.dart'; // <-- IMPORT BARU
+import 'package:sikilap/helpers/services/navigation_service.dart';
+import 'package:sikilap/helpers/storage/local_storage.dart';
+import 'package:sikilap/helpers/theme/app_notifire.dart';
+import 'package:sikilap/helpers/theme/app_style.dart';
+import 'package:sikilap/helpers/theme/theme_customizer.dart';
+import 'package:sikilap/routes.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {

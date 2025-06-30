@@ -1,4 +1,4 @@
-import 'package:stay_place/helpers/extention/date_time_extention.dart';
+import 'package:sikilap/helpers/extention/date_time_extention.dart';
 
 class Utils {
   static getDateStringFromDateTime(DateTime dateTime, {bool showMonthShort = false}) {

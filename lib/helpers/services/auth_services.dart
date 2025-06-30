@@ -1,8 +1,8 @@
 // lib/helpers/services/auth_services.dart
 
 import 'package:get/get.dart'; // <-- TAMBAHKAN IMPORT INI
-import 'package:stay_place/model/user.dart';
-import 'package:stay_place/helpers/storage/local_storage.dart';
+import 'package:sikilap/model/user.dart';
+import 'package:sikilap/helpers/storage/local_storage.dart';
 
 class AuthService {
   static const String _adminEmail = "admin@stayplace.com";

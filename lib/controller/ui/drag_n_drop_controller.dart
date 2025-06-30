@@ -1,5 +1,5 @@
-import 'package:stay_place/model/drag_n_drop.dart';
-import 'package:stay_place/controller/my_controller.dart';
+import 'package:sikilap/model/drag_n_drop.dart';
+import 'package:sikilap/controller/my_controller.dart';
 
 class DragNDropController extends MyController {
   List<DragNDropModel> contact = [];

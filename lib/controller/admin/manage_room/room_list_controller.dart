@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/model/room_model.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/model/room_model.dart';
 
 class RoomListController extends MyController {
   List<RoomModel> room = [];

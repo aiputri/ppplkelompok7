@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:stay_place/helpers/widgets/my_exception.dart';
+import 'package:sikilap/helpers/widgets/my_exception.dart';
 
 class BaseException extends MyException {
   StackTrace? stackTrace;

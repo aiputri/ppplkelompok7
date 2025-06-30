@@ -1,5 +1,5 @@
 
-import 'package:stay_place/model/model.dart';
+import 'package:sikilap/model/model.dart';
 
 abstract class IdentifierModel<T> extends Model {
   final int id;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/controller/my_controller.dart';
+import 'package:sikilap/controller/my_controller.dart';
 
 class AuthLayoutController extends MyController {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();

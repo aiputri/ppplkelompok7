@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/helpers/theme/theme_customizer.dart';
+import 'package:sikilap/helpers/theme/theme_customizer.dart';
 
 enum LeftBarThemeType { light, dark }
 

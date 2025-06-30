@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stay_place/controller/layout/auth_layout_controller.dart';
-import 'package:stay_place/helpers/theme/app_themes.dart';
+import 'package:sikilap/controller/layout/auth_layout_controller.dart';
+import 'package:sikilap/helpers/theme/app_themes.dart';
 
-import 'package:stay_place/helpers/widgets/my_flex.dart';
-import 'package:stay_place/helpers/widgets/my_flex_item.dart';
-import 'package:stay_place/helpers/widgets/my_responsive.dart';
-import 'package:stay_place/helpers/widgets/my_spacing.dart';
-import 'package:stay_place/helpers/widgets/responsive.dart';
-import 'package:stay_place/images.dart';
+import 'package:sikilap/helpers/widgets/my_flex.dart';
+import 'package:sikilap/helpers/widgets/my_flex_item.dart';
+import 'package:sikilap/helpers/widgets/my_responsive.dart';
+import 'package:sikilap/helpers/widgets/my_spacing.dart';
+import 'package:sikilap/helpers/widgets/responsive.dart';
+import 'package:sikilap/images.dart';
 
 class AuthLayout extends StatelessWidget {
   final Widget? child;

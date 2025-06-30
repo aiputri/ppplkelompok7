@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:stay_place/helpers/services/json_decoder.dart';
-import 'package:stay_place/model/identifier_model.dart';
+import 'package:sikilap/helpers/services/json_decoder.dart';
+import 'package:sikilap/model/identifier_model.dart';
 
 class GuestModel extends IdentifierModel {
   final String name, email, destination, arrivalDate, departureDate, specialRequest;

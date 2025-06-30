@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/helpers/theme/theme_customizer.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/helpers/theme/theme_customizer.dart';
 
 
 class LayoutController extends MyController {

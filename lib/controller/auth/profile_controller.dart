@@ -1,7 +1,7 @@
 // lib/controller/profile_controller.dart
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/helpers/services/auth_services.dart';
-import 'package:stay_place/model/user.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/helpers/services/auth_services.dart';
+import 'package:sikilap/model/user.dart';
 
 class ProfileController extends MyController {
   // Ambil data user langsung dari AuthService

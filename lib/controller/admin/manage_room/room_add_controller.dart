@@ -1,7 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_quill/flutter_quill.dart';
-import 'package:stay_place/controller/my_controller.dart';
-import 'package:stay_place/helpers/widgets/my_form_validator.dart';
+import 'package:sikilap/controller/my_controller.dart';
+import 'package:sikilap/helpers/widgets/my_form_validator.dart';
 
 enum RoomCategory {
   single,

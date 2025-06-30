@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stay_place/controller/my_controller.dart';
+import 'package:sikilap/controller/my_controller.dart';
 import 'package:syncfusion_flutter_maps/maps.dart';
 
 class LocationMapController extends MyController {
