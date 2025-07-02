@@ -42,9 +42,15 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MyText.titleMedium("Home", fontSize: 18, fontWeight: 600),
+                    MyText.titleMedium(
+                      // --- UBAH ISI ---
+                      "Beranda",
+                      fontSize: 18,
+                      fontWeight: 600,
+                    ),
                     MyBreadcrumb(children: [
-                      MyBreadcrumbItem(name: 'Home', active: true)
+                      // --- UBAH ISI ---
+                      MyBreadcrumbItem(name: 'Beranda', active: true)
                     ]),
                   ],
                 ),
@@ -54,7 +60,8 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
                 padding: MySpacing.x(flexSpacing / 2),
                 child: MyFlex(
                   children: [
-                    MyFlexItem(sizes: 'lg-6', child: _buildFeaturedCarousel()),
+                    // --- UBAH ISI ---
+                    MyFlexItem(sizes: 'lg-6', child: _buildCarouselPromo()),
                     MyFlexItem(
                       sizes: 'lg-6',
                       child: MyContainer(
@@ -62,20 +69,29 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            MyText.bodyMedium("Popular Destination",
+                            MyText.bodyMedium(
+                                // --- UBAH ISI ---
+                                "Area Layanan Populer",
                                 fontWeight: 600),
                             MySpacing.height(24),
-                            _buildPopularDestination(),
+                            // --- UBAH ISI ---
+                            _buildAreaLayananPopuler(),
                             MySpacing.height(24),
-                            MyText.bodyMedium("Special Offer", fontWeight: 600),
+                            MyText.bodyMedium(
+                                // --- UBAH ISI ---
+                                "Penawaran Spesial",
+                                fontWeight: 600),
                             MySpacing.height(24),
-                            _buildSpecialOffer(),
+                            // --- UBAH ISI ---
+                            _buildPenawaranSpesial(),
                           ],
                         ),
                       ),
                     ),
-                    MyFlexItem(child: _buildSpecialHotel()),
-                    MyFlexItem(child: _buildSpecialRoom()),
+                    // --- UBAH ISI ---
+                    MyFlexItem(child: _buildMitraTerbaik()),
+                    // --- UBAH ISI ---
+                    MyFlexItem(child: _buildLayananUnggulan()),
                   ],
                 ),
               ),
@@ -86,9 +102,8 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
     );
   }
 
-  // --- WIDGET HELPER ---
-
-  Widget _buildFeaturedCarousel() {
+  // Widget ini sekarang untuk Carousel Promo
+  Widget _buildCarouselPromo() {
     return CarouselSlider(
       items: controller.featuredImages.asMap().entries.map((entry) {
         int index = entry.key;
@@ -97,10 +112,8 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
           builder: (BuildContext context) {
             return InkWell(
               onTap: controller.hotel.isNotEmpty
-                  // ========== PERBAIKAN DI SINI ==========
                   ? () => controller.goToHotelDetail(
                       controller.hotel[index % controller.hotel.length])
-                  // =====================================
                   : null,
               child: Container(
                 decoration: BoxDecoration(
@@ -126,7 +139,8 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
     );
   }
 
-  Widget _buildPopularDestination() {
+  // Widget ini sekarang untuk Area Layanan Populer
+  Widget _buildAreaLayananPopuler() {
     return SizedBox(
       height: 100,
       child: ListView.separated(
@@ -155,7 +169,8 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
     );
   }
 
-  Widget _buildSpecialOffer() {
+  // Widget ini untuk Penawaran Spesial
+  Widget _buildPenawaranSpesial() {
     return SizedBox(
       height: 44,
       child: ListView.separated(
@@ -172,13 +187,15 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
     );
   }
 
-  Widget _buildSpecialHotel() {
+  // Widget ini untuk menampilkan Mitra Terbaik
+  Widget _buildMitraTerbaik() {
     return MyContainer(
       paddingAll: 24,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MyText.bodyMedium("Special Hotel", fontWeight: 600),
+          // --- UBAH ISI ---
+          MyText.bodyMedium("Mitra Terbaik Kami", fontWeight: 600),
           MySpacing.height(24),
           SizedBox(
             height: 300,
@@ -188,9 +205,7 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
               itemBuilder: (context, index) {
                 HotelModel hotel = controller.hotel[index];
                 return MyContainer.bordered(
-                  // ========== PERBAIKAN DI SINI ==========
                   onTap: () => controller.goToHotelDetail(hotel),
-                  // =====================================
                   width: 300,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -202,25 +217,26 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
                           width: 300,
                           clipBehavior: Clip.antiAliasWithSaveLayer,
                           child: Image.asset(hotel.image, fit: BoxFit.cover)),
+                      // --- UBAH ISI ---
                       Row(children: [
-                        Icon(LucideIcons.hotel, size: 16),
+                        Icon(LucideIcons.user_cog, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(hotel.hotelName)
+                        MyText.bodyMedium(hotel.hotelName) // Nama Mitra
                       ]),
                       Row(children: [
                         Icon(LucideIcons.user, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(hotel.ownerName)
+                        MyText.bodyMedium(hotel.ownerName) // Nama Pemilik
                       ]),
                       Row(children: [
                         Icon(LucideIcons.mail, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(hotel.email)
+                        MyText.bodyMedium(hotel.email) // Email
                       ]),
                       Row(children: [
                         Icon(LucideIcons.map_pin, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(hotel.cityName)
+                        MyText.bodyMedium(hotel.cityName) // Area Layanan
                       ]),
                     ],
                   ),
@@ -234,23 +250,23 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
     );
   }
 
-  // Kode Baru (Benar)
-  Widget _buildSpecialRoom() {
+  // Widget ini untuk menampilkan Layanan Unggulan
+  Widget _buildLayananUnggulan() {
     return MyContainer(
       paddingAll: 24,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MyText.bodyMedium("Special Room", fontWeight: 600),
+          // --- UBAH ISI ---
+          MyText.bodyMedium("Layanan Unggulan", fontWeight: 600),
           MySpacing.height(24),
           SizedBox(
             height: 300,
             child: ListView.separated(
-              itemCount: controller.allRooms.length, // <-- UBAH KE allRooms
+              itemCount: controller.allRooms.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                RoomModel room =
-                    controller.allRooms[index]; // <-- UBAH KE allRooms
+                RoomModel room = controller.allRooms[index];
                 return MyContainer.bordered(
                   onTap: () => controller.goToRoomDetail(room),
                   width: 300,
@@ -264,25 +280,26 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
                           width: 300,
                           clipBehavior: Clip.antiAliasWithSaveLayer,
                           child: Image.asset(room.image, fit: BoxFit.cover)),
+                      // --- UBAH ISI ---
                       Row(children: [
-                        Icon(LucideIcons.bed_single, size: 16),
+                        Icon(LucideIcons.spray_can, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(room.bedType)
+                        MyText.bodyMedium(room.roomType) // Nama Layanan
                       ]),
                       Row(children: [
-                        Icon(LucideIcons.bed, size: 16),
+                        Icon(LucideIcons.shield_check, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(room.roomType)
+                        MyText.bodyMedium(room.bedType) // Kategori Layanan
                       ]),
                       Row(children: [
-                        Icon(LucideIcons.users, size: 16),
+                        Icon(LucideIcons.car, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium('${room.capacity} Capacity')
+                        MyText.bodyMedium('${room.view}') // Jenis Mobil
                       ]),
                       Row(children: [
-                        Icon(LucideIcons.building, size: 16),
+                        Icon(LucideIcons.timer, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium('${room.floor} Floor')
+                        MyText.bodyMedium('${room.floor} Menit') // Estimasi Durasi
                       ]),
                     ],
                   ),

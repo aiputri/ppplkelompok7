@@ -1,3 +1,5 @@
+// lib/views/client/room_selection_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sikilap/controller/client/room_selection_controller.dart';
@@ -20,8 +22,7 @@ class RoomSelectionScreen extends StatefulWidget {
   State<RoomSelectionScreen> createState() => _RoomSelectionScreenState();
 }
 
-class _RoomSelectionScreenState extends State<RoomSelectionScreen>
-    with UIMixin {
+class _RoomSelectionScreenState extends State<RoomSelectionScreen> with UIMixin {
   RoomSelectionController controller = Get.put(RoomSelectionController());
 
   @override
@@ -40,13 +41,15 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText.titleMedium(
-                      "Room Selection",
+                      // --- UBAH ISI ---
+                      "Pilih Layanan",
                       fontSize: 18,
                       fontWeight: 600,
                     ),
                     MyBreadcrumb(
                       children: [
-                        MyBreadcrumbItem(name: 'Room Selection', active: true),
+                        // --- UBAH ISI ---
+                        MyBreadcrumbItem(name: 'Layanan', active: true),
                       ],
                     ),
                   ],
@@ -92,8 +95,8 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen>
                                   paddingAll: 12,
                                   child: Icon(
                                       room.isFavourite
-                                          ? Icons.favorite_outlined
-                                          : Icons.favorite_outline,
+                                          ? Icons.favorite_rounded
+                                          : Icons.favorite_outline_rounded,
                                       size: 16,
                                       color: room.isFavourite
                                           ? contentTheme.danger
@@ -115,20 +118,24 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      MyText.bodyMedium(room.roomType,
+                                      // --- UBAH ISI ---
+                                      MyText.bodyMedium(room.roomType, // Nama Layanan
                                           fontWeight: 600,
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis),
+                                      // --- UBAH ISI ---
                                       MyText.labelMedium(
-                                          "Bed Type : ${room.bedType}"),
+                                          "Kategori: ${room.bedType}"), // Kategori
+                                      // --- UBAH ISI ---
                                       MyText.labelMedium(
-                                          "Room Number : ${room.roomType}"),
+                                          "Jenis Mobil: ${room.view}"), // Jenis Mobil
+                                      // --- UBAH ISI ---
                                       MyText.labelMedium(
-                                          "Floor : ${room.floor}"),
+                                          "Estimasi: ${room.floor} menit"), // Estimasi Waktu
+                                      // --- UBAH ISI ---
                                       MyText.labelMedium(
-                                          "Capacity : ${room.capacity}"),
-                                      MyText.labelMedium(
-                                          "Price : \$${room.pricePerNight} price per night"),
+                                          "Mulai dari: Rp ${room.pricePerNight.toInt()}"), // Harga
+                                      // --- HAPUS: 'Capacity' karena tidak relevan ---
                                     ],
                                   ),
                                 ),
@@ -136,7 +143,8 @@ class _RoomSelectionScreenState extends State<RoomSelectionScreen>
                                   padding: MySpacing.xy(8, 4),
                                   color: contentTheme.primary,
                                   child: MyText.labelSmall(
-                                    room.roomType,
+                                    // --- UBAH ISI ---
+                                    "Pesan", // Label tombol
                                     fontWeight: 600,
                                     color: contentTheme.onPrimary,
                                   ),

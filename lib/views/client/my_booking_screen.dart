@@ -1,3 +1,5 @@
+// lib/views/client/my_booking_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sikilap/controller/client/my_booking_controller.dart';
@@ -6,6 +8,7 @@ import 'package:sikilap/helpers/utils/ui_mixins.dart';
 import 'package:sikilap/helpers/widgets/my_breadcrumb.dart';
 import 'package:sikilap/helpers/widgets/my_breadcrumb_item.dart';
 import 'package:sikilap/helpers/widgets/my_card.dart';
+import 'package:sikilap/helpers/widgets/my_container.dart'; // Diperlukan untuk badge
 import 'package:sikilap/helpers/widgets/my_list_extension.dart';
 import 'package:sikilap/helpers/widgets/my_spacing.dart';
 import 'package:sikilap/helpers/widgets/my_text.dart';
@@ -21,6 +24,23 @@ class MyBookingScreen extends StatefulWidget {
 
 class _MyBookingScreenState extends State<MyBookingScreen> with UIMixin {
   MyBookingController controller = Get.put(MyBookingController());
+
+  // Fungsi untuk mendapatkan warna status
+  Color getStatusColor(String status) {
+    switch (status) {
+      case 'Selesai':
+        return contentTheme.success;
+      case 'Dikonfirmasi':
+      case 'Dikerjakan':
+        return contentTheme.primary;
+      case 'Menunggu Konfirmasi':
+        return contentTheme.warning;
+      case 'Dibatalkan':
+        return contentTheme.danger;
+      default:
+        return contentTheme.secondary;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +58,16 @@ class _MyBookingScreenState extends State<MyBookingScreen> with UIMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText.titleMedium(
-                      "My Booking",
+                      // --- UBAH ISI ---
+                      "Pesanan Saya",
                       fontSize: 18,
                       fontWeight: 600,
                     ),
                     MyBreadcrumb(
                       children: [
-                        MyBreadcrumbItem(name: 'My Booking', active: true),
+                        MyBreadcrumbItem(name: 'Akun Saya'),
+                        // --- UBAH ISI ---
+                        MyBreadcrumbItem(name: 'Pesanan Saya', active: true),
                       ],
                     ),
                   ],
@@ -60,7 +83,8 @@ class _MyBookingScreenState extends State<MyBookingScreen> with UIMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      MyText.bodyMedium("My Bookings", fontWeight: 600),
+                      // --- UBAH ISI ---
+                      MyText.bodyMedium("Riwayat dan Status Pesanan", fontWeight: 600),
                       MySpacing.height(24),
                       if (controller.myBooking.isNotEmpty)
                         SingleChildScrollView(
@@ -69,61 +93,43 @@ class _MyBookingScreenState extends State<MyBookingScreen> with UIMixin {
                               sortAscending: true,
                               onSelectAll: (_) => {},
                               dataRowMaxHeight: 60,
-                              columnSpacing: 25,
+                              columnSpacing: 55, // Disesuaikan
                               showBottomBorder: false,
-                              showCheckboxColumn: true,
+                              showCheckboxColumn: false, // Tidak perlu checkbox
                               border: TableBorder.all(
                                   style: BorderStyle.solid,
                                   width: .4,
                                   color: Colors.grey),
+                              // --- UBAH ISI KOLOM (LEBIH SEDERHANA) ---
                               columns: [
                                 DataColumn(
-                                    label: MyText.bodySmall('Booking ID',
+                                    label: MyText.bodySmall('ID Pesanan',
                                         fontWeight: 600)),
                                 DataColumn(
-                                    label: MyText.bodySmall('Guest Name',
+                                    label: MyText.bodySmall('Nama Mitra',
                                         fontWeight: 600)),
                                 DataColumn(
-                                    label: MyText.bodySmall('Hotel Name',
+                                    label: MyText.bodySmall('Layanan',
                                         fontWeight: 600)),
                                 DataColumn(
-                                    label: MyText.bodySmall('Room Type',
+                                    label: MyText.bodySmall('Jadwal Layanan',
                                         fontWeight: 600)),
                                 DataColumn(
-                                    label: MyText.bodySmall('Check In Date',
+                                    label: MyText.bodySmall('Total Biaya (Rp)',
                                         fontWeight: 600)),
                                 DataColumn(
-                                    label: MyText.bodySmall('Check Out Date',
+                                    label: MyText.bodySmall('Metode Pembayaran',
                                         fontWeight: 600)),
                                 DataColumn(
-                                    label: MyText.bodySmall('Booking Date',
-                                        fontWeight: 600)),
-                                DataColumn(
-                                    label: MyText.bodySmall('Number Of Guests',
-                                        fontWeight: 600)),
-                                DataColumn(
-                                    label: MyText.bodySmall('Total Price',
-                                        fontWeight: 600)),
-                                DataColumn(
-                                    label: MyText.bodySmall('Currency',
-                                        fontWeight: 600)),
-                                DataColumn(
-                                    label: MyText.bodySmall('Payment Method',
-                                        fontWeight: 600)),
-                                DataColumn(
-                                    label: MyText.bodySmall('Special Requests',
-                                        fontWeight: 600)),
-                                DataColumn(
-                                    label: MyText.bodySmall('Booking Status',
+                                    label: MyText.bodySmall('Status Pesanan',
                                         fontWeight: 600)),
                               ],
                               rows: controller.myBooking
                                   .mapIndexed((index, data) => DataRow(
                                         cells: [
+                                          // Data disesuaikan dengan model 'MyBooking'
                                           DataCell(MyText.labelSmall(
                                               data.bookingID)),
-                                          DataCell(MyText.labelSmall(
-                                              data.guestName)),
                                           DataCell(MyText.labelSmall(
                                               data.hotelName)),
                                           DataCell(
@@ -131,21 +137,22 @@ class _MyBookingScreenState extends State<MyBookingScreen> with UIMixin {
                                           DataCell(MyText.labelSmall(
                                               data.checkInDate)),
                                           DataCell(MyText.labelSmall(
-                                              data.checkOutDate)),
-                                          DataCell(MyText.labelSmall(
-                                              data.bookingDate)),
-                                          DataCell(MyText.labelSmall(
-                                              data.numberOfGuest.toString())),
-                                          DataCell(MyText.labelSmall(
-                                              '\$${data.totalPrice}')),
-                                          DataCell(
-                                              MyText.labelSmall(data.currency)),
+                                              '${data.totalPrice.toInt()}')),
                                           DataCell(MyText.labelSmall(
                                               data.paymentMethod)),
-                                          DataCell(MyText.labelSmall(
-                                              data.specialRequests)),
-                                          DataCell(MyText.labelSmall(
-                                              data.bookingStatus)),
+                                          DataCell(
+                                            // Menggunakan badge untuk status
+                                            MyContainer.bordered(
+                                              padding: MySpacing.xy(12, 6),
+                                              borderRadiusAll: 4,
+                                              color: getStatusColor(data.bookingStatus).withAlpha(40),
+                                              border: Border.all(color: getStatusColor(data.bookingStatus)),
+                                              child: MyText.labelSmall(
+                                                data.bookingStatus,
+                                                color: getStatusColor(data.bookingStatus),
+                                              ),
+                                            ),
+                                          ),
                                         ],
                                       ))
                                   .toList()),

@@ -4,6 +4,8 @@ import 'package:sikilap/helpers/services/json_decoder.dart';
 import 'package:sikilap/model/identifier_model.dart';
 
 class BookingModel extends IdentifierModel {
+  // --- UBAH: Tambahkan kodePesanan ---
+  final String kodePesanan;
   final String namaPelanggan;
   final String emailPelanggan;
   final String teleponPelanggan;
@@ -15,7 +17,8 @@ class BookingModel extends IdentifierModel {
   final double totalBiaya;
 
   BookingModel(
-    super.id, // ID di sini akan menggunakan nilai dari id_pesanan (String)
+    super.id, // ID numerik (contoh: 1, 2, 3)
+    this.kodePesanan, // ID string (contoh: "SKL-001")
     this.namaPelanggan,
     this.emailPelanggan,
     this.teleponPelanggan,
@@ -30,20 +33,22 @@ class BookingModel extends IdentifierModel {
   static BookingModel fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
 
-    String idPesanan = decoder.getString('id_pesanan');
+    // --- UBAH: Ambil ID numerik dan string secara terpisah ---
+    int id = decoder.getId; // Mengambil 'id' dari JSON
+    String kodePesanan = decoder.getString('kode_pesanan');
     String namaPelanggan = decoder.getString('nama_pelanggan');
     String emailPelanggan = decoder.getString('email_pelanggan');
     String teleponPelanggan = decoder.getString('telepon_pelanggan');
     String jenisLayanan = decoder.getString('jenis_layanan');
     String alamatLayanan = decoder.getString('alamat_layanan');
-    String jadwalLayanan = decoder.getString('jadwal_layanan');
+    String jadwalLayanan = "${decoder.getString('tanggal_layanan')} ${decoder.getString('waktu_layanan')}";
     String statusPembayaran = decoder.getString('status_pembayaran');
     String statusPesanan = decoder.getString('status_pesanan');
     double totalBiaya = decoder.getDouble('total_biaya');
 
-    // Menggunakan idPesanan sebagai ID utama model
     return BookingModel(
-      idPesanan as int,
+      id,
+      kodePesanan,
       namaPelanggan,
       emailPelanggan,
       teleponPelanggan,

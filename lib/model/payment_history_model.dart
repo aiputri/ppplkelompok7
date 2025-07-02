@@ -54,7 +54,7 @@ class PembayaranModel extends IdentifierModel {
   }
 
   static Future<List<PembayaranModel>> get dummyList async {
-    dynamic data = json.decode(await rootBundle.loadString('assets/data/riwayat_pembayaran.json'));
+    dynamic data = json.decode(await rootBundle.loadString('assets/data/payment_history.json'));
     return listFromJSON(data);
   }
 }
