@@ -76,3 +76,4 @@ class BookingModel extends IdentifierModel {
     return await rootBundle.loadString('assets/data/booking_list.json');
   }
 }
+
