@@ -60,7 +60,7 @@ class _LeftBarState extends State<LeftBar>
       child: Column(
         children: [
           SizedBox(
-            height: 70, // UBAH: Tinggi container disesuaikan agar logo tidak terlalu mepet
+            height: 60, 
             child: InkWell(
               onTap: () =>
                   Get.toNamed(widget.isAdmin ? '/admin/dashboard' : '/home'),
@@ -72,8 +72,8 @@ class _LeftBarState extends State<LeftBar>
                       ThemeCustomizer.instance.theme == ThemeMode.light
                           ? Images.logoLight
                           : Images.logoDark,
-                      height: 50, // UBAH: Ukuran logo diperbesar dari 40 menjadi 50
-                      width: 50,  // UBAH: Ukuran logo diperbesar dari 40 menjadi 50
+                      height: 100,
+                      width: 100,  
                       fit: BoxFit.contain), 
                 ],
               ),
@@ -140,10 +140,6 @@ class _LeftBarState extends State<LeftBar>
                               title: "List Pelanggan", // Nama baru
                               isCondensed: isCondensed,
                               route: '/admin/guest/list'),
-                          MenuItem(
-                              title: "Tambah Pelanggan", // Nama baru
-                              isCondensed: isCondensed,
-                              route: '/admin/guest/add'),
                         ],
                       ),
                       // MANAGE PESANAN

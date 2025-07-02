@@ -41,14 +41,16 @@ class _HotelListScreenState extends State<HotelListScreen> with UIMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText.titleMedium(
-                      "Hotel List",
+                      // --- UBAH ISI ---
+                      "Manajemen Mitra",
                       fontSize: 18,
                       fontWeight: 600,
                     ),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: 'Admin'),
-                        MyBreadcrumbItem(name: 'Hotel List', active: true),
+                        // --- UBAH ISI ---
+                        MyBreadcrumbItem(name: 'Daftar Mitra', active: true),
                       ],
                     ),
                   ],
@@ -67,12 +69,14 @@ class _HotelListScreenState extends State<HotelListScreen> with UIMixin {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          MyText.bodyMedium("Hotel List"),
+                          // --- UBAH ISI ---
+                          MyText.bodyMedium("Daftar Mitra Terdaftar"),
                           MyContainer(
                             paddingAll: 8,
                             onTap: controller.addHotel,
                             color: contentTheme.primary,
-                            child: MyText.labelSmall("Add Hotel", color: contentTheme.onPrimary),
+                            // --- UBAH ISI ---
+                            child: MyText.labelSmall("Tambah Mitra Baru", color: contentTheme.onPrimary),
                           )
                         ],
                       ),
@@ -83,17 +87,18 @@ class _HotelListScreenState extends State<HotelListScreen> with UIMixin {
                             sortAscending: true,
                             onSelectAll: (_) => {},
                             dataRowMaxHeight: 60,
-                            columnSpacing: 142,
+                            columnSpacing: 100, // Disesuaikan
                             showBottomBorder: false,
                             showCheckboxColumn: true,
                             border: TableBorder.all(style: BorderStyle.solid, width: .4, color: Colors.grey),
+                            // --- UBAH ISI KOLOM ---
                             columns: [
-                              DataColumn(label: MyText.bodySmall('Name', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('City', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Owner', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Nama Mitra', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Area Layanan', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Nama Pemilik', fontWeight: 600)),
                               DataColumn(label: MyText.bodySmall('Email', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Phone', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Action', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('No. Telepon', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Aksi', fontWeight: 600)),
                             ],
                             rows: controller.hotel
                                 .mapIndexed((index, data) => DataRow(

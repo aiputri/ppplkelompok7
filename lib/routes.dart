@@ -7,7 +7,6 @@ import 'package:sikilap/helpers/services/auth_services.dart';
 // import semua screen kamu di sini
 import 'package:sikilap/views/admin/admin_payment_history_screen.dart';
 import 'package:sikilap/views/admin/dashboard_screen.dart';
-import 'package:sikilap/views/admin/guest/add_guest_screen.dart';
 import 'package:sikilap/views/admin/guest/edit_guest_screen.dart';
 import 'package:sikilap/views/admin/guest/guest_list_screen.dart';
 import 'package:sikilap/views/admin/manage_booking/booking_list_screen.dart';
@@ -179,10 +178,6 @@ List<GetPage> getPageRoute() {
         page: () => GuestListScreen(),
         middlewares: [AuthMiddleware(), AdminMiddleware()]),
     GetPage(
-        name: '/admin/guest/add',
-        page: () => AddGuestScreen(),
-        middlewares: [AuthMiddleware(), AdminMiddleware()]),
-    GetPage(
         name: '/admin/guest/edit',
         page: () => EditGuestScreen(),
         middlewares: [AuthMiddleware(), AdminMiddleware()]),
@@ -194,7 +189,7 @@ List<GetPage> getPageRoute() {
         middlewares: [AuthMiddleware(), AdminMiddleware()]),
     GetPage(
         name: '/admin/payment',
-        page: () => AdminPaymentHistoryScreen(),
+        page: () => RiwayatPembayaranScreen(),
         middlewares: [AuthMiddleware(), AdminMiddleware()]),
 
     // Rute UI/Widgets (Jika ini untuk development, admin bisa akses)

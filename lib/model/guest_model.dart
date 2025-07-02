@@ -1,45 +1,58 @@
+// lib/model/guest_model.dart
+
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:sikilap/helpers/services/json_decoder.dart';
 import 'package:sikilap/model/identifier_model.dart';
 
-// Walaupun bernama GuestModel, propertinya sekarang merefleksikan data Mitra
+// Walaupun bernama GuestModel, propertinya sekarang merefleksikan data Pelanggan
 class GuestModel extends IdentifierModel {
-  final String nama_mitra;
+  // --- UBAH: Properti disesuaikan dengan data pelanggan ---
+  final String nama_pelanggan;
+  final String email;
   final String nomor_telepon;
-  final String area_layanan;
+  final String alamat_utama;
+  final int jumlah_pesanan;
+  final String tanggal_bergabung;
   final String status;
-  final String tanggal_gabung;
-  final double rating;
 
-  // Constructor diubah sesuai properti baru
+  // --- UBAH: Constructor disesuaikan dengan properti baru ---
   GuestModel(
     super.id,
-    this.nama_mitra,
+    this.nama_pelanggan,
+    this.email,
     this.nomor_telepon,
-    this.area_layanan,
-    this.rating,
+    this.alamat_utama,
+    this.jumlah_pesanan,
+    this.tanggal_bergabung,
     this.status,
-    this.tanggal_gabung,
   );
 
-  // Fungsi fromJSON diubah untuk mem-parsing data Mitra
+  // --- UBAH: Fungsi fromJSON untuk mem-parsing data Pelanggan ---
   static GuestModel fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
 
-    // Ambil ID dari field 'id_mitra' atau 'id'
-    int id = decoder.hasKey('id_mitra') ? decoder.getInt('id_mitra') : decoder.getId;
-    
-    String nama_mitra = decoder.getString('nama_mitra');
+    int id = decoder.getId; // Mengambil 'id' dari JSON
+    String nama_pelanggan = decoder.getString('nama_pelanggan');
+    String email = decoder.getString('email');
     String nomor_telepon = decoder.getString('nomor_telepon');
-    String area_layanan = decoder.getString('area_layanan');
-    double rating = decoder.getDouble('rating');
+    String alamat_utama = decoder.getString('alamat_utama');
+    int jumlah_pesanan = decoder.getInt('jumlah_pesanan');
+    String tanggal_bergabung = decoder.getString('tanggal_bergabung');
     String status = decoder.getString('status');
-    String tanggal_gabung = decoder.getString('tanggal_gabung');
 
-    // Kembalikan objek GuestModel dengan data Mitra
-    return GuestModel(id, nama_mitra, nomor_telepon, area_layanan, rating, status, tanggal_gabung);
+    // Mengembalikan objek GuestModel dengan data Pelanggan
+    return GuestModel(
+      id,
+      nama_pelanggan,
+      email,
+      nomor_telepon,
+      alamat_utama,
+      jumlah_pesanan,
+      tanggal_bergabung,
+      status,
+    );
   }
 
   // Fungsi listFromJSON tidak perlu diubah
@@ -47,7 +60,7 @@ class GuestModel extends IdentifierModel {
     return list.map((e) => GuestModel.fromJSON(e)).toList();
   }
 
-  // Logika dummy data tetap sama, tetapi akan mem-parsing file JSON yang berbeda
+  // Logika dummy data tetap sama
   static List<GuestModel>? _dummyList;
 
   static Future<List<GuestModel>> get dummyList async {
@@ -58,9 +71,9 @@ class GuestModel extends IdentifierModel {
     return _dummyList!;
   }
 
-  // Pastikan file JSON yang diload adalah file data mitra yang baru
+  // Pastikan file JSON yang diload adalah file data pelanggan yang baru
   static Future<String> getData() async {
-    // Anda bisa mengganti nama file ini jika perlu, misal 'data_mitra.json'
+    // Nama file ini harus sesuai dengan file JSON yang berisi data pelanggan
     return await rootBundle.loadString('assets/data/guest_list.json');
   }
 }

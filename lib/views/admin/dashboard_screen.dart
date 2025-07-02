@@ -1,5 +1,3 @@
-// lib/views/admin/dashboard_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter_lucide/flutter_lucide.dart';
 import 'package:get/get.dart';
@@ -66,13 +64,11 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
               Padding(
                 padding: MySpacing.x(flexSpacing / 2),
                 child: MyFlex(children: [
-                  // --- BAGIAN STATS DIUBAH ---
                   MyFlexItem(sizes: 'lg-2.4', child: stats("Total Pesanan", "20.3K", LucideIcons.book_marked, Colors.blue)),
                   MyFlexItem(sizes: 'lg-2.4', child: stats("Jumlah Mitra", "82", LucideIcons.user_cog, Colors.cyan)),
                   MyFlexItem(sizes: 'lg-2.4', child: stats("Pendapatan", "Rp 150 Jt", LucideIcons.dollar_sign, Colors.teal)),
                   MyFlexItem(sizes: 'lg-2.4', child: stats("Total Pelanggan", "4.5K", LucideIcons.users, Colors.indigo)),
                   MyFlexItem(sizes: 'lg-2.4', child: stats("Pesanan Selesai", "95.8%", LucideIcons.check_check, Colors.purple)),
-                  // --- AKHIR PERUBAHAN STATS ---
                   MyFlexItem(sizes: 'lg-6', child: monthlyAnalytics()),
                   MyFlexItem(sizes: 'lg-6', child: worldMap()),
                   MyFlexItem(child: booking()),
@@ -113,6 +109,7 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
   }
 
   Widget monthlyAnalytics() {
+    // ... (tidak ada perubahan di sini) ...
     return MyCard(
       shadow: MyShadow(elevation: 0.2, position: MyShadowPosition.bottom),
       paddingAll: 24,
@@ -123,12 +120,11 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // --- JUDUL DIUBAH ---
               Expanded(child: MyText.bodyMedium("Analitik Bulanan", overflow: TextOverflow.ellipsis, fontWeight: 600)),
               PopupMenuButton(
                 onSelected: controller.onSelectedTimeByLocation,
                 itemBuilder: (BuildContext context) {
-                  return ["Tahun", "Bulan", "Minggu", "Hari"].map((behavior) { // "Hours" dihapus
+                  return ["Tahun", "Bulan", "Minggu", "Hari"].map((behavior) {
                     return PopupMenuItem(
                       value: behavior,
                       height: 32,
@@ -155,7 +151,7 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
             ],
           ),
           MySpacing.height(24),
-          Expanded( // Chart dibungkus Expanded agar fleksibel
+          Expanded(
             child: SfCartesianChart(
               margin: MySpacing.zero,
               primaryXAxis: CategoryAxis(),
@@ -179,7 +175,7 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
                     dataSource: controller.chartData,
                     xValueMapper: (ChartSampleData data, _) => data.x,
                     yValueMapper: (ChartSampleData data, _) => data.y,
-                    name: 'Jumlah Pesanan'), // Label diubah
+                    name: 'Jumlah Pesanan'),
                 LineSeries<ChartSampleData, String>(
                     animationDuration: 4500,
                     animationDelay: 2000,
@@ -188,7 +184,7 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
                     yValueMapper: (ChartSampleData data, _) => data.yValue,
                     yAxisName: 'yAxis1',
                     markerSettings: const MarkerSettings(isVisible: true),
-                    name: 'Total Pendapatan') // Label diubah
+                    name: 'Total Pendapatan')
               ],
             ),
           ),
@@ -198,17 +194,17 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
   }
 
   Widget worldMap() {
-    return MyCard(
+    // ... (tidak ada perubahan di sini) ...
+     return MyCard(
       shadow: MyShadow(elevation: 0.2, position: MyShadowPosition.bottom),
       paddingAll: 24,
       height: 400,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // --- JUDUL DIUBAH ---
           MyText.bodyMedium("Peta Area Layanan", fontWeight: 600),
           MySpacing.height(24),
-          Expanded( // Map dibungkus Expanded agar mengisi ruang
+          Expanded(
             child: SfMaps(
               layers: [
                 MapShapeLayer(
@@ -238,7 +234,6 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
     );
   }
 
-  // --- BAGIAN INI DIUBAH TOTAL ---
   Widget booking() {
     return MyCard(
         shadow: MyShadow(elevation: 0.2, position: MyShadowPosition.bottom),
@@ -256,7 +251,7 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
                   onSelectAll: (_) => {},
                   headingRowColor: WidgetStatePropertyAll(contentTheme.primary.withAlpha(40)),
                   dataRowMaxHeight: 60,
-                  showBottomBorder: false, // Dibuat false agar lebih bersih
+                  showBottomBorder: false,
                   columns: [
                     DataColumn(label: MyText.labelLarge('ID Pesanan', color: contentTheme.primary)),
                     DataColumn(label: MyText.labelLarge('Pelanggan', color: contentTheme.primary)),
@@ -265,9 +260,13 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
                     DataColumn(label: MyText.labelLarge('Total Biaya', color: contentTheme.primary)),
                     DataColumn(label: MyText.labelLarge('Status', color: contentTheme.primary)),
                   ],
-                  rows: controller.booking // Asumsi controller.booking sudah disesuaikan
+                  // --- BAGIAN INI DIUBAH UNTUK MENCOCOKKAN MODEL BARU ---
+                  rows: controller.booking
                       .mapIndexed((index, data) => DataRow(cells: [
-                            DataCell(MyText.bodySmall(data.id as String, fontWeight: 600)), // Menggunakan ID pesanan (misal: "SKL-001")
+                            // Sel 1: ID Pesanan -> Menggunakan kodePesanan
+                            DataCell(MyText.bodySmall(data.kodePesanan, fontWeight: 600)),
+                            
+                            // Sel 2: Nama Pelanggan
                             DataCell(Row(
                               children: [
                                 MyContainer.rounded(
@@ -277,18 +276,26 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
                                   child: Image.asset(Images.avatars[index % Images.avatars.length]),
                                 ),
                                 MySpacing.width(12),
-                                MyText.bodySmall(data.namaPelanggan, fontWeight: 600), // Ganti ke nama pelanggan
+                                MyText.bodySmall(data.namaPelanggan, fontWeight: 600),
                               ],
                             )),
-                            DataCell(MyText.bodySmall(data.jadwalLayanan, fontWeight: 600)), // Ganti ke jadwal
-                            DataCell(MyText.bodySmall(data.jenisLayanan, fontWeight: 600)), // Ganti ke jenis layanan
-                            DataCell(MyText.bodySmall("Rp ${NumberFormat.decimalPattern('id').format(data.totalBiaya)}", fontWeight: 600)), // Ganti ke total biaya
+
+                            // Sel 3: Jadwal Layanan
+                            DataCell(MyText.bodySmall(data.jadwalLayanan, fontWeight: 600)),
+
+                            // Sel 4: Jenis Layanan
+                            DataCell(MyText.bodySmall(data.jenisLayanan, fontWeight: 600)),
+                            
+                            // Sel 5: Total Biaya
+                            DataCell(MyText.bodySmall("Rp ${NumberFormat.decimalPattern('id').format(data.totalBiaya)}", fontWeight: 600)),
+                            
+                            // Sel 6: Status Pesanan
                             DataCell(
                               MyContainer.bordered(
                                 padding: MySpacing.xy(8, 4),
-                                color: data.statusPesanan == "Selesai" ? contentTheme.success.withAlpha(40) : contentTheme.warning.withAlpha(40),
-                                border: Border.all(color: data.statusPesanan == "Selesai" ? contentTheme.success : contentTheme.warning),
-                                child: MyText.labelSmall(data.statusPesanan, fontWeight: 600, color: data.statusPesanan == "Selesai" ? contentTheme.success : contentTheme.warning),
+                                color: getStatusColor(data.statusPesanan).withAlpha(40),
+                                border: Border.all(color: getStatusColor(data.statusPesanan)),
+                                child: MyText.labelSmall(data.statusPesanan, fontWeight: 600, color: getStatusColor(data.statusPesanan)),
                               ),
                             ),
                           ]))
@@ -296,5 +303,20 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
             )
           ],
         ));
+  }
+  
+  // Fungsi helper untuk menentukan warna status
+  Color getStatusColor(String status) {
+    switch (status) {
+      case 'Selesai':
+        return contentTheme.success;
+      case 'Dikerjakan':
+      case 'Dikonfirmasi':
+        return contentTheme.primary;
+      case 'Dibatalkan':
+        return contentTheme.danger;
+      default:
+        return contentTheme.warning;
+    }
   }
 }

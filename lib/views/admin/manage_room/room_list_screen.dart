@@ -39,14 +39,16 @@ class _RoomListScreenState extends State<RoomListScreen> with UIMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText.titleMedium(
-                      "Room List",
+                      // --- UBAH ISI ---
+                      "Daftar Layanan",
                       fontSize: 18,
                       fontWeight: 600,
                     ),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: 'Admin'),
-                        MyBreadcrumbItem(name: 'Room List', active: true),
+                        // --- UBAH ISI ---
+                        MyBreadcrumbItem(name: 'Layanan', active: true),
                       ],
                     ),
                   ],
@@ -65,12 +67,14 @@ class _RoomListScreenState extends State<RoomListScreen> with UIMixin {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          MyText.bodyMedium("Room List"),
+                          // --- UBAH ISI ---
+                          MyText.bodyMedium("Layanan yang Tersedia"),
                           MyContainer(
                             paddingAll: 8,
                             onTap: controller.gotoAddRoom,
                             color: contentTheme.primary,
-                            child: MyText.labelSmall("Add Room", color: contentTheme.onPrimary),
+                            // --- UBAH ISI ---
+                            child: MyText.labelSmall("Tambah Layanan Baru", color: contentTheme.onPrimary),
                           )
                         ],
                       ),
@@ -81,22 +85,23 @@ class _RoomListScreenState extends State<RoomListScreen> with UIMixin {
                             sortAscending: true,
                             onSelectAll: (_) => {},
                             dataRowMaxHeight: 60,
-                            columnSpacing: 132,
+                            columnSpacing: 100, // Disesuaikan
                             showBottomBorder: false,
                             showCheckboxColumn: true,
                             border: TableBorder.all(style: BorderStyle.solid, width: .4, color: Colors.grey),
+                            // --- UBAH ISI KOLOM ---
                             columns: [
-                              DataColumn(label: MyText.bodySmall('Room Type', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Bed Type', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Capacity', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('View', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Floor', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Price', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Action', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Nama Layanan', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Kategori', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Jenis Mobil', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Estimasi Waktu', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Harga (Rp)', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Aksi', fontWeight: 600)),
                             ],
                             rows: controller.room
                                 .mapIndexed((index, data) => DataRow(
                                       cells: [
+                                        // Sel 1: Nama Layanan (dari roomType)
                                         DataCell(Row(
                                           children: [
                                             MyContainer(
@@ -109,51 +114,48 @@ class _RoomListScreenState extends State<RoomListScreen> with UIMixin {
                                             MyText.labelSmall(data.roomType),
                                           ],
                                         )),
+                                        // Sel 2: Kategori (dari bedType)
                                         DataCell(
                                           Row(
                                             children: [
-                                              Icon(LucideIcons.bed, size: 16),
+                                              Icon(LucideIcons.shield_check, size: 16),
                                               MySpacing.width(8),
                                               MyText.labelSmall(data.bedType),
                                             ],
                                           ),
                                         ),
+                                        // Sel 3: Jenis Mobil (dari view)
                                         DataCell(
                                           Row(
                                             children: [
-                                              Icon(LucideIcons.user, size: 16),
-                                              MySpacing.width(8),
-                                              MyText.labelSmall(data.capacity.toString()),
-                                            ],
-                                          ),
-                                        ),
-                                        DataCell(
-                                          Row(
-                                            children: [
-                                              Icon(LucideIcons.eye, size: 16),
+                                              Icon(LucideIcons.car, size: 16),
                                               MySpacing.width(8),
                                               MyText.labelSmall(data.view),
                                             ],
                                           ),
                                         ),
+                                        // Sel 4: Estimasi Waktu (dari floor)
                                         DataCell(
                                           Row(
                                             children: [
-                                              Icon(LucideIcons.layers, size: 16),
+                                              Icon(LucideIcons.timer, size: 16),
                                               MySpacing.width(8),
-                                              MyText.labelSmall(data.floor.toString()),
+                                              MyText.labelSmall("${data.floor} menit"),
                                             ],
                                           ),
                                         ),
+                                        // Sel 5: Harga (dari pricePerNight)
                                         DataCell(
                                           Row(
                                             children: [
                                               Icon(LucideIcons.dollar_sign, size: 16),
                                               MySpacing.width(8),
-                                              MyText.labelSmall("\$${data.pricePerNight} price per night"),
+                                              // --- UBAH ISI ---
+                                              MyText.labelSmall("Rp ${data.pricePerNight.toInt()}"),
                                             ],
                                           ),
                                         ),
+                                        // Sel 6: Aksi (tombol tetap sama)
                                         DataCell(Row(
                                           children: [
                                             MyContainer.rounded(

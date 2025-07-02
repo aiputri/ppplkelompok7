@@ -24,12 +24,13 @@ class BookingListScreen extends StatefulWidget {
 class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
   BookingListController controller = Get.put(BookingListController());
 
-  // Fungsi untuk mendapatkan warna status
+  // Fungsi untuk mendapatkan warna status (tidak diubah)
   Color getStatusColor(String status) {
     switch (status) {
       case 'Selesai':
         return contentTheme.success;
       case 'Dikonfirmasi':
+      case 'Dikerjakan': // Ditambahkan agar warnanya sama
         return contentTheme.primary;
       case 'Menunggu Konfirmasi':
         return contentTheme.warning;
@@ -55,14 +56,16 @@ class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText.titleMedium(
-                      "List Pemesanan",
+                      // --- UBAH ISI ---
+                      "Manajemen Pesanan",
                       fontSize: 18,
                       fontWeight: 600,
                     ),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: 'Admin'),
-                        MyBreadcrumbItem(name: 'List Pemesanan', active: true),
+                        // --- UBAH ISI ---
+                        MyBreadcrumbItem(name: 'Daftar Pesanan', active: true),
                       ],
                     ),
                   ],
@@ -74,10 +77,10 @@ class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
                 child: GridView.builder(
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 450, // Sedikit lebih lebar
+                    maxCrossAxisExtent: 450,
                     crossAxisSpacing: 24,
                     mainAxisSpacing: 24,
-                    mainAxisExtent: 240, // Sedikit lebih pendek
+                    mainAxisExtent: 240,
                   ),
                   itemCount: controller.booking.length,
                   itemBuilder: (context, index) {
@@ -86,8 +89,8 @@ class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
 
                     return MyCard(
                       shadow: MyShadow(elevation: 0.5),
-                      paddingAll: 0, // Padding diatur di dalam
-                      onTap: () => controller.goToBookingDetail(booking.id), // Mengarahkan ke detail
+                      paddingAll: 0,
+                      onTap: () => controller.goToBookingDetail(booking.id),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -98,7 +101,8 @@ class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                MyText.bodyMedium(booking.id.toString(), fontWeight: 700, color: statusColor),
+                                // --- UBAH ISI ---
+                                MyText.bodyMedium(booking.namaPelanggan, fontWeight: 700, color: statusColor),
                                 MyText.bodyMedium(booking.statusPesanan, fontWeight: 600, color: statusColor),
                               ],
                             ),
@@ -122,6 +126,7 @@ class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
+                                          // --- UBAH ISI ---
                                           MyText.bodyMedium(booking.namaPelanggan, fontWeight: 600),
                                           MyText.bodySmall(booking.teleponPelanggan, muted: true),
                                         ],
@@ -137,6 +142,7 @@ class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
                                   children: [
                                     Icon(LucideIcons.spray_can, size: 16, color: contentTheme.primary),
                                     MySpacing.width(8),
+                                    // --- UBAH ISI ---
                                     Expanded(child: MyText.bodySmall(booking.jenisLayanan, overflow: TextOverflow.ellipsis)),
                                   ],
                                 ),
@@ -145,6 +151,7 @@ class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
                                   children: [
                                     Icon(LucideIcons.map_pin, size: 16, color: contentTheme.secondary),
                                     MySpacing.width(8),
+                                    // --- UBAH ISI ---
                                     Expanded(child: MyText.bodySmall(booking.alamatLayanan, overflow: TextOverflow.ellipsis)),
                                   ],
                                 ),
@@ -153,6 +160,7 @@ class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
                                   children: [
                                     Icon(LucideIcons.calendar, size: 16, color: contentTheme.secondary),
                                     MySpacing.width(8),
+                                    // --- UBAH ISI ---
                                     MyText.bodySmall(booking.jadwalLayanan),
                                   ],
                                 ),

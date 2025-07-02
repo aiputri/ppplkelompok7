@@ -2,307 +2,82 @@
   {
     "id": 101,
     "hotel_id": 1,
-    "image": "assets/images/dummy/room/hotel_room_1.jpg",
-    "room_type": "Standard Room",
-    "bed_type": "Queen",
-    "price_per_night": 120.00,
-    "capacity": 2,
-    "view": "City",
+    "image": "assets/images/layanan/cuci_luar.jpg",
+    "room_type": "Cuci Exterior Premium",
+    "bed_type": "Pembersihan Dasar",
+    "price_per_night": 50000,
+    "capacity": 1,
+    "view": "Mobil Kecil",
     "smoking": false,
-    "floor": 1,
+    "floor": 30,
     "amenities": [
-      "Free WiFi",
-      "Air Conditioning",
-      "Flat-Screen TV",
-      "Mini-Fridge"
+      "Cuci Bodi",
+      "Pembersihan Velg",
+      "Semir Ban"
     ],
     "availability": true,
-    "guest_service": [
-      "24-Hour Room Service",
-      "Concierge Service",
-      "Housekeeping"
-    ],
-    "inclusion": [
-      "Complimentary Bottled Water",
-      "Free WiFi",
-      "Daily Housekeeping"
-    ]
+    "guest_service": [],
+    "inclusion": []
   },
   {
     "id": 102,
     "hotel_id": 1,
-    "image": "assets/images/dummy/room/hotel_room_2.jpg",
-    "room_type": "Deluxe Room",
-    "bed_type": "King",
-    "price_per_night": 180.00,
-    "capacity": 4,
-    "view": "Ocean",
+    "image": "assets/images/layanan/cuci_luar_dalam.jpg",
+    "room_type": "Cuci Luar & Dalam",
+    "bed_type": "Pembersihan Komplit",
+    "price_per_night": 90000,
+    "capacity": 1,
+    "view": "Semua Mobil",
     "smoking": false,
-    "floor": 2,
+    "floor": 60,
     "amenities": [
-      "Free WiFi",
-      "Air Conditioning",
-      "Bathtub",
-      "Mini-Bar",
-      "Coffee Maker"
+      "Cuci Bodi & Velg",
+      "Vakum Interior",
+      "Pembersihan Dashboard",
+      "Semir Ban"
     ],
     "availability": true,
-    "guest_service": [
-      "24-Hour Room Service",
-      "Concierge Service",
-      "Housekeeping",
-      "Laundry Service"
-    ],
-    "inclusion": [
-      "Complimentary Breakfast",
-      "Free WiFi",
-      "Free Parking"
-    ]
+    "guest_service": [],
+    "inclusion": []
   },
   {
     "id": 103,
     "hotel_id": 2,
-    "image": "assets/images/dummy/room/hotel_room_3.jpg",
-    "room_type": "Suite",
-    "bed_type": "King",
-    "price_per_night": 250.00,
-    "capacity": 4,
-    "view": "Pool",
+    "image": "assets/images/layanan/detailing.jpg",
+    "room_type": "Detailing Komplit",
+    "bed_type": "Perawatan Intensif",
+    "price_per_night": 350000,
+    "capacity": 1,
+    "view": "Semua Mobil",
     "smoking": false,
-    "floor": 3,
+    "floor": 180,
     "amenities": [
-      "Free WiFi",
-      "Air Conditioning",
-      "Living Area",
-      "Balcony",
-      "Mini-Bar",
-      "Spa Bath"
+      "Cuci Luar & Dalam",
+      "Poles Bodi (Wax)",
+      "Pembersihan Jamur Kaca",
+      "Pembersihan Ruang Mesin"
     ],
-    "availability": false,
-    "guest_service": [
-      "24-Hour Room Service",
-      "Concierge Service",
-      "Housekeeping",
-      "Laundry Service"
-    ],
-    "inclusion": [
-      "Welcome Drink",
-      "Complimentary Breakfast",
-      "Free WiFi"
-    ]
+    "availability": true,
+    "guest_service": [],
+    "inclusion": []
   },
   {
     "id": 104,
     "hotel_id": 2,
-    "image": "assets/images/dummy/room/hotel_room_4.jpg",
-    "room_type": "Standard Room",
-    "bed_type": "Double",
-    "price_per_night": 100.00,
+    "image": "assets/images/layanan/poles_kaca.jpg",
+    "room_type": "Poles Jamur Kaca",
+    "bed_type": "Layanan Tambahan",
+    "price_per_night": 75000,
     "capacity": 1,
-    "view": "City",
-    "smoking": true,
-    "floor": 1,
+    "view": "Semua Mobil",
+    "smoking": false,
+    "floor": 45,
     "amenities": [
-      "Free WiFi",
-      "Air Conditioning",
-      "Flat-Screen TV",
-      "Coffee Maker"
+      "Pembersihan semua bagian kaca",
+      "Menghilangkan noda air & jamur"
     ],
     "availability": true,
-    "guest_service": [
-      "24-Hour Room Service",
-      "Concierge Service",
-      "Housekeeping"
-    ],
-    "inclusion": [
-      "Complimentary Bottled Water",
-      "Free WiFi"
-    ]
-  },
-  {
-    "id": 105,
-    "hotel_id": 3,
-    "image": "assets/images/dummy/room/hotel_room_5.jpg",
-    "room_type": "Family Room",
-    "bed_type": "2 Double Beds",
-    "price_per_night": 220.00,
-    "capacity": 2,
-    "view": "Mountain",
-    "smoking": false,
-    "floor": 2,
-    "amenities": [
-      "Free WiFi",
-      "Air Conditioning",
-      "Mini-Fridge",
-      "Flat-Screen TV",
-      "Extra Bed Available"
-    ],
-    "availability": true,
-    "guest_service": [
-      "24-Hour Room Service",
-      "Concierge Service",
-      "Housekeeping",
-      "Childcare Services"
-    ],
-    "inclusion": [
-      "Complimentary Breakfast for Children",
-      "Free WiFi",
-      "Free Parking"
-    ]
-  },
-  {
-    "id": 106,
-    "hotel_id": 3,
-    "image": "assets/images/dummy/room/hotel_room_6.jpg",
-    "room_type": "Penthouse Suite",
-    "bed_type": "King",
-    "price_per_night": 500.00,
-    "capacity": 3,
-    "view": "Ocean",
-    "smoking": false,
-    "floor": 4,
-    "amenities": [
-      "Free WiFi",
-      "Private Pool",
-      "Balcony with Ocean View",
-      "Living Room",
-      "Mini-Bar",
-      "Jacuzzi"
-    ],
-    "availability": false,
-    "guest_service": [
-      "24-Hour Room Service",
-      "Concierge Service",
-      "Housekeeping",
-      "Private Butler"
-    ],
-    "inclusion": [
-      "Welcome Drink",
-      "Private Butler Service",
-      "Complimentary Breakfast",
-      "Free Airport Transfer"
-    ]
-  },
-  {
-    "id": 107,
-    "hotel_id": 4,
-    "image": "assets/images/dummy/room/hotel_room_7.jpg",
-    "room_type": "Junior Suite",
-    "bed_type": "King",
-    "price_per_night": 300.00,
-    "capacity": 1,
-    "view": "Garden",
-    "smoking": true,
-    "floor": 1,
-    "amenities": [
-      "Free WiFi",
-      "Air Conditioning",
-      "Living Area",
-      "Mini-Bar",
-      "Coffee Maker"
-    ],
-    "availability": true,
-    "guest_service": [
-      "24-Hour Room Service",
-      "Concierge Service",
-      "Housekeeping",
-      "Laundry Service"
-    ],
-    "inclusion": [
-      "Complimentary Breakfast",
-      "Free WiFi",
-      "Late Check-Out"
-    ]
-  },
-  {
-    "id": 108,
-    "hotel_id": 4,
-    "image": "assets/images/dummy/room/hotel_room_8.jpg",
-    "room_type": "Accessible Room",
-    "bed_type": "Queen",
-    "price_per_night": 140.00,
-    "capacity": 2,
-    "view": "Ocean",
-    "smoking": false,
-    "floor": 2,
-    "amenities": [
-      "Free WiFi",
-      "Air Conditioning",
-      "Flat-Screen TV",
-      "Wheelchair Accessible",
-      "Coffee Maker"
-    ],
-    "availability": true,
-    "guest_service": [
-      "24-Hour Room Service",
-      "Concierge Service",
-      "Housekeeping"
-    ],
-    "inclusion": [
-      "Complimentary Bottled Water",
-      "Free WiFi",
-      "Access to Accessible Facilities"
-    ]
-  },
-  {
-    "id": 109,
-    "hotel_id": 4,
-    "image": "assets/images/dummy/room/hotel_room_9.jpg",
-    "room_type": "Garden View Room",
-    "bed_type": "Twin",
-    "price_per_night": 110.00,
-    "capacity": 4,
-    "view": "City",
-    "smoking": false,
-    "floor": 5,
-    "amenities": [
-      "Free WiFi",
-      "Air Conditioning",
-      "Mini-Fridge",
-      "Flat-Screen TV",
-      "Garden View"
-    ],
-    "availability": false,
-    "guest_service": [
-      "24-Hour Room Service",
-      "Concierge Service",
-      "Housekeeping"
-    ],
-    "inclusion": [
-      "Complimentary Breakfast",
-      "Free WiFi"
-    ]
-  },
-  {
-    "id": 110,
-    "hotel_id": 5,
-    "image": "assets/images/dummy/room/hotel_room_10.jpg",
-    "room_type": "Oceanfront Room",
-    "bed_type": "King",
-    "price_per_night": 400.00,
-    "capacity": 1,
-    "view": "Garden",
-    "smoking": false,
-    "floor": 1,
-    "amenities": [
-      "Free WiFi",
-      "Air Conditioning",
-      "Balcony",
-      "Ocean View",
-      "Mini-Bar",
-      "Coffee Maker"
-    ],
-    "availability": true,
-    "guest_service": [
-      "24-Hour Room Service",
-      "Concierge Service",
-      "Housekeeping",
-      "Laundry Service"
-    ],
-    "inclusion": [
-      "Complimentary Breakfast",
-      "Free WiFi",
-      "Ocean View"
-    ]
+    "guest_service": [],
+    "inclusion": []
   }
 ]

@@ -1,50 +1,60 @@
-import 'dart:convert';
+// lib/model/pembayaran_model.dart
 
+import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:sikilap/helpers/services/json_decoder.dart';
 import 'package:sikilap/model/identifier_model.dart';
 
-class PaymentHistoryModel extends IdentifierModel {
-  final String paymentID, bookingID, guestName, currency, paymentMethod, paymentStatus, transactionID, paymentNote;
-  final DateTime paymentDate;
-  final double amountPaid;
+class PembayaranModel extends IdentifierModel {
+  final String kodePembayaran;
+  final String kodePesanan;
+  final String namaPelanggan;
+  final double jumlahDibayar;
+  final String mataUang;
+  final String metodePembayaran;
+  final String statusPembayaran;
+  final DateTime tanggalPembayaran;
+  final String idTransaksi;
+  final String catatan;
 
-  PaymentHistoryModel(super.id, this.paymentID, this.bookingID, this.guestName, this.currency, this.paymentMethod, this.paymentStatus, this.paymentDate,
-      this.transactionID, this.paymentNote, this.amountPaid);
+  PembayaranModel(
+    super.id,
+    this.kodePembayaran,
+    this.kodePesanan,
+    this.namaPelanggan,
+    this.jumlahDibayar,
+    this.mataUang,
+    this.metodePembayaran,
+    this.statusPembayaran,
+    this.tanggalPembayaran,
+    this.idTransaksi,
+    this.catatan,
+  );
 
-  static PaymentHistoryModel fromJSON(Map<String, dynamic> json) {
+  static PembayaranModel fromJSON(Map<String, dynamic> json) {
     JSONDecoder decoder = JSONDecoder(json);
 
-    String paymentID = decoder.getString('payment_id');
-    String bookingID = decoder.getString('booking_id');
-    String guestName = decoder.getString('guest_name');
-    String currency = decoder.getString('currency');
-    String paymentMethod = decoder.getString('payment_method');
-    String paymentStatus = decoder.getString('payment_status');
-    DateTime paymentDate = decoder.getDateTime('payment_date');
-    String transactionID = decoder.getString('transaction_id');
-    String paymentNote = decoder.getString('payment_notes');
-    double amountPaid = decoder.getDouble('amount_paid');
-
-    return PaymentHistoryModel(
-        decoder.getId, paymentID, bookingID, guestName, currency, paymentMethod, paymentStatus, paymentDate, transactionID, paymentNote, amountPaid);
+    return PembayaranModel(
+      decoder.getId,
+      decoder.getString('kode_pembayaran'),
+      decoder.getString('kode_pesanan'),
+      decoder.getString('nama_pelanggan'),
+      decoder.getDouble('jumlah_dibayar'),
+      decoder.getString('mata_uang'),
+      decoder.getString('metode_pembayaran'),
+      decoder.getString('status_pembayaran'),
+      decoder.getDateTime('tanggal_pembayaran'),
+      decoder.getString('id_transaksi'),
+      decoder.getString('catatan'),
+    );
   }
 
-  static List<PaymentHistoryModel> listFromJSON(List<dynamic> list) {
-    return list.map((e) => PaymentHistoryModel.fromJSON(e)).toList();
+  static List<PembayaranModel> listFromJSON(List<dynamic> list) {
+    return list.map((e) => PembayaranModel.fromJSON(e)).toList();
   }
 
-  static List<PaymentHistoryModel>? _dummyList;
-
-  static Future<List<PaymentHistoryModel>> get dummyList async {
-    if (_dummyList == null) {
-      dynamic data = json.decode(await getData());
-      _dummyList = listFromJSON(data);
-    }
-    return _dummyList!;
-  }
-
-  static Future<String> getData() async {
-    return await rootBundle.loadString('assets/data/payment_history.json');
+  static Future<List<PembayaranModel>> get dummyList async {
+    dynamic data = json.decode(await rootBundle.loadString('assets/data/riwayat_pembayaran.json'));
+    return listFromJSON(data);
   }
 }

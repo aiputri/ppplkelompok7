@@ -25,6 +25,20 @@ class GuestListScreen extends StatefulWidget {
 class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
   GuestListController controller = Get.put(GuestListController());
 
+  // Fungsi untuk mendapatkan warna status
+  Color getStatusColor(String status) {
+    switch (status) {
+      case 'Aktif':
+        return contentTheme.success;
+      case 'Nonaktif':
+        return contentTheme.secondary;
+      case 'Diblokir':
+        return contentTheme.danger;
+      default:
+        return contentTheme.warning;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Layout(
@@ -41,14 +55,16 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText.titleMedium(
-                      "List Mitra",
+                      // --- UBAH ISI ---
+                      "Daftar Pelanggan",
                       fontSize: 18,
                       fontWeight: 600,
                     ),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: 'Admin'),
-                        MyBreadcrumbItem(name: 'List Mitra', active: true),
+                        // --- UBAH ISI ---
+                        MyBreadcrumbItem(name: 'Pelanggan', active: true),
                       ],
                     ),
                   ],
@@ -63,7 +79,8 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      MyText.bodyMedium("Mitra Terdaftar", fontWeight: 600),
+                      // --- UBAH ISI ---
+                      MyText.bodyMedium("Pelanggan Terdaftar", fontWeight: 600),
                       MySpacing.height(24),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -75,21 +92,21 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                             showBottomBorder: false,
                             showCheckboxColumn: true,
                             border: TableBorder.all(style: BorderStyle.solid, width: .4, color: Colors.grey),
-                            // Kolom sudah sesuai dengan yang Anda minta
+                            // --- UBAH ISI KOLOM ---
                             columns: [
-                              DataColumn(label: MyText.bodySmall('Nama Mitra', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Nama Pelanggan', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Email', fontWeight: 600)),
                               DataColumn(label: MyText.bodySmall('Nomor Telepon', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Area Layanan', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Rating', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Total Pesanan', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Tanggal Bergabung', fontWeight: 600)),
                               DataColumn(label: MyText.bodySmall('Status', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Tanggal Gabung', fontWeight: 600)),
                               DataColumn(label: MyText.bodySmall('Aksi', fontWeight: 600)),
                             ],
-                            // -- BAGIAN INI DIUBAH UNTUK MENAMPILKAN DATA MITRA --
-                            rows: controller.guest // TETAP MENGGUNAKAN 'guest'
+                            // Data akan dipetakan sesuai field yang ada di model
+                            rows: controller.guest
                                 .mapIndexed((index, data) => DataRow(
                                       cells: [
-                                        // Sel 1: Nama Mitra
+                                        // Sel 1: Nama Pelanggan
                                         DataCell(
                                           Row(
                                             children: [
@@ -102,52 +119,46 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                                                 ),
                                               ),
                                               MySpacing.width(12),
-                                              MyText.labelSmall(data.nama_mitra),
+                                              MyText.labelSmall(data.nama_pelanggan),
                                             ],
                                           ),
                                         ),
-                                        // Sel 2: Nomor Telepon
+                                        // Sel 2: Email
+                                        DataCell(
+                                          MyText.labelSmall(data.email),
+                                        ),
+                                        // Sel 3: Nomor Telepon
                                         DataCell(
                                           MyText.labelSmall(data.nomor_telepon),
                                         ),
-                                        // Sel 3: Area Layanan
-                                        DataCell(
-                                          MyText.labelSmall(data.area_layanan),
-                                        ),
-                                        // Sel 4: Rating
+                                        // Sel 4: Jumlah Pesanan
                                         DataCell(
                                           Row(
                                             children: [
-                                              Icon(LucideIcons.star, color: Color(0xffFFC233), size: 16),
+                                              Icon(LucideIcons.shopping_cart, size: 16),
                                               MySpacing.width(4),
-                                              MyText.labelSmall("${data.rating}"),
+                                              MyText.labelSmall("${data.jumlah_pesanan}x"),
                                             ],
                                           ),
                                         ),
-                                        // Sel 5: Status
+                                        // Sel 5: Tanggal Bergabung
+                                        DataCell(
+                                          MyText.labelSmall(data.tanggal_bergabung),
+                                        ),
+                                        // Sel 6: Status
                                         DataCell(
                                           MyContainer.bordered(
                                             padding: MySpacing.xy(12, 6),
                                             borderRadiusAll: 4,
-                                            color: data.status == 'Aktif' 
-                                                ? contentTheme.success.withAlpha(40) 
-                                                : contentTheme.danger.withAlpha(40),
+                                            color: getStatusColor(data.status).withAlpha(40),
                                             border: Border.all(
-                                              color: data.status == 'Aktif' 
-                                                  ? contentTheme.success 
-                                                  : contentTheme.danger
+                                              color: getStatusColor(data.status),
                                             ),
                                             child: MyText.labelSmall(
                                               data.status,
-                                              color: data.status == 'Aktif' 
-                                                  ? contentTheme.success 
-                                                  : contentTheme.danger,
+                                              color: getStatusColor(data.status),
                                             ),
                                           ),
-                                        ),
-                                        // Sel 6: Tanggal Gabung
-                                        DataCell(
-                                          MyText.labelSmall(data.tanggal_gabung),
                                         ),
                                         // Sel 7: Aksi
                                         DataCell(Row(
@@ -162,7 +173,7 @@ class _GuestListScreenState extends State<GuestListScreen> with UIMixin {
                                                 paddingAll: 8,
                                                 onTap: () => controller.addGuest(data.id), // Anda mungkin ingin ganti ini ke deleteGuest
                                                 color: contentTheme.danger.withAlpha(40),
-                                                child: Icon(LucideIcons.trash_2, size: 14, color: contentTheme.danger)),
+                                                child: Icon(LucideIcons.user_x, size: 14, color: contentTheme.danger)),
                                           ],
                                         ))
                                       ],

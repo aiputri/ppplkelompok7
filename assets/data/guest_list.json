@@ -1,47 +1,52 @@
 [
   {
-    "id_mitra": 1,
-    "nama_mitra": "Kilap Abadi Wash",
+    "id": 1,
+    "nama_pelanggan": "Budi Santoso",
+    "email": "budi.s@email.com",
     "nomor_telepon": "081234567890",
-    "area_layanan": "Surabaya Timur",
-    "rating": 4.8,
-    "status": "Aktif",
-    "tanggal_gabung": "2024-01-15"
+    "alamat_utama": "Jl. Mulyorejo No. 123, Surabaya",
+    "jumlah_pesanan": 5,
+    "tanggal_bergabung": "2024-01-15",
+    "status": "Aktif"
   },
   {
-    "id_mitra": 2,
-    "nama_mitra": "Bersih Kinclong",
+    "id": 2,
+    "nama_pelanggan": "Citra Lestari",
+    "email": "citra.l@email.com",
     "nomor_telepon": "085711223344",
-    "area_layanan": "Surabaya Barat",
-    "rating": 4.5,
-    "status": "Aktif",
-    "tanggal_gabung": "2024-02-20"
+    "alamat_utama": "Jl. Dharmahusada Indah C-5, Surabaya",
+    "jumlah_pesanan": 2,
+    "tanggal_bergabung": "2024-02-20",
+    "status": "Aktif"
   },
   {
-    "id_mitra": 3,
-    "nama_mitra": "Auto Detailing Pro",
+    "id": 3,
+    "nama_pelanggan": "Andi Wijaya",
+    "email": "andi.w@email.com",
     "nomor_telepon": "089876543210",
-    "area_layanan": "Surabaya Pusat",
-    "rating": 4.9,
-    "status": "Nonaktif",
-    "tanggal_gabung": "2024-03-01"
+    "alamat_utama": "Jl. Basuki Rahmat No. 1, Surabaya",
+    "jumlah_pesanan": 8,
+    "tanggal_bergabung": "2024-03-01",
+    "status": "Nonaktif"
   },
   {
-    "id_mitra": 4,
-    "nama_mitra": "Cuci Mobil Cepat",
+    "id": 4,
+    "nama_pelanggan": "Dewi Anggraini",
+    "email": "dewi.a@email.com",
     "nomor_telepon": "082199887766",
-    "area_layanan": "Surabaya Selatan",
-    "rating": 4.2,
-    "status": "Aktif",
-    "tanggal_gabung": "2024-04-10"
+    "alamat_utama": "Jl. Jemursari Selatan IV/5, Surabaya",
+    "jumlah_pesanan": 1,
+    "tanggal_bergabung": "2024-04-10",
+    "status": "Aktif"
   },
   {
-    "id_mitra": 5,
-    "nama_mitra": "Poles & Cuci 24 Jam",
+    "id": 5,
+    "nama_pelanggan": "Eko Prasetyo",
+    "email": "eko.p@email.com",
     "nomor_telepon": "087755664433",
-    "area_layanan": "Surabaya Utara",
-    "rating": 4.6,
-    "status": "Aktif",
-    "tanggal_gabung": "2024-05-05"
+    "alamat_utama": "Jl. Kenjeran No. 552, Surabaya",
+    "jumlah_pesanan": 12,
+    "tanggal_bergabung": "2024-05-05",
+    "status": "Diblokir"
   }
 ]

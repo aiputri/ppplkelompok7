@@ -1,92 +1,47 @@
 [
   {
     "id": 1,
-    "image": "assets/images/dummy/hotel/hotel_1.jpg",
-    "owner_name": "Etta",
-    "phone_number": "984-156-3146",
-    "email": "contact@aquavibehotel.com",
-    "hotel_name": "AquaVibe Hotel",
-    "city_name": "Hněvotín"
+    "image": "assets/images/mitra/mitra_1.jpg",
+    "owner_name": "Joni Saputra",
+    "phone_number": "081234567890",
+    "email": "kontak@kilapabadi.com",
+    "hotel_name": "Kilap Abadi Wash",
+    "city_name": "Surabaya Timur"
   },
   {
     "id": 2,
-    "image": "assets/images/dummy/hotel/hotel_2.jpg",
-    "owner_name": "Lisha",
-    "phone_number": "804-705-7999",
-    "email": "info@skylinesuites.com",
-    "hotel_name": "Skyline Suites",
-    "city_name": "Dahay"
+    "image": "assets/images/mitra/mitra_2.jpg",
+    "owner_name": "Budi Santoso",
+    "phone_number": "085711223344",
+    "email": "info@bersihkinclong.com",
+    "hotel_name": "Bersih Kinclong",
+    "city_name": "Surabaya Barat"
   },
   {
     "id": 3,
-    "image": "assets/images/dummy/hotel/hotel_3.jpg",
-    "owner_name": "Trudie",
-    "phone_number": "534-904-3774",
-    "email": "reservations@thedriftresort.com",
-    "hotel_name": "The Drift Resort",
-    "city_name": "Bajina Bašta"
+    "image": "assets/images/mitra/mitra_3.jpg",
+    "owner_name": "Citra Lestari",
+    "phone_number": "089876543210",
+    "email": "cs@autodetailingpro.id",
+    "hotel_name": "Auto Detailing Pro",
+    "city_name": "Surabaya Pusat"
   },
   {
     "id": 4,
-    "image": "assets/images/dummy/hotel/hotel_4.jpg",
-    "owner_name": "Jennee",
-    "phone_number": "126-684-9035",
-    "email": "bookings@luxeinn.com",
-    "hotel_name": "LuxeInn",
-    "city_name": "Ncue"
+    "image": "assets/images/mitra/mitra_4.jpg",
+    "owner_name": "Dewi Anggraini",
+    "phone_number": "082199887766",
+    "email": "support@cucicepat.com",
+    "hotel_name": "Cuci Mobil Cepat",
+    "city_name": "Surabaya Selatan"
   },
   {
     "id": 5,
-    "image": "assets/images/dummy/hotel/hotel_5.jpg",
-    "owner_name": "Gage",
-    "phone_number": "582-742-2932",
-    "email": "support@oasisretreat.com",
-    "hotel_name": "Oasis Retreat",
-    "city_name": "Verdun"
-  },
-  {
-    "id": 6,
-    "image": "assets/images/dummy/hotel/hotel_6.jpg",
-    "owner_name": "Fairleigh",
-    "phone_number": "269-660-2829",
-    "email": "hello@covehotel.com",
-    "hotel_name": "Cove Hotel",
-    "city_name": "Vårby"
-  },
-  {
-    "id": 7,
-    "image": "assets/images/dummy/hotel/hotel_7.jpg",
-    "owner_name": "Angus",
-    "phone_number": "109-808-2874",
-    "email": "stay@edenstay.com",
-    "hotel_name": "Eden Stay",
-    "city_name": "Jamban"
-  },
-  {
-    "id": 8,
-    "image": "assets/images/dummy/hotel/hotel_8.jpg",
-    "owner_name": "Simon",
-    "phone_number": "222-171-6884",
-    "email": "contact@nestlodge.com",
-    "hotel_name": "Nest Lodge",
-    "city_name": "Krasnoznamensk"
-  },
-  {
-    "id": 9,
-    "image": "assets/images/dummy/hotel/hotel_9.jpg",
-    "owner_name": "Sinclair",
-    "phone_number": "631-812-8248",
-    "email": "service@vervehotel.com",
-    "hotel_name": "Verve Hotel",
-    "city_name": "Liuji"
-  },
-  {
-    "id": 10,
-    "image": "assets/images/dummy/hotel/hotel_10.jpg",
-    "owner_name": "Blanch",
-    "phone_number": "171-468-8315",
-    "email": "info@zenithhotel.com",
-    "hotel_name": "Zenith Hotel",
-    "city_name": "Peruc"
+    "image": "assets/images/mitra/mitra_5.jpg",
+    "owner_name": "Eko Prasetyo",
+    "phone_number": "087755664433",
+    "email": "help@poles24jam.co.id",
+    "hotel_name": "Poles & Cuci 24 Jam",
+    "city_name": "Surabaya Utara"
   }
 ]

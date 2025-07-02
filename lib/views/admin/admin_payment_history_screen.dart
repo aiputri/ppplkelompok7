@@ -1,34 +1,39 @@
+// lib/views/admin/riwayat_pembayaran_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sikilap/controller/admin/admin_payment_history_controller.dart';
+import 'package:intl/intl.dart'; // Import intl untuk format angka
+import 'package:sikilap/controller/admin/admin_payment_history_controller.dart'; // Ganti ke controller yang benar
 import 'package:sikilap/helpers/utils/my_shadow.dart';
 import 'package:sikilap/helpers/utils/ui_mixins.dart';
 import 'package:sikilap/helpers/utils/utils.dart';
 import 'package:sikilap/helpers/widgets/my_breadcrumb.dart';
 import 'package:sikilap/helpers/widgets/my_breadcrumb_item.dart';
 import 'package:sikilap/helpers/widgets/my_card.dart';
+import 'package:sikilap/helpers/widgets/my_container.dart'; // Diperlukan untuk badge
 import 'package:sikilap/helpers/widgets/my_list_extension.dart';
 import 'package:sikilap/helpers/widgets/my_spacing.dart';
 import 'package:sikilap/helpers/widgets/my_text.dart';
 import 'package:sikilap/helpers/widgets/responsive.dart';
 import 'package:sikilap/views/layout/layout.dart';
 
-class AdminPaymentHistoryScreen extends StatefulWidget {
-  const AdminPaymentHistoryScreen({super.key});
+class RiwayatPembayaranScreen extends StatefulWidget {
+  const RiwayatPembayaranScreen({super.key});
 
   @override
-  State<AdminPaymentHistoryScreen> createState() => _AdminPaymentHistoryScreenState();
+  State<RiwayatPembayaranScreen> createState() => _RiwayatPembayaranScreenState();
 }
 
-class _AdminPaymentHistoryScreenState extends State<AdminPaymentHistoryScreen> with UIMixin {
-  AdminPaymentHistoryController controller = Get.put(AdminPaymentHistoryController());
+class _RiwayatPembayaranScreenState extends State<RiwayatPembayaranScreen> with UIMixin {
+  // Ganti ke controller yang sesuai
+  RiwayatPembayaranController controller = Get.put(RiwayatPembayaranController());
 
   @override
   Widget build(BuildContext context) {
     return Layout(
-      child: GetBuilder(
+      child: GetBuilder<RiwayatPembayaranController>( // Ganti generic type
         init: controller,
-        tag: 'admin_payment_history_controller',
+        tag: 'riwayat_pembayaran_controller', // Ganti tag
         builder: (controller) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,14 +44,14 @@ class _AdminPaymentHistoryScreenState extends State<AdminPaymentHistoryScreen> w
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyText.titleMedium(
-                      "Payment History",
+                      "Riwayat Pembayaran",
                       fontSize: 18,
                       fontWeight: 600,
                     ),
                     MyBreadcrumb(
                       children: [
                         MyBreadcrumbItem(name: 'Admin'),
-                        MyBreadcrumbItem(name: 'Payment History', active: true),
+                        MyBreadcrumbItem(name: 'Pembayaran', active: true),
                       ],
                     ),
                   ],
@@ -61,7 +66,7 @@ class _AdminPaymentHistoryScreenState extends State<AdminPaymentHistoryScreen> w
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      MyText.bodyMedium("Payment History", fontWeight: 600),
+                      MyText.bodyMedium("Semua Transaksi Pembayaran", fontWeight: 600),
                       MySpacing.height(24),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -74,31 +79,38 @@ class _AdminPaymentHistoryScreenState extends State<AdminPaymentHistoryScreen> w
                             showCheckboxColumn: true,
                             border: TableBorder.all(style: BorderStyle.solid, width: .4, color: Colors.grey),
                             columns: [
-                              DataColumn(label: MyText.bodySmall('Transaction ID', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Booking ID', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Payment ID', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Guest Name', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Amount Paid', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Currency', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Payment Method', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Payment Date', fontWeight: 600)),
-                              DataColumn(label: MyText.bodySmall('Payment Note', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('ID Transaksi', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Kode Pesanan', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Pelanggan', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Jumlah (Rp)', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Metode', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Tanggal', fontWeight: 600)),
+                              DataColumn(label: MyText.bodySmall('Catatan', fontWeight: 600)),
                               DataColumn(label: MyText.bodySmall('Status', fontWeight: 600)),
                             ],
-                            rows: controller.paymentHistory
+                            rows: controller.riwayatPembayaran // Ganti ke list yang benar
                                 .mapIndexed((index, data) => DataRow(
                                       cells: [
-                                        DataCell(MyText.labelSmall(data.transactionID)),
-                                        DataCell(MyText.labelSmall(data.bookingID)),
-                                        DataCell(MyText.labelSmall(data.paymentID)),
-                                        DataCell(MyText.labelSmall(data.guestName)),
-                                        DataCell(MyText.labelSmall("\$${data.amountPaid}")),
-                                        DataCell(MyText.labelSmall(data.currency)),
-                                        DataCell(MyText.labelSmall(data.paymentMethod)),
+                                        DataCell(MyText.labelSmall(data.idTransaksi)),
+                                        DataCell(MyText.labelSmall(data.kodePesanan)),
+                                        DataCell(MyText.labelSmall(data.namaPelanggan)),
+                                        DataCell(MyText.labelSmall(NumberFormat.decimalPattern('id').format(data.jumlahDibayar))),
+                                        DataCell(MyText.labelSmall(data.metodePembayaran)),
                                         DataCell(
-                                            MyText.labelSmall(Utils.getDateTimeStringFromDateTime(data.paymentDate, showMonthShort: true, showSecond: false))),
-                                        DataCell(SizedBox(width: 250, child: MyText.labelSmall(data.paymentNote))),
-                                        DataCell(MyText.labelSmall(data.paymentStatus)),
+                                            MyText.labelSmall(Utils.getDateTimeStringFromDateTime(data.tanggalPembayaran, showMonthShort: true, showSecond: false))),
+                                        DataCell(SizedBox(width: 250, child: MyText.labelSmall(data.catatan, maxLines: 2, overflow: TextOverflow.ellipsis))),
+                                        DataCell(
+                                          MyContainer.bordered(
+                                            padding: MySpacing.xy(12, 6),
+                                            borderRadiusAll: 4,
+                                            color: getStatusColor(data.statusPembayaran).withAlpha(40),
+                                            border: Border.all(color: getStatusColor(data.statusPembayaran)),
+                                            child: MyText.labelSmall(
+                                              data.statusPembayaran,
+                                              color: getStatusColor(data.statusPembayaran),
+                                            ),
+                                          ),
+                                        ),
                                       ],
                                     ))
                                 .toList()),
@@ -112,5 +124,19 @@ class _AdminPaymentHistoryScreenState extends State<AdminPaymentHistoryScreen> w
         },
       ),
     );
+  }
+
+  // Fungsi helper untuk menentukan warna status badge
+  Color getStatusColor(String status) {
+    switch (status) {
+      case 'Lunas':
+        return contentTheme.success;
+      case 'Menunggu Verifikasi':
+        return contentTheme.warning;
+      case 'Gagal':
+        return contentTheme.danger;
+      default:
+        return contentTheme.secondary;
+    }
   }
 }
