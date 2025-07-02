@@ -60,7 +60,7 @@ class _LeftBarState extends State<LeftBar>
       child: Column(
         children: [
           SizedBox(
-            height: 60, 
+            height: 60,
             child: InkWell(
               onTap: () =>
                   Get.toNamed(widget.isAdmin ? '/admin/dashboard' : '/home'),
@@ -73,8 +73,8 @@ class _LeftBarState extends State<LeftBar>
                           ? Images.logoLight
                           : Images.logoDark,
                       height: 100,
-                      width: 100,  
-                      fit: BoxFit.contain), 
+                      width: 100,
+                      fit: BoxFit.contain),
                 ],
               ),
             ),
@@ -88,108 +88,103 @@ class _LeftBarState extends State<LeftBar>
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // =================== LOGIKA UTAMA (ADMIN MENU DIUBAH) ===================
+                    // =================== LOGIKA UTAMA (ADMIN & CLIENT MENU) ===================
                     if (widget.isAdmin) ...[
+                      // --- MENU ADMIN (TIDAK DIUBAH) ---
                       LabelWidget(
                           isCondensed: isCondensed, label: "ADMIN PANEL"),
-                      // BERANDA
                       NavigationItem(
                           iconData: LucideIcons.layout_dashboard,
                           title: "Beranda",
                           isCondensed: isCondensed,
                           route: '/admin/dashboard'),
-                      // MANAGE MITRA
                       MenuWidget(
-                        iconData: LucideIcons.user_cog, // Ikon baru
+                        iconData: LucideIcons.user_cog,
                         isCondensed: isCondensed,
-                        title: "Manage Mitra", // Nama baru
+                        title: "Manage Mitra",
                         children: [
                           MenuItem(
-                              title: "List Mitra", // Nama baru
+                              title: "List Mitra",
                               isCondensed: isCondensed,
                               route: '/admin/hotel/list'),
                           MenuItem(
-                              title: "Tambah Mitra", // Nama baru
+                              title: "Tambah Mitra",
                               isCondensed: isCondensed,
                               route: '/admin/hotel/add'),
                         ],
                       ),
-                      // MANAGE LAYANAN
                       MenuWidget(
-                        iconData: LucideIcons.spray_can, // Ikon baru
+                        iconData: LucideIcons.spray_can,
                         isCondensed: isCondensed,
-                        title: "Manage Layanan", // Nama baru
+                        title: "Manage Layanan",
                         children: [
                           MenuItem(
-                              title: "List Layanan", // Nama baru
+                              title: "List Layanan",
                               isCondensed: isCondensed,
                               route: '/admin/room/list'),
                           MenuItem(
-                              title: "Tambah Layanan", // Nama baru
+                              title: "Tambah Layanan",
                               isCondensed: isCondensed,
                               route: '/admin/room/add'),
                         ],
                       ),
-                      // MANAGE PELANGGAN
                       MenuWidget(
-                        iconData: LucideIcons.users, // Ikon baru
+                        iconData: LucideIcons.users,
                         isCondensed: isCondensed,
-                        title: "Manage Pelanggan", // Nama baru
+                        title: "Manage Pelanggan",
                         children: [
                           MenuItem(
-                              title: "List Pelanggan", // Nama baru
+                              title: "List Pelanggan",
                               isCondensed: isCondensed,
                               route: '/admin/guest/list'),
                         ],
                       ),
-                      // MANAGE PESANAN
                       NavigationItem(
-                          iconData: LucideIcons.book_marked, // Ikon baru
-                          title: "Manage Pesanan", // Nama baru
+                          iconData: LucideIcons.book_marked,
+                          title: "Manage Pesanan",
                           isCondensed: isCondensed,
                           route: '/admin/booking/list'),
-                      // PAYMENT HISTORY (TETAP)
                       NavigationItem(
                           iconData: LucideIcons.credit_card,
                           title: "Payment History",
                           isCondensed: isCondensed,
                           route: '/admin/payment'),
                     ] else ...[
-                      // TAMPILKAN HANYA MENU CLIENT
+                      // --- MENU CLIENT (UBAH ISI DI SINI) ---
                       LabelWidget(
-                          isCondensed: isCondensed, label: "CLIENT PANEL"),
+                          isCondensed: isCondensed, label: "MENU PENGGUNA"),
                       NavigationItem(
-                          iconData: LucideIcons.house,
-                          title: "Home",
+                          iconData: LucideIcons.bomb,
+                          title: "Beranda", // Home -> Beranda
                           isCondensed: isCondensed,
                           route: '/home'),
                       NavigationItem(
-                          iconData: LucideIcons.building,
-                          title: "Room Selection",
+                          iconData: LucideIcons.spray_can, // Ikon lebih relevan
+                          title: "Pilih Layanan", // Room Selection -> Pilih Layanan
                           isCondensed: isCondensed,
                           route: '/room_selection'),
                       NavigationItem(
-                          iconData: LucideIcons.archive,
-                          title: "Booking Form",
+                          iconData: LucideIcons.shopping_cart, // Ikon lebih relevan
+                          title: "Pemesanan", // Booking Form -> Pemesanan
                           isCondensed: isCondensed,
                           route: '/booking_form'),
                       NavigationItem(
-                          iconData: LucideIcons.ticket,
-                          title: "My Bookings",
+                          iconData: LucideIcons.history, // Ikon lebih relevan
+                          title: "Pesanan Saya", // My Bookings -> Pesanan Saya
                           isCondensed: isCondensed,
                           route: '/my_booking'),
                       NavigationItem(
-                          iconData: LucideIcons.credit_card,
-                          title: "Payment History",
+                          iconData: LucideIcons.wallet, // Ikon lebih relevan
+                          title: "Pembayaran", // Payment History -> Pembayaran
                           isCondensed: isCondensed,
                           route: '/payment_history'),
                       NavigationItem(
-                          iconData: LucideIcons.map_pin,
-                          title: "Location Map",
+                          iconData: LucideIcons.map, // Ikon lebih relevan
+                          title: "Lokasi", // Location Map -> Lokasi
                           isCondensed: isCondensed,
                           route: '/location_map'),
                     ],
-                    // =====================================================
+                    // =======================================================================
                   ],
                 ),
               ),

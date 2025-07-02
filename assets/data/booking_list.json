@@ -13,8 +13,22 @@
     "status_pembayaran": "Lunas",
     "status_pesanan": "Selesai"
   },
-  {
+    {
     "id": 2,
+    "kode_pesanan": "SKL-001",
+    "nama_pelanggan": "Budi Santoso",
+    "email_pelanggan": "budi.s@email.com",
+    "telepon_pelanggan": "089876543210",
+    "jenis_layanan": "Cuci Exterior + Interior",
+    "alamat_layanan": "Jl. Mulyorejo No. 123, Surabaya",
+    "tanggal_layanan": "2024-12-05",
+    "waktu_layanan": "10:00",
+    "total_biaya": 125000.0,
+    "status_pembayaran": "Lunas",
+    "status_pesanan": "Tunda"
+  },
+  {
+    "id": 3,
     "kode_pesanan": "SKL-002",
     "nama_pelanggan": "Citra Lestari",
     "email_pelanggan": "citra.l@email.com",

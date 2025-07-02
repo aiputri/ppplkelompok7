@@ -28,6 +28,7 @@ class _BookingListScreenState extends State<BookingListScreen> with UIMixin {
   Color getStatusColor(String status) {
     switch (status) {
       case 'Selesai':
+      case 'Tunda' :
         return contentTheme.success;
       case 'Dikonfirmasi':
       case 'Dikerjakan':
