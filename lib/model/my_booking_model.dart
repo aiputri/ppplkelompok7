@@ -1,24 +1,28 @@
-import 'dart:convert';
+// lib/model/my_booking_model.dart
 
+import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:sikilap/helpers/services/json_decoder.dart';
 import 'package:sikilap/model/identifier_model.dart';
 
 class MyBookingModel extends IdentifierModel {
-  final String bookingID,
-      guestName,
-      hotelName,
-      roomType,
-      checkInDate,
-      checkOutDate,
-      currency,
-      paymentStatus,
-      bookingStatus,
-      bookingDate,
-      specialRequests,
-      paymentMethod;
+  // Properti yang tidak akan pernah berubah setelah dibuat
+  final String bookingID;
+  final String guestName;
+  final String hotelName; // Ini adalah Nama Mitra
+  final String roomType; // Ini adalah Nama Layanan
+  final String checkInDate; // Ini kita gunakan untuk Jadwal Layanan
+  final String checkOutDate; // Bisa tidak dipakai atau untuk info lain
+  final String currency;
+  final String bookingDate;
+  final String specialRequests; // Kita gunakan untuk Jenis Kendaraan
   final int numberOfGuest;
   final double totalPrice;
+
+  // Properti yang BISA DIUBAH statusnya
+  String paymentMethod;
+  String paymentStatus;
+  String bookingStatus;
 
   MyBookingModel(
     super.id,
@@ -56,22 +60,32 @@ class MyBookingModel extends IdentifierModel {
     String specialRequests = decoder.getString('special_requests');
     String paymentMethod = decoder.getString('payment_method');
 
-    return MyBookingModel(decoder.getId, bookingID, guestName, hotelName, roomType, checkInDate, checkOutDate, currency, paymentStatus, bookingStatus,
-        bookingDate, specialRequests, paymentMethod, numberOfGuest, totalPrice);
+    return MyBookingModel(
+        decoder.getId,
+        bookingID,
+        guestName,
+        hotelName,
+        roomType,
+        checkInDate,
+        checkOutDate,
+        currency,
+        paymentStatus,
+        bookingStatus,
+        bookingDate,
+        specialRequests,
+        paymentMethod,
+        numberOfGuest,
+        totalPrice);
   }
 
   static List<MyBookingModel> listFromJSON(List<dynamic> list) {
     return list.map((e) => MyBookingModel.fromJSON(e)).toList();
   }
 
-  static List<MyBookingModel>? _dummyList;
-
+  // Menggunakan metode tanpa cache agar perubahan di file JSON langsung terlihat saat development
   static Future<List<MyBookingModel>> get dummyList async {
-    if (_dummyList == null) {
-      dynamic data = json.decode(await getData());
-      _dummyList = listFromJSON(data);
-    }
-    return _dummyList!;
+    dynamic data = json.decode(await getData());
+    return listFromJSON(data);
   }
 
   static Future<String> getData() async {

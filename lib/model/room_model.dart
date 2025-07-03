@@ -72,14 +72,9 @@ class RoomModel extends IdentifierModel {
     return list.map((e) => RoomModel.fromJSON(e)).toList();
   }
 
-  static List<RoomModel>? _dummyList;
-
   static Future<List<RoomModel>> get dummyList async {
-    if (_dummyList == null) {
-      dynamic data = json.decode(await getData());
-      _dummyList = listFromJSON(data);
-    }
-    return _dummyList!;
+    dynamic data = json.decode(await getData());
+    return listFromJSON(data);
   }
 
   static Future<String> getData() async {

@@ -135,7 +135,7 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> with UIMixin {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MyText.bodyMedium("Price", fontWeight: 600),
+          MyText.bodyMedium("Harga Mulai Dari", fontWeight: 600),
           MySpacing.height(12),
           Row(
             children: [
@@ -148,11 +148,11 @@ class _RoomDetailScreenState extends State<RoomDetailScreen> with UIMixin {
           MySpacing.height(24),
           MyButton.rounded(
             onPressed: controller
-                .goToBookingForm, // <-- PANGGIL FUNGSI DARI CONTROLLER
+                .goToRoomSelection, // <-- PANGGIL FUNGSI DARI CONTROLLER
             elevation: 0,
             padding: MySpacing.xy(20, 16),
             backgroundColor: contentTheme.primary,
-            child: MyText.bodyMedium("Book This Room",
+            child: MyText.bodyMedium("Pilih Layanan",
                 fontWeight: 600, color: contentTheme.onPrimary),
           )
         ],

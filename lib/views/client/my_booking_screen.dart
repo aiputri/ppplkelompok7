@@ -45,10 +45,8 @@ class _MyBookingScreenState extends State<MyBookingScreen> with UIMixin {
   @override
   Widget build(BuildContext context) {
     return Layout(
-      child: GetBuilder(
-        init: controller,
-        tag: 'my_booking_controller',
-        builder: (controller) {
+      child: Obx(
+        () {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -84,7 +82,8 @@ class _MyBookingScreenState extends State<MyBookingScreen> with UIMixin {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // --- UBAH ISI ---
-                      MyText.bodyMedium("Riwayat dan Status Pesanan", fontWeight: 600),
+                      MyText.bodyMedium("Riwayat dan Status Pesanan",
+                          fontWeight: 600),
                       MySpacing.height(24),
                       if (controller.myBooking.isNotEmpty)
                         SingleChildScrollView(
@@ -145,11 +144,16 @@ class _MyBookingScreenState extends State<MyBookingScreen> with UIMixin {
                                             MyContainer.bordered(
                                               padding: MySpacing.xy(12, 6),
                                               borderRadiusAll: 4,
-                                              color: getStatusColor(data.bookingStatus).withAlpha(40),
-                                              border: Border.all(color: getStatusColor(data.bookingStatus)),
+                                              color: getStatusColor(
+                                                      data.bookingStatus)
+                                                  .withAlpha(40),
+                                              border: Border.all(
+                                                  color: getStatusColor(
+                                                      data.bookingStatus)),
                                               child: MyText.labelSmall(
                                                 data.bookingStatus,
-                                                color: getStatusColor(data.bookingStatus),
+                                                color: getStatusColor(
+                                                    data.bookingStatus),
                                               ),
                                             ),
                                           ),

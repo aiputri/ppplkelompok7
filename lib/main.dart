@@ -7,7 +7,9 @@ import 'package:provider/provider.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:sikilap/helpers/localizations/app_localization_delegate.dart';
 import 'package:sikilap/helpers/localizations/language.dart';
-import 'package:sikilap/helpers/services/auth_services.dart'; // <-- IMPORT BARU
+import 'package:sikilap/helpers/services/auth_services.dart';
+import 'package:sikilap/helpers/services/booking_service.dart';
+import 'package:sikilap/helpers/services/payment_service.dart';
 import 'package:sikilap/helpers/services/navigation_service.dart';
 import 'package:sikilap/helpers/storage/local_storage.dart';
 import 'package:sikilap/helpers/theme/app_notifire.dart';
@@ -21,13 +23,23 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
 
-  // Inisialisasi LocalStorage dan tunggu sampai selesai.
-  // Ini akan memanggil `AuthService.loadUserFromStorage()` di dalamnya.
+  // ========== URUTAN INISIALISASI YANG DIPERBAIKI ==========
+
+  // 1. Daftarkan semua service global terlebih dahulu menggunakan lazyPut
+  //    agar tidak langsung dibuat.
+  Get.lazyPut(() => AuthService(), fenix: true);
+  Get.lazyPut(() => BookingService(), fenix: true);
+  Get.lazyPut(() => PaymentService(), fenix: true);
+
+  // 2. Inisialisasi LocalStorage. Ini akan memicu `onInit` dari AuthService
+  //    untuk memuat data pengguna dari sesi sebelumnya.
   await LocalStorage.init();
 
-  // Inisialisasi service lain
+  // 3. Inisialisasi service UI lainnya.
   AppStyle.init();
   await ThemeCustomizer.init();
+
+  // ========================================================
 
   runApp(ChangeNotifierProvider<AppNotifier>(
     create: (context) => AppNotifier(),
@@ -42,20 +54,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AppNotifier>(
       builder: (_, notifier, ___) {
-        // ========== LOGIKA PENENTUAN RUTE AWAL ==========
+        // Logika penentuan rute awal sudah benar.
         String initialRoute;
         if (AuthService.isLoggedIn) {
-          // Jika sudah login, cek perannya
           if (AuthService.loggedInUser.value!.isAdmin()) {
-            initialRoute = '/admin/dashboard'; // Arahkan admin ke dashboardnya
+            initialRoute = '/admin/dashboard';
           } else {
-            initialRoute = '/home'; // Arahkan client ke home
+            initialRoute = '/home';
           }
         } else {
-          // Jika belum login, arahkan ke halaman login
           initialRoute = '/auth/login';
         }
-        // ================================================
 
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
@@ -63,7 +72,7 @@ class MyApp extends StatelessWidget {
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeCustomizer.instance.theme,
           navigatorKey: NavigationService.navigatorKey,
-          initialRoute: initialRoute, // <-- GUNAKAN RUTE YANG SUDAH DITENTUKAN
+          initialRoute: initialRoute,
           getPages: getPageRoute(),
           builder: (context, child) {
             NavigationService.registerContext(context);

@@ -11,8 +11,8 @@ class PembayaranModel extends IdentifierModel {
   final String namaPelanggan;
   final double jumlahDibayar;
   final String mataUang;
-  final String metodePembayaran;
-  final String statusPembayaran;
+  String metodePembayaran;
+  String statusPembayaran;
   final DateTime tanggalPembayaran;
   final String idTransaksi;
   final String catatan;
@@ -54,7 +54,8 @@ class PembayaranModel extends IdentifierModel {
   }
 
   static Future<List<PembayaranModel>> get dummyList async {
-    dynamic data = json.decode(await rootBundle.loadString('assets/data/payment_history.json'));
+    dynamic data = json.decode(
+        await rootBundle.loadString('assets/data/payment_history.json'));
     return listFromJSON(data);
   }
 }

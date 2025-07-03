@@ -6,8 +6,9 @@ import 'package:sikilap/model/hotel_model.dart';
 import 'package:sikilap/model/room_model.dart';
 
 class HomeController extends MyController {
-  List<HotelModel> hotel = [];
-  List<RoomModel> allRooms = [];
+  List<HotelModel> hotel = []; // Daftar Mitra
+  List<RoomModel> allRooms = []; // Daftar semua Layanan
+
   final List<String> destinations = [
     'New York',
     'Los Angeles',
@@ -38,44 +39,47 @@ class HomeController extends MyController {
       hotel = value;
       update();
     });
-
-    // Ambil semua data kamar dan simpan di allRooms
     RoomModel.dummyList.then((value) {
       allRooms = value;
       update();
     });
   }
 
-  // ========== FUNGSI YANG DIPERBAIKI ==========
-
-  /// Fungsi ini dipanggil saat pengguna mengklik sebuah HOTEL.
-  /// Tujuannya adalah mencari kamar milik hotel itu dan membuka detailnya.
-  void goToHotelDetail(HotelModel selectedHotel) {
-    // Pastikan daftar semua kamar tidak kosong
+  /// Fungsi ini dipanggil saat pengguna mengklik sebuah MITRA.
+  /// Tujuannya adalah langsung membuka detail untuk SATU LAYANAN UNGGULAN dari mitra itu.
+  void goToMitraDetail(HotelModel selectedMitra) {
     if (allRooms.isNotEmpty) {
-      // Cari kamar pertama yang hotelId-nya cocok dengan id hotel yang diklik
-      RoomModel? roomOfThisHotel = allRooms.firstWhereOrNull(
-        (room) => room.hotelId == selectedHotel.id,
+      // Cari layanan pertama yang dimiliki oleh mitra yang diklik
+      RoomModel? layananUnggulan = allRooms.firstWhereOrNull(
+        (layanan) => layanan.hotelId == selectedMitra.id,
       );
 
-      if (roomOfThisHotel != null) {
-        // Jika kamar ditemukan, kirim datanya ke halaman Room Detail
-        Get.toNamed('/room_detail', arguments: roomOfThisHotel);
+      if (layananUnggulan != null) {
+        // Jika ditemukan, langsung kirim ke halaman detail layanan
+        Get.toNamed('/room_detail', arguments: layananUnggulan);
       } else {
-        // Jika tidak ada kamar yang terhubung dengan hotel ini
-        Get.snackbar(
-            "Not Found", "No rooms found for ${selectedHotel.hotelName}.",
+        Get.snackbar("Info", "Mitra ini belum memiliki layanan.",
             snackPosition: SnackPosition.BOTTOM);
       }
-    } else {
-      // Jika data kamar belum ter-load sama sekali
-      Get.snackbar("Info", "Room data is loading, please try again.",
-          snackPosition: SnackPosition.BOTTOM);
     }
   }
 
-  /// Fungsi ini dipanggil saat pengguna mengklik sebuah KAMAR (jika ada).
-  void goToRoomDetail(RoomModel selectedRoom) {
-    Get.toNamed('/room_detail', arguments: selectedRoom);
+  /// Fungsi ini dipanggil saat pengguna mengklik sebuah LAYANAN UNGGULAN.
+  /// Tujuannya adalah membuka halaman PILIH LAYANAN untuk mitra yang memiliki layanan itu.
+  void goToLayananSelection(RoomModel selectedLayanan) {
+    if (hotel.isNotEmpty) {
+      // Cari mitra yang memiliki layanan ini
+      HotelModel? mitraPemilik = hotel.firstWhereOrNull(
+        (mitra) => mitra.id == selectedLayanan.hotelId,
+      );
+
+      if (mitraPemilik != null) {
+        // Jika ditemukan, kirim data mitra ke halaman pemilihan layanan
+        Get.toNamed('/room_selection', arguments: mitraPemilik);
+      } else {
+        Get.snackbar("Error", "Data mitra untuk layanan ini tidak ditemukan.",
+            snackPosition: SnackPosition.BOTTOM);
+      }
+    }
   }
 }

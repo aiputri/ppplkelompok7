@@ -42,14 +42,9 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    MyText.titleMedium(
-                      // --- UBAH ISI ---
-                      "Beranda",
-                      fontSize: 18,
-                      fontWeight: 600,
-                    ),
+                    MyText.titleMedium("Beranda",
+                        fontSize: 18, fontWeight: 600),
                     MyBreadcrumb(children: [
-                      // --- UBAH ISI ---
                       MyBreadcrumbItem(name: 'Beranda', active: true)
                     ]),
                   ],
@@ -60,7 +55,6 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
                 padding: MySpacing.x(flexSpacing / 2),
                 child: MyFlex(
                   children: [
-                    // --- UBAH ISI ---
                     MyFlexItem(sizes: 'lg-6', child: _buildCarouselPromo()),
                     MyFlexItem(
                       sizes: 'lg-6',
@@ -69,28 +63,20 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            MyText.bodyMedium(
-                                // --- UBAH ISI ---
-                                "Area Layanan Populer",
+                            MyText.bodyMedium("Area Layanan Populer",
                                 fontWeight: 600),
                             MySpacing.height(24),
-                            // --- UBAH ISI ---
                             _buildAreaLayananPopuler(),
                             MySpacing.height(24),
-                            MyText.bodyMedium(
-                                // --- UBAH ISI ---
-                                "Penawaran Spesial",
+                            MyText.bodyMedium("Penawaran Spesial",
                                 fontWeight: 600),
                             MySpacing.height(24),
-                            // --- UBAH ISI ---
                             _buildPenawaranSpesial(),
                           ],
                         ),
                       ),
                     ),
-                    // --- UBAH ISI ---
                     MyFlexItem(child: _buildMitraTerbaik()),
-                    // --- UBAH ISI ---
                     MyFlexItem(child: _buildLayananUnggulan()),
                   ],
                 ),
@@ -102,7 +88,6 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
     );
   }
 
-  // Widget ini sekarang untuk Carousel Promo
   Widget _buildCarouselPromo() {
     return CarouselSlider(
       items: controller.featuredImages.asMap().entries.map((entry) {
@@ -112,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
           builder: (BuildContext context) {
             return InkWell(
               onTap: controller.hotel.isNotEmpty
-                  ? () => controller.goToHotelDetail(
+                  ? () => controller.goToMitraDetail(
                       controller.hotel[index % controller.hotel.length])
                   : null,
               child: Container(
@@ -139,7 +124,6 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
     );
   }
 
-  // Widget ini sekarang untuk Area Layanan Populer
   Widget _buildAreaLayananPopuler() {
     return SizedBox(
       height: 100,
@@ -169,7 +153,6 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
     );
   }
 
-  // Widget ini untuk Penawaran Spesial
   Widget _buildPenawaranSpesial() {
     return SizedBox(
       height: 44,
@@ -187,14 +170,12 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
     );
   }
 
-  // Widget ini untuk menampilkan Mitra Terbaik
   Widget _buildMitraTerbaik() {
     return MyContainer(
       paddingAll: 24,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // --- UBAH ISI ---
           MyText.bodyMedium("Mitra Terbaik Kami", fontWeight: 600),
           MySpacing.height(24),
           SizedBox(
@@ -203,9 +184,11 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
               itemCount: controller.hotel.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                HotelModel hotel = controller.hotel[index];
+                HotelModel mitra = controller.hotel[index];
                 return MyContainer.bordered(
-                  onTap: () => controller.goToHotelDetail(hotel),
+                  // ========== PANGGIL FUNGSI YANG BENAR ==========
+                  onTap: () => controller.goToMitraDetail(mitra),
+                  // ===============================================
                   width: 300,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -216,27 +199,26 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
                           height: 150,
                           width: 300,
                           clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: Image.asset(hotel.image, fit: BoxFit.cover)),
-                      // --- UBAH ISI ---
+                          child: Image.asset(mitra.image, fit: BoxFit.cover)),
                       Row(children: [
                         Icon(LucideIcons.user_cog, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(hotel.hotelName) // Nama Mitra
+                        MyText.bodyMedium(mitra.hotelName)
                       ]),
                       Row(children: [
                         Icon(LucideIcons.user, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(hotel.ownerName) // Nama Pemilik
+                        MyText.bodyMedium(mitra.ownerName)
                       ]),
                       Row(children: [
                         Icon(LucideIcons.mail, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(hotel.email) // Email
+                        MyText.bodyMedium(mitra.email)
                       ]),
                       Row(children: [
                         Icon(LucideIcons.map_pin, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(hotel.cityName) // Area Layanan
+                        MyText.bodyMedium(mitra.cityName)
                       ]),
                     ],
                   ),
@@ -250,14 +232,12 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
     );
   }
 
-  // Widget ini untuk menampilkan Layanan Unggulan
   Widget _buildLayananUnggulan() {
     return MyContainer(
       paddingAll: 24,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // --- UBAH ISI ---
           MyText.bodyMedium("Layanan Unggulan", fontWeight: 600),
           MySpacing.height(24),
           SizedBox(
@@ -266,9 +246,11 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
               itemCount: controller.allRooms.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                RoomModel room = controller.allRooms[index];
+                RoomModel layanan = controller.allRooms[index];
                 return MyContainer.bordered(
-                  onTap: () => controller.goToRoomDetail(room),
+                  // ========== PANGGIL FUNGSI YANG BENAR ==========
+                  onTap: () => controller.goToLayananSelection(layanan),
+                  // ===============================================
                   width: 300,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -279,27 +261,26 @@ class _HomeScreenState extends State<HomeScreen> with UIMixin {
                           height: 150,
                           width: 300,
                           clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: Image.asset(room.image, fit: BoxFit.cover)),
-                      // --- UBAH ISI ---
+                          child: Image.asset(layanan.image, fit: BoxFit.cover)),
                       Row(children: [
                         Icon(LucideIcons.spray_can, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(room.roomType) // Nama Layanan
+                        MyText.bodyMedium(layanan.roomType)
                       ]),
                       Row(children: [
                         Icon(LucideIcons.shield_check, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium(room.bedType) // Kategori Layanan
+                        MyText.bodyMedium(layanan.bedType)
                       ]),
                       Row(children: [
                         Icon(LucideIcons.car, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium('${room.view}') // Jenis Mobil
+                        MyText.bodyMedium('${layanan.view}')
                       ]),
                       Row(children: [
                         Icon(LucideIcons.timer, size: 16),
                         MySpacing.width(8),
-                        MyText.bodyMedium('${room.floor} Menit') // Estimasi Durasi
+                        MyText.bodyMedium('${layanan.floor} Menit')
                       ]),
                     ],
                   ),
