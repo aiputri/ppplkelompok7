@@ -12,11 +12,9 @@ import 'package:sikilap/helpers/widgets/my_card.dart';
 import 'package:sikilap/helpers/widgets/my_container.dart';
 import 'package:sikilap/helpers/widgets/my_flex.dart';
 import 'package:sikilap/helpers/widgets/my_flex_item.dart';
-import 'package:sikilap/helpers/widgets/my_list_extension.dart';
 import 'package:sikilap/helpers/widgets/my_spacing.dart';
 import 'package:sikilap/helpers/widgets/my_text.dart';
 import 'package:sikilap/helpers/widgets/responsive.dart';
-import 'package:sikilap/images.dart';
 import 'package:sikilap/model/chart_model.dart';
 import 'package:sikilap/views/layout/layout.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -64,11 +62,26 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
               Padding(
                 padding: MySpacing.x(flexSpacing / 2),
                 child: MyFlex(children: [
-                  MyFlexItem(sizes: 'lg-2.4', child: stats("Total Pesanan", "20.3K", LucideIcons.book_marked, Colors.blue)),
-                  MyFlexItem(sizes: 'lg-2.4', child: stats("Jumlah Mitra", "82", LucideIcons.user_cog, Colors.cyan)),
-                  MyFlexItem(sizes: 'lg-2.4', child: stats("Pendapatan", "Rp 150 Jt", LucideIcons.dollar_sign, Colors.teal)),
-                  MyFlexItem(sizes: 'lg-2.4', child: stats("Total Pelanggan", "4.5K", LucideIcons.users, Colors.indigo)),
-                  MyFlexItem(sizes: 'lg-2.4', child: stats("Pesanan Selesai", "95.8%", LucideIcons.check_check, Colors.purple)),
+                  MyFlexItem(
+                      sizes: 'lg-2.4',
+                      child: stats("Total Pesanan", "20.3K",
+                          LucideIcons.book_marked, Colors.blue)),
+                  MyFlexItem(
+                      sizes: 'lg-2.4',
+                      child: stats("Jumlah Mitra", "82", LucideIcons.user_cog,
+                          Colors.cyan)),
+                  MyFlexItem(
+                      sizes: 'lg-2.4',
+                      child: stats("Pendapatan", "Rp 150 Jt",
+                          LucideIcons.dollar_sign, Colors.teal)),
+                  MyFlexItem(
+                      sizes: 'lg-2.4',
+                      child: stats("Total Pelanggan", "4.5K", LucideIcons.users,
+                          Colors.indigo)),
+                  MyFlexItem(
+                      sizes: 'lg-2.4',
+                      child: stats("Pesanan Selesai", "95.8%",
+                          LucideIcons.check_check, Colors.purple)),
                   MyFlexItem(sizes: 'lg-6', child: monthlyAnalytics()),
                   MyFlexItem(sizes: 'lg-6', child: worldMap()),
                   MyFlexItem(child: booking()),
@@ -97,9 +110,11 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MyText.bodyMedium(title, fontWeight: 600, xMuted: true, maxLines: 1),
+                MyText.bodyMedium(title,
+                    fontWeight: 600, xMuted: true, maxLines: 1),
                 MySpacing.height(4),
-                MyText.titleLarge(subTitle, fontWeight: 600, color: color, maxLines: 1),
+                MyText.titleLarge(subTitle,
+                    fontWeight: 600, color: color, maxLines: 1),
               ],
             ),
           )
@@ -120,7 +135,9 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(child: MyText.bodyMedium("Analitik Bulanan", overflow: TextOverflow.ellipsis, fontWeight: 600)),
+              Expanded(
+                  child: MyText.bodyMedium("Analitik Bulanan",
+                      overflow: TextOverflow.ellipsis, fontWeight: 600)),
               PopupMenuButton(
                 onSelected: controller.onSelectedTimeByLocation,
                 itemBuilder: (BuildContext context) {
@@ -142,8 +159,11 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      MyText.labelSmall(controller.selectedTimeByLocation.toString(), color: theme.colorScheme.onSurface),
-                      Icon(LucideIcons.chevron_down, size: 16, color: theme.colorScheme.onSurface)
+                      MyText.labelSmall(
+                          controller.selectedTimeByLocation.toString(),
+                          color: theme.colorScheme.onSurface),
+                      Icon(LucideIcons.chevron_down,
+                          size: 16, color: theme.colorScheme.onSurface)
                     ],
                   ),
                 ),
@@ -170,7 +190,9 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
                 ColumnSeries<ChartSampleData, String>(
                     animationDuration: 2000,
                     width: 0.5,
-                    borderRadius: const BorderRadius.only(topLeft: Radius.circular(4), topRight: Radius.circular(4)),
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(4),
+                        topRight: Radius.circular(4)),
                     color: contentTheme.primary,
                     dataSource: controller.chartData,
                     xValueMapper: (ChartSampleData data, _) => data.x,
@@ -195,7 +217,7 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
 
   Widget worldMap() {
     // ... (tidak ada perubahan di sini) ...
-     return MyCard(
+    return MyCard(
       shadow: MyShadow(elevation: 0.2, position: MyShadowPosition.bottom),
       paddingAll: 24,
       height: 400,
@@ -246,65 +268,68 @@ class _DashboardScreenState extends State<DashboardScreen> with UIMixin {
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: DataTable(
-                  sortAscending: true,
                   columnSpacing: 48,
-                  onSelectAll: (_) => {},
-                  headingRowColor: WidgetStatePropertyAll(contentTheme.primary.withAlpha(40)),
+                  headingRowColor: WidgetStatePropertyAll(
+                      contentTheme.primary.withAlpha(40)),
                   dataRowMaxHeight: 60,
-                  showBottomBorder: false,
                   columns: [
-                    DataColumn(label: MyText.labelLarge('ID Pesanan', color: contentTheme.primary)),
-                    DataColumn(label: MyText.labelLarge('Pelanggan', color: contentTheme.primary)),
-                    DataColumn(label: MyText.labelLarge('Jadwal Layanan', color: contentTheme.primary)),
-                    DataColumn(label: MyText.labelLarge('Layanan', color: contentTheme.primary)),
-                    DataColumn(label: MyText.labelLarge('Total Biaya', color: contentTheme.primary)),
-                    DataColumn(label: MyText.labelLarge('Status', color: contentTheme.primary)),
+                    DataColumn(
+                        label: MyText.labelLarge('ID Pesanan',
+                            color: contentTheme.primary)),
+                    DataColumn(
+                        label: MyText.labelLarge('Nama Mitra',
+                            color: contentTheme.primary)),
+                    DataColumn(
+                        label: MyText.labelLarge('Layanan',
+                            color: contentTheme.primary)),
+                    DataColumn(
+                        label: MyText.labelLarge('Jadwal Layanan',
+                            color: contentTheme.primary)),
+                    DataColumn(
+                        label: MyText.labelLarge('Total Biaya (Rp)',
+                            color: contentTheme.primary)),
+                    DataColumn(
+                        label: MyText.labelLarge('Metode Pembayaran',
+                            color: contentTheme.primary)),
+                    DataColumn(
+                        label: MyText.labelLarge('Status Pesanan',
+                            color: contentTheme.primary)),
                   ],
-                  // --- BAGIAN INI DIUBAH UNTUK MENCOCOKKAN MODEL BARU ---
-                  rows: controller.booking
-                      .mapIndexed((index, data) => DataRow(cells: [
-                            // Sel 1: ID Pesanan -> Menggunakan kodePesanan
-                            DataCell(MyText.bodySmall(data.kodePesanan, fontWeight: 600)),
-                            
-                            // Sel 2: Nama Pelanggan
-                            DataCell(Row(
-                              children: [
-                                MyContainer.rounded(
-                                  height: 32,
-                                  width: 32,
-                                  paddingAll: 0,
-                                  child: Image.asset(Images.avatars[index % Images.avatars.length]),
-                                ),
-                                MySpacing.width(12),
-                                MyText.bodySmall(data.namaPelanggan, fontWeight: 600),
-                              ],
-                            )),
+                  // ========== ISI DATA MANUAL DI SINI ==========
+                  rows: [
+                    DataRow(cells: [
+                      DataCell(MyText.bodySmall("B1011", fontWeight: 600)),
+                      DataCell(MyText.bodySmall("Kilap Abadi Wash",
+                          fontWeight: 600)),
+                      DataCell(MyText.bodySmall("Cuci Exterior Premium",
+                          fontWeight: 600)),
+                      DataCell(MyText.bodySmall("2025-07-10 - 3:36 PM",
+                          fontWeight: 600)),
+                      DataCell(MyText.bodySmall("50000", fontWeight: 600)),
 
-                            // Sel 3: Jadwal Layanan
-                            DataCell(MyText.bodySmall(data.jadwalLayanan, fontWeight: 600)),
-
-                            // Sel 4: Jenis Layanan
-                            DataCell(MyText.bodySmall(data.jenisLayanan, fontWeight: 600)),
-                            
-                            // Sel 5: Total Biaya
-                            DataCell(MyText.bodySmall("Rp ${NumberFormat.decimalPattern('id').format(data.totalBiaya)}", fontWeight: 600)),
-                            
-                            // Sel 6: Status Pesanan
-                            DataCell(
-                              MyContainer.bordered(
-                                padding: MySpacing.xy(8, 4),
-                                color: getStatusColor(data.statusPesanan).withAlpha(40),
-                                border: Border.all(color: getStatusColor(data.statusPesanan)),
-                                child: MyText.labelSmall(data.statusPesanan, fontWeight: 600, color: getStatusColor(data.statusPesanan)),
-                              ),
-                            ),
-                          ]))
-                      .toList()),
+                      // ========== PERUBAHAN DI SINI ==========
+                      DataCell(MyText.bodySmall("Gopay",
+                          fontWeight: 600)), // Metode Pembayaran
+                      DataCell(
+                        MyContainer.bordered(
+                          padding: MySpacing.xy(8, 4),
+                          color: getStatusColor('Lunas')
+                              .withAlpha(40), // Ganti ke 'Lunas'
+                          border: Border.all(color: getStatusColor('Lunas')),
+                          child: MyText.labelSmall('Lunas',
+                              fontWeight: 600, color: getStatusColor('Lunas')),
+                        ),
+                      ),
+                      // =======================================
+                    ])
+                  ]
+                  // ===========================================
+                  ),
             )
           ],
         ));
   }
-  
+
   // Fungsi helper untuk menentukan warna status
   Color getStatusColor(String status) {
     switch (status) {
