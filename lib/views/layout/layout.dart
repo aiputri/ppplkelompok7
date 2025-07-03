@@ -35,7 +35,7 @@ class Layout extends StatelessWidget {
       return GetBuilder(
           init: controller,
           builder: (controller) {
-            return screenMT!.isMobile ? mobileScreen() : largeScreen();
+            return screenMT.isMobile ? mobileScreen() : largeScreen();
           });
     });
   }

@@ -1,49 +1,38 @@
-// lib/controller/client/payment_history_controller.dart (Saran nama file)
+// lib/controller/client/payment_history_controller.dart
 
 import 'package:sikilap/controller/my_controller.dart';
-// UBAH: Import model yang benar, yaitu model pembayaran Sikilap
-import 'package:sikilap/model/payment_history_model.dart'; 
+// Ganti dengan path model yang benar di proyekmu
+import 'package:sikilap/model/payment_history_model.dart';
 
-// Nama class tetap, sesuai dengan nama file UI
 class PaymentHistoryController extends MyController {
-  
-  // UBAH: Nama list dan tipe datanya agar sesuai dengan model
-  List<PembayaranModel> riwayatPembayaran = [];
+  // GUNAKAN NAMA INI agar konsisten dengan screen
+  List<PembayaranModel> paymentHistory = [];
   bool isLoading = true;
 
-  get paymentHistory => null; // Tambahkan state untuk loading
+  // HAPUS getter yang menyebabkan error
+  // get paymentHistory => null;
 
   @override
   void onInit() {
     super.onInit();
-    // Panggil fungsi untuk memuat data
-    _loadRiwayatPembayaran();
+    _loadPaymentHistory();
   }
 
-  // Buat fungsi terpisah untuk memuat data agar lebih rapi
-  void _loadRiwayatPembayaran() async {
-    // Set isLoading menjadi true saat mulai memuat
+  void _loadPaymentHistory() async {
     isLoading = true;
-    update(); // Beri tahu UI untuk menampilkan loading indicator
+    update();
 
     try {
       // Panggil dummyList dari model yang benar
       List<PembayaranModel> data = await PembayaranModel.dummyList;
-      
-      // Masukkan semua data ke dalam list.
-      // Untuk Klien, mungkin Anda ingin memfilter berdasarkan ID user yang login,
-      // tapi untuk sekarang kita tampilkan semua data dummy.
-      riwayatPembayaran = data; 
-      
-      print("Berhasil memuat ${riwayatPembayaran.length} data riwayat pembayaran untuk klien.");
-      
+      paymentHistory = data;
+      print(
+          "Berhasil memuat ${paymentHistory.length} data riwayat pembayaran.");
     } catch (e) {
-      // Tangani jika terjadi error saat memuat data
-      print("Gagal memuat riwayat pembayaran klien: $e");
+      print("Gagal memuat riwayat pembayaran: $e");
     } finally {
-      // Set isLoading menjadi false setelah selesai, baik berhasil maupun gagal
       isLoading = false;
-      update(); // Beri tahu UI untuk menampilkan data atau pesan error
+      update();
     }
   }
 }
