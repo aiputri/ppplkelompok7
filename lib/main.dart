@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:flutter_quill/flutter_quill.dart'; // <-- IMPORT BARU YANG PENTING
 import 'package:sikilap/helpers/localizations/app_localization_delegate.dart';
 import 'package:sikilap/helpers/localizations/language.dart';
 import 'package:sikilap/helpers/services/auth_services.dart';
@@ -19,27 +19,16 @@ import 'package:sikilap/routes.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
-  // Pastikan semua binding Flutter siap
   WidgetsFlutterBinding.ensureInitialized();
   setPathUrlStrategy();
 
-  // ========== URUTAN INISIALISASI YANG DIPERBAIKI ==========
-
-  // 1. Daftarkan semua service global terlebih dahulu menggunakan lazyPut
-  //    agar tidak langsung dibuat.
   Get.lazyPut(() => AuthService(), fenix: true);
   Get.lazyPut(() => BookingService(), fenix: true);
   Get.lazyPut(() => PaymentService(), fenix: true);
 
-  // 2. Inisialisasi LocalStorage. Ini akan memicu `onInit` dari AuthService
-  //    untuk memuat data pengguna dari sesi sebelumnya.
   await LocalStorage.init();
-
-  // 3. Inisialisasi service UI lainnya.
   AppStyle.init();
   await ThemeCustomizer.init();
-
-  // ========================================================
 
   runApp(ChangeNotifierProvider<AppNotifier>(
     create: (context) => AppNotifier(),
@@ -54,7 +43,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AppNotifier>(
       builder: (_, notifier, ___) {
-        // Logika penentuan rute awal sudah benar.
         String initialRoute;
         if (AuthService.isLoggedIn) {
           if (AuthService.loggedInUser.value!.isAdmin()) {
@@ -80,13 +68,20 @@ class MyApp extends StatelessWidget {
                 textDirection: AppTheme.textDirection,
                 child: child ?? Container());
           },
+          // ========== TAMBAHKAN DELEGATE DI SINI ==========
           localizationsDelegates: [
             AppLocalizationsDelegate(context),
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
+            FlutterQuillLocalizations.delegate, // <-- BARIS BARU
           ],
-          supportedLocales: Language.getLocales(),
+          // ================================================
+          supportedLocales: [
+            ...Language.getLocales(),
+            const Locale(
+                'en', 'US'), // Pastikan bahasa Inggris didukung untuk Quill
+          ],
         );
       },
     );
