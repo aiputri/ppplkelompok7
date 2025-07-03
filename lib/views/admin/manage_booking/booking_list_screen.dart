@@ -21,12 +21,12 @@ class BookingListScreen extends StatefulWidget {
   State<BookingListScreen> createState() => _BookingListScreenState();
 }
 
-// --- PERUBAHAN 1: Tambahkan TickerProviderStateMixin ---
+// Tambahkan TickerProviderStateMixin untuk animasi
 class _BookingListScreenState extends State<BookingListScreen>
     with UIMixin, TickerProviderStateMixin {
   BookingListController controller = Get.put(BookingListController());
 
-  // Fungsi untuk mendapatkan warna status (tidak diubah)
+  // Fungsi untuk mendapatkan warna status
   Color getStatusColor(String status) {
     switch (status) {
       case 'Selesai':
@@ -114,13 +114,12 @@ class _BookingListScreenState extends State<BookingListScreen>
                                               fontWeight: 700,
                                               color: statusColor),
                                           
-                                          // --- PERUBAHAN 3: Gunakan BlinkingStatus ---
-                                          // Jika statusnya 'Menunggu Konfirmasi', gunakan widget berkelip
-                                          if (booking.statusPesanan == 'Menunggu Konfirmasi')
-                                            BlinkingStatus(status: booking.statusPesanan, color: statusColor)
-                                          else
-                                            // Jika tidak, tampilkan teks biasa
-                                            MyText.bodyMedium(booking.statusPesanan, fontWeight: 600, color: statusColor),
+                                          // --- PERUBAHAN DI SINI ---
+                                          // Selalu gunakan BlinkingStatus untuk menampilkan status
+                                          BlinkingStatus(
+                                            status: booking.statusPesanan,
+                                            color: statusColor,
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -136,9 +135,9 @@ class _BookingListScreenState extends State<BookingListScreen>
                                                 paddingAll: 0,
                                                 height: 40,
                                                 width: 40,
-                                                child: Image.asset(Images
-                                                        .avatars[
-                                                    index % Images.avatars.length],
+                                                child: Image.asset(
+                                                    Images.avatars[index %
+                                                        Images.avatars.length],
                                                     fit: BoxFit.cover),
                                               ),
                                               MySpacing.width(12),
@@ -221,18 +220,24 @@ class _BookingListScreenState extends State<BookingListScreen>
   }
 }
 
-// --- PERUBAHAN 2: Tambahkan Widget BlinkingStatus di sini ---
+// Widget BlinkingStatus (efek kedip)
+// Tetap berada di dalam file yang sama
 class BlinkingStatus extends StatefulWidget {
   final String status;
   final Color color;
 
-  const BlinkingStatus({Key? key, required this.status, required this.color}) : super(key: key);
+  const BlinkingStatus({
+    Key? key,
+    required this.status,
+    required this.color,
+  }) : super(key: key);
 
   @override
   _BlinkingStatusState createState() => _BlinkingStatusState();
 }
 
-class _BlinkingStatusState extends State<BlinkingStatus> with SingleTickerProviderStateMixin {
+class _BlinkingStatusState extends State<BlinkingStatus>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   @override
@@ -240,18 +245,18 @@ class _BlinkingStatusState extends State<BlinkingStatus> with SingleTickerProvid
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 700),
-    );
-    _animationController.repeat(reverse: true);
+      duration: const Duration(milliseconds: 800), // Durasi satu kali kelip
+    )..repeat(reverse: true); // Animasi akan berulang maju-mundur
   }
 
   @override
   Widget build(BuildContext context) {
+    // FadeTransition akan membuat efek memudar (blink)
     return FadeTransition(
       opacity: _animationController,
       child: MyText.bodyMedium(
         widget.status,
-        fontWeight: 600,
+        fontWeight: 600, // Dibuat sama dengan teks status biasa
         color: widget.color,
       ),
     );

@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "image": "assets/images/mitra/mitra_1.jpg",
+    "image": "assets/images/dummy/mitra/mitra_1.jpg",
     "owner_name": "Joni Saputra",
     "phone_number": "081234567890",
     "email": "kontak@kilapabadi.com",
@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "image": "assets/images/mitra/mitra_2.jpg",
+    "image": "assets/images/dummy/mitra/mitra_2.jpg",
     "owner_name": "Budi Santoso",
     "phone_number": "085711223344",
     "email": "info@bersihkinclong.com",
@@ -19,7 +19,7 @@
   },
   {
     "id": 3,
-    "image": "assets/images/mitra/mitra_3.jpg",
+    "image": "assets/images/dummy/mitra/mitra_3.jpg",
     "owner_name": "Citra Lestari",
     "phone_number": "089876543210",
     "email": "cs@autodetailingpro.id",
@@ -28,7 +28,7 @@
   },
   {
     "id": 4,
-    "image": "assets/images/mitra/mitra_4.jpg",
+    "image": "assets/images/dummy/mitra/mitra_4.jpg",
     "owner_name": "Dewi Anggraini",
     "phone_number": "082199887766",
     "email": "support@cucicepat.com",
@@ -37,7 +37,7 @@
   },
   {
     "id": 5,
-    "image": "assets/images/mitra/mitra_5.jpg",
+    "image": "assets/images/dummy/mitra/mitra_5.jpg",
     "owner_name": "Eko Prasetyo",
     "phone_number": "087755664433",
     "email": "help@poles24jam.co.id",
